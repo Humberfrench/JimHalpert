@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using JimHalpert.Domain.Entity;
 using static Microsoft.Extensions.Configuration.ConfigurationExtensions;
 using static JimHalpert.Repository.Maps.AviaoMap;
+using static JimHalpert.Repository.Maps.ServicoMap;
 
 namespace JimHalpert.Repository.Context
 {
@@ -66,6 +67,7 @@ namespace JimHalpert.Repository.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             MapAviao(modelBuilder);
+            MapServico(modelBuilder);
 
             //mapear!
             //init to mapear
@@ -279,13 +281,6 @@ namespace JimHalpert.Repository.Context
                     .HasConstraintName("FK_NotaFiscal_StatusNotaFiscal");
             });
 
-            modelBuilder.Entity<Servico>(entity =>
-            {
-                entity.Property(e => e.Descricao)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-            });
 
             modelBuilder.Entity<StatusNotaFiscal>(entity =>
             {

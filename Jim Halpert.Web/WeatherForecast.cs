@@ -1,6 +1,6 @@
 using System;
 
-namespace Jim_Halpert.Web
+namespace JimHalpert.Web
 {
     public class WeatherForecast
     {

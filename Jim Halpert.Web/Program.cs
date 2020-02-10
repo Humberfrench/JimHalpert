@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Jim_Halpert.Web
+namespace JimHalpert.Web
 {
     public class Program
     {
