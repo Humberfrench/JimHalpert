@@ -1,0 +1,15 @@
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\bin\Debug\netcoreapp3.1\JimHalpert.Application.deps.json
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\bin\Debug\netcoreapp3.1\JimHalpert.Application.dll
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\bin\Debug\netcoreapp3.1\JimHalpert.Application.pdb
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\bin\Debug\netcoreapp3.1\JimHalpert.Domain.dll
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\bin\Debug\netcoreapp3.1\JimHalpert.DomainValidator.dll
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\bin\Debug\netcoreapp3.1\JimHalpert.Repository.dll
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\bin\Debug\netcoreapp3.1\JimHalpert.DomainValidator.pdb
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\bin\Debug\netcoreapp3.1\JimHalpert.Domain.pdb
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\bin\Debug\netcoreapp3.1\JimHalpert.Repository.pdb
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\obj\Debug\netcoreapp3.1\JimHalpert.Application.csprojAssemblyReference.cache
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\obj\Debug\netcoreapp3.1\JimHalpert.Application.AssemblyInfoInputs.cache
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\obj\Debug\netcoreapp3.1\JimHalpert.Application.AssemblyInfo.cs
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\obj\Debug\netcoreapp3.1\JimHalpert.Application.csproj.CopyComplete
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\obj\Debug\netcoreapp3.1\JimHalpert.Application.dll
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Application\obj\Debug\netcoreapp3.1\JimHalpert.Application.pdb

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Enum\" />
+    <Folder Include="ObjectValue\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JimHalpert.DomainValidator\JimHalpert.DomainValidator.csproj" />
+  </ItemGroup>
+
+</Project>

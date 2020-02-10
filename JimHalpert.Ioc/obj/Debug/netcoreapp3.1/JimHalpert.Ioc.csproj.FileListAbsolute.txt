@@ -1,0 +1,3 @@
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Ioc\obj\Debug\netcoreapp3.1\JimHalpert.Ioc.csprojAssemblyReference.cache
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Ioc\obj\Debug\netcoreapp3.1\JimHalpert.Ioc.AssemblyInfoInputs.cache
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Ioc\obj\Debug\netcoreapp3.1\JimHalpert.Ioc.AssemblyInfo.cs
