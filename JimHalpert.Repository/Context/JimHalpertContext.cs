@@ -7,6 +7,7 @@ using JimHalpert.Domain.Entity;
 using static Microsoft.Extensions.Configuration.ConfigurationExtensions;
 using static JimHalpert.Repository.Maps.AviaoMap;
 using static JimHalpert.Repository.Maps.ServicoMap;
+using static JimHalpert.Repository.Maps.TarefaItemMap;
 
 namespace JimHalpert.Repository.Context
 {
@@ -68,6 +69,7 @@ namespace JimHalpert.Repository.Context
         {
             MapAviao(modelBuilder);
             MapServico(modelBuilder);
+            MapTarefaItem(modelBuilder);
 
             //mapear!
             //init to mapear
@@ -316,27 +318,6 @@ namespace JimHalpert.Repository.Context
                     .HasConstraintName("FK_Tarefa_Cliente");
             });
 
-            modelBuilder.Entity<TarefaItem>(entity =>
-            {
-                entity.Property(e => e.Descricao)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.ValorHora).HasColumnType("numeric(18, 0)");
-
-                entity.HasOne(d => d.Servico)
-                    .WithMany(p => p.TarefaItem)
-                    .HasForeignKey(d => d.ServicoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TarefaItem_Servico");
-
-                entity.HasOne(d => d.Tarefa)
-                    .WithMany(p => p.TarefaItem)
-                    .HasForeignKey(d => d.TarefaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TarefaItem_Tarefa");
-            });
 
             modelBuilder.Entity<TipoDeCliente>(entity =>
             {
