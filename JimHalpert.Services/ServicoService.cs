@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace JimHalpert.Services
 {
-    public class ServicoService : BaseService<Servico>, IServicoService
+    public class ServicoService : BaseService<Servico>, IServicoService<Servico>
     {
         private readonly IServicoRepository repository;
         private readonly ValidationResult validationResult;

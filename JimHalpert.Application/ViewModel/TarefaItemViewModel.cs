@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JimHalpert.Application.ViewModel
 {
-    class TarefaItemViewModel
+    public class TarefaItemViewModel
     {
         public int TarefaItemId { get; set; }
         public int TarefaId { get; set; }

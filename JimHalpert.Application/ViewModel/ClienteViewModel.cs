@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JimHalpert.Application.ViewModel
 {
-    class ClienteViewModel
+    public class ClienteViewModel
     {
         public ClienteViewModel()
         {
@@ -34,10 +34,10 @@ namespace JimHalpert.Application.ViewModel
         public DateTime? DataAlteracao { get; set; }
 
         public virtual CidadeViewModel Cidade { get; set; }
-        //public virtual TipoDeClienteViewModel TipoDeCliente { get; set; }
-        //public virtual TipoDePessoaViewModel TipoDePessoa { get; set; }
-        //public virtual ICollection<FaturamentoViewModel> Faturamento { get; set; }
-        //public virtual ICollection<NotaFiscalViewModel> NotaFiscal { get; set; }
+        public virtual TipoDeClienteViewModel TipoDeCliente { get; set; }
+        public virtual TipoDePessoaViewModel TipoDePessoa { get; set; }
+        public virtual ICollection<FaturamentoViewModel> Faturamento { get; set; }
+        public virtual ICollection<NotaFiscalViewModel> NotaFiscal { get; set; }
         public virtual ICollection<TarefaViewModel> Tarefa { get; set; }
 
     }

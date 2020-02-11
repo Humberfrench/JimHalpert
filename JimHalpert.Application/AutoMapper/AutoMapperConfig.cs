@@ -18,6 +18,8 @@ namespace JimHalpert.Application.AutoMapper
                 cfg.CreateMap<Servico, ServicoViewModel>().MaxDepth(2).ReverseMap();
                 cfg.CreateMap<Tarefa, TarefaViewModel>().MaxDepth(2).ReverseMap();
                 cfg.CreateMap<TarefaItem, TarefaItemViewModel>().MaxDepth(2).ReverseMap();
+                cfg.CreateMap<TipoDeCliente, TipoDeClienteViewModel>().MaxDepth(2).ReverseMap();
+                cfg.CreateMap<TipoDePessoa, TipoDePessoaViewModel>().MaxDepth(2).ReverseMap();
             }
             );
         }

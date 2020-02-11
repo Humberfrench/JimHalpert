@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JimHalpert.Application.ViewModel
 {
-    class ServicoViewModel
+    public class ServicoViewModel
     {
         public ServicoViewModel()
         {
