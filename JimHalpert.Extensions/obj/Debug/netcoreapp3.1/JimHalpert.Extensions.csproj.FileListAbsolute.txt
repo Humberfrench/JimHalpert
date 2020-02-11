@@ -5,4 +5,3 @@ D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Extensions\obj\Debug\netcorea
 D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Extensions\obj\Debug\netcoreapp3.1\JimHalpert.Extensions.AssemblyInfo.cs
 D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Extensions\obj\Debug\netcoreapp3.1\JimHalpert.Extensions.dll
 D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Extensions\obj\Debug\netcoreapp3.1\JimHalpert.Extensions.pdb
-D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Extensions\obj\Debug\netcoreapp3.1\JimHalpert.Extensions.csprojAssemblyReference.cache
