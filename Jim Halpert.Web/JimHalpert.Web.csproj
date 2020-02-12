@@ -27,10 +27,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\servico\servico.compoment.ts" />
+    <None Remove="ClientApp\src\environments\servico.compoment.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JimHalpert.Application\JimHalpert.Application.csproj" />
     <ProjectReference Include="..\JimHalpert.DomainValidator\JimHalpert.DomainValidator.csproj" />
     <ProjectReference Include="..\JimHalpert.Extensions\JimHalpert.Extensions.csproj" />
     <ProjectReference Include="..\JimHalpert.Ioc\JimHalpert.Ioc.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\servico\servico.compoment.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\servico.interface.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
