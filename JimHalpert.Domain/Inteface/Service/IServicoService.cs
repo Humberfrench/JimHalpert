@@ -1,12 +1,11 @@
-﻿using JimHalpert.DomainValidator;
-using System;
+﻿using JimHalpert.Domain.Entity;
+using JimHalpert.DomainValidator;
 using System.Collections.Generic;
-using System.Text;
 
 namespace JimHalpert.Domain.Inteface.Service
 {
-    public interface IServicoService<Servico>
-    {
+    public interface IServicoService : IBaseService<Servico> 
+    { 
         ValidationResult Gravar(Servico aviao);
         ValidationResult Excluir(int id);
         IEnumerable<Servico> Filtrar(string query);

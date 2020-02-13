@@ -37,6 +37,12 @@ namespace JimHalpert.Ioc
             services.AddScoped<IAviaoService, AviaoService>();
             services.AddScoped<IAviaoServiceApp, AviaoServiceApp>();
 
+            #region Servicos
+            services.AddScoped<IServicoRepository, ServicoRepository>();
+            services.AddScoped<IServicoService, ServicoService>();
+            services.AddScoped<IServicoServiceApp, ServicoServiceApp>();
+            #endregion
+
             services.AddDbContext<JimHalpertContext>(options => options.UseSqlServer(configuration.GetConnectionString("RedDragonContext")));
 
         }
