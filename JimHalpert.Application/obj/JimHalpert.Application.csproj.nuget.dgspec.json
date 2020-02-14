@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Application\\JimHalpert.Application.csproj": {}
+    "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Application\\JimHalpert.Application.csproj": {}
   },
   "projects": {
-    "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Application\\JimHalpert.Application.csproj": {
+    "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Application\\JimHalpert.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Application\\JimHalpert.Application.csproj",
+        "projectUniqueName": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Application\\JimHalpert.Application.csproj",
         "projectName": "JimHalpert.Application",
-        "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Application\\JimHalpert.Application.csproj",
+        "projectPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Application\\JimHalpert.Application.csproj",
         "packagesPath": "C:\\Users\\humbe\\.nuget\\packages\\",
-        "outputPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Application\\obj\\",
+        "outputPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\humbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -30,14 +32,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {
-                "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj"
+              "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {
+                "projectPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj"
               },
-              "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj": {
-                "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj"
+              "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj": {
+                "projectPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj"
               },
-              "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Repository\\JimHalpert.Repository.csproj": {
-                "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Repository\\JimHalpert.Repository.csproj"
+              "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Repository\\JimHalpert.Repository.csproj": {
+                "projectPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Repository\\JimHalpert.Repository.csproj"
               }
             }
           }
@@ -82,21 +84,23 @@
         }
       }
     },
-    "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {
+    "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj",
+        "projectUniqueName": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj",
         "projectName": "JimHalpert.DomainValidator",
-        "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj",
+        "projectPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj",
         "packagesPath": "C:\\Users\\humbe\\.nuget\\packages\\",
-        "outputPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\obj\\",
+        "outputPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.DomainValidator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\humbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -143,21 +147,23 @@
         }
       }
     },
-    "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj": {
+    "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj",
+        "projectUniqueName": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj",
         "projectName": "JimHalpert.Domain",
-        "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj",
+        "projectPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj",
         "packagesPath": "C:\\Users\\humbe\\.nuget\\packages\\",
-        "outputPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Domain\\obj\\",
+        "outputPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\humbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -169,8 +175,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {
-                "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj"
+              "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {
+                "projectPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj"
               }
             }
           }
@@ -202,21 +208,23 @@
         }
       }
     },
-    "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Repository\\JimHalpert.Repository.csproj": {
+    "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Repository\\JimHalpert.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Repository\\JimHalpert.Repository.csproj",
+        "projectUniqueName": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Repository\\JimHalpert.Repository.csproj",
         "projectName": "JimHalpert.Repository",
-        "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Repository\\JimHalpert.Repository.csproj",
+        "projectPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Repository\\JimHalpert.Repository.csproj",
         "packagesPath": "C:\\Users\\humbe\\.nuget\\packages\\",
-        "outputPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Repository\\obj\\",
+        "outputPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\humbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -228,11 +236,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {
-                "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj"
+              "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {
+                "projectPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj"
               },
-              "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj": {
-                "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj"
+              "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj": {
+                "projectPath": "C:\\Humberto\\Desenvolvimento\\Jim Halpert\\JimHalpert.Domain\\JimHalpert.Domain.csproj"
               }
             }
           }

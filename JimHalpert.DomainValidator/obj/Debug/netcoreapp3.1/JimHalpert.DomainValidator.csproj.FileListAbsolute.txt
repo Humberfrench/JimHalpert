@@ -5,3 +5,10 @@ D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\obj\Debug\net
 D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.AssemblyInfo.cs
 D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.dll
 D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.pdb
+C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.DomainValidator\bin\Debug\netcoreapp3.1\JimHalpert.DomainValidator.deps.json
+C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.DomainValidator\bin\Debug\netcoreapp3.1\JimHalpert.DomainValidator.dll
+C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.DomainValidator\bin\Debug\netcoreapp3.1\JimHalpert.DomainValidator.pdb
+C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.AssemblyInfoInputs.cache
+C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.AssemblyInfo.cs
+C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.dll
+C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.pdb
