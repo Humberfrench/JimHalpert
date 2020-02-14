@@ -1,0 +1,8 @@
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\bin\Release\netcoreapp3.1\JimHalpert.DomainValidator.deps.json
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\bin\Release\netcoreapp3.1\JimHalpert.DomainValidator.dll
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\bin\Release\netcoreapp3.1\JimHalpert.DomainValidator.pdb
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\obj\Release\netcoreapp3.1\JimHalpert.DomainValidator.csprojAssemblyReference.cache
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\obj\Release\netcoreapp3.1\JimHalpert.DomainValidator.AssemblyInfoInputs.cache
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\obj\Release\netcoreapp3.1\JimHalpert.DomainValidator.AssemblyInfo.cs
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\obj\Release\netcoreapp3.1\JimHalpert.DomainValidator.dll
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\obj\Release\netcoreapp3.1\JimHalpert.DomainValidator.pdb

@@ -9,7 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { ServicoComponent } from './servico/servico.component';
+import { ServicosComponent } from './servicos/servicos.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { ServicoComponent } from './servico/servico.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ServicoComponent
+    ServicosComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,8 +26,9 @@ import { ServicoComponent } from './servico/servico.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'servico', component: ServicoComponent },
+      { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'servicos', component: ServicosComponent },
     ])
   ],
   providers: [],

@@ -14,29 +14,21 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
-    <Compile Remove="ClientApp\src\app\servicos\**" />
     <Content Remove="$(SpaRoot)**" />
-    <Content Remove="ClientApp\src\app\servicos\**" />
-    <EmbeddedResource Remove="ClientApp\src\app\servicos\**" />
     <None Remove="$(SpaRoot)**" />
-    <None Remove="ClientApp\src\app\servicos\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JimHalpert.Application\JimHalpert.Application.csproj" />
-    <ProjectReference Include="..\JimHalpert.DomainValidator\JimHalpert.DomainValidator.csproj" />
-    <ProjectReference Include="..\JimHalpert.Extensions\JimHalpert.Extensions.csproj" />
-    <ProjectReference Include="..\JimHalpert.Ioc\JimHalpert.Ioc.csproj" />
+    <None Remove="ClientApp\src\app\servicos\servicos.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\interfaces\" />
+    <TypeScriptCompile Include="ClientApp\src\app\servicos\servicos.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

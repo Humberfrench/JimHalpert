@@ -7,7 +7,7 @@ using JimHalpert.Application.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace JimHalpert.WebSpa.Controllers
+namespace JimHalpert.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
