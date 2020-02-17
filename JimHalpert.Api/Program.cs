@@ -24,7 +24,6 @@ namespace JimHalpert.Api
                     webBuilder.UseKestrel();
                     webBuilder.UseIISIntegration();
                     webBuilder.UseUrls("http://localhost:72774/");
-                    webBuilder.Build();
                 });
 
         //var host = new WebHostBuilder()
