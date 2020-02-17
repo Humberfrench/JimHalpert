@@ -23,7 +23,7 @@ namespace JimHalpert.Api
                     webBuilder.UseStartup<Startup>();
                     webBuilder.UseKestrel();
                     webBuilder.UseIISIntegration();
-                    webBuilder.UseUrls("http://localhost:72774/");
+                    webBuilder.UseUrls("http://localhost:56879/");
                     webBuilder.Build();
                 });
 
