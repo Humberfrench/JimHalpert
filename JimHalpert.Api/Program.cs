@@ -21,10 +21,7 @@ namespace JimHalpert.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseKestrel();
-                    webBuilder.UseIISIntegration();
                     webBuilder.UseUrls("http://localhost:56879/");
-                    webBuilder.Build();
                 });
 
         //var host = new WebHostBuilder()

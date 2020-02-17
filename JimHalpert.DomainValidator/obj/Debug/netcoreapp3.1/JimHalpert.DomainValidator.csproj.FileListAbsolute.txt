@@ -19,3 +19,5 @@ C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.DomainValidator\obj\Debug\netc
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.AssemblyInfo.cs
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.dll
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.pdb
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.csprojAssemblyReference.cache
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.DomainValidator\obj\Debug\netcoreapp3.1\JimHalpert.DomainValidator.csprojAssemblyReference.cache
