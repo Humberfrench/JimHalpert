@@ -20,3 +20,14 @@ C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.Domain\obj\Debug\netcoreapp3.
 C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.Domain\obj\Debug\netcoreapp3.1\JimHalpert.Domain.csproj.CopyComplete
 C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.Domain\obj\Debug\netcoreapp3.1\JimHalpert.Domain.dll
 C:\Humberto\Desenvolvimento\Jim Halpert\JimHalpert.Domain\obj\Debug\netcoreapp3.1\JimHalpert.Domain.pdb
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\bin\Debug\netcoreapp3.1\JimHalpert.Domain.deps.json
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\bin\Debug\netcoreapp3.1\JimHalpert.Domain.dll
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\bin\Debug\netcoreapp3.1\JimHalpert.Domain.pdb
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\bin\Debug\netcoreapp3.1\JimHalpert.DomainValidator.dll
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\bin\Debug\netcoreapp3.1\JimHalpert.DomainValidator.pdb
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\obj\Debug\netcoreapp3.1\JimHalpert.Domain.csprojAssemblyReference.cache
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\obj\Debug\netcoreapp3.1\JimHalpert.Domain.AssemblyInfoInputs.cache
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\obj\Debug\netcoreapp3.1\JimHalpert.Domain.AssemblyInfo.cs
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\obj\Debug\netcoreapp3.1\JimHalpert.Domain.csproj.CopyComplete
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\obj\Debug\netcoreapp3.1\JimHalpert.Domain.dll
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Domain\obj\Debug\netcoreapp3.1\JimHalpert.Domain.pdb
