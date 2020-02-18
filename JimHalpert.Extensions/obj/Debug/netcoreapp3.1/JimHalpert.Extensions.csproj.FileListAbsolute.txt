@@ -21,3 +21,4 @@ C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Extensions\obj\Debug\netcoreap
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Extensions\obj\Debug\netcoreapp3.1\JimHalpert.Extensions.dll
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Extensions\obj\Debug\netcoreapp3.1\JimHalpert.Extensions.pdb
 D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.Extensions\obj\Debug\netcoreapp3.1\JimHalpert.Extensions.csprojAssemblyReference.cache
+C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Extensions\obj\Debug\netcoreapp3.1\JimHalpert.Extensions.csprojAssemblyReference.cache

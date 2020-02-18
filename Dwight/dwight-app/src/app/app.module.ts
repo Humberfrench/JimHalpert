@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-//import { ServicosComponent } from './servicos/servicos.component';
+import { ServicosComponent } from './servicos/servicos.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-//      { path: 'servicos', component: ServicosComponent },
+      { path: 'servicos', component: ServicosComponent },
     ])
   ],
   providers: [],

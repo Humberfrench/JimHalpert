@@ -22,11 +22,22 @@ namespace JimHalpert.Api
         }
 
         public IConfiguration Configuration { get; }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:56879/");
+                });
+            });
             Initializer(services, Configuration);
         }
 
@@ -39,6 +50,16 @@ namespace JimHalpert.Api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(MyAllowSpecificOrigins);
+
+            //app.UseCors(option =>
+            //{
+            //    option.AllowAnyOrigin();
+            //    option.AllowAnyMethod();
+            //    option.AllowAnyHeader();
+            //}
+            //);
 
             app.UseRouting();
 

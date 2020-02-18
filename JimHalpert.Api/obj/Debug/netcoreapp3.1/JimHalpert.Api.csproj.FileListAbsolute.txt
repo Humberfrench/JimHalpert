@@ -150,8 +150,6 @@ C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Api\bin\Debug\netcoreapp3.1\Ji
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Api\obj\Debug\netcoreapp3.1\JimHalpert.Api.csprojAssemblyReference.cache
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Api\obj\Debug\netcoreapp3.1\staticwebassets\JimHalpert.Api.StaticWebAssets.Manifest.cache
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Api\obj\Debug\netcoreapp3.1\staticwebassets\JimHalpert.Api.StaticWebAssets.xml
-C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Api\obj\Debug\netcoreapp3.1\JimHalpert.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Api\obj\Debug\netcoreapp3.1\JimHalpert.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Api\obj\Debug\netcoreapp3.1\JimHalpert.Api.AssemblyInfoInputs.cache
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Api\obj\Debug\netcoreapp3.1\JimHalpert.Api.AssemblyInfo.cs
 C:\Humberto\Desenvolvimento\JimHalpert\JimHalpert.Api\obj\Debug\netcoreapp3.1\JimHalpert.Api.RazorTargetAssemblyInfo.cache

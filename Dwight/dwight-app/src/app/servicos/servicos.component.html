@@ -1,0 +1,17 @@
+<h1>Serviços</h1>
+<table class='table table-striped table-hover' aria-labelledby="tableLabel" *ngIf="forecasts">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Descrição</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr scope="row" *ngFor="let servico of servicos">
+      <td scope="col">{{servico.ServicoId}}</td>
+      <td scope="col">{{servico.Descricao}}</td>
+      <td scope="col">&nbsp;</td>
+    </tr>
+  </tbody>
+</table> 
