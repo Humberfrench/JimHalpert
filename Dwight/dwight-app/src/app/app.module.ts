@@ -14,7 +14,7 @@ import { ServicosComponent } from './servicos/servicos.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    //ServicosComponent
+    ServicosComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

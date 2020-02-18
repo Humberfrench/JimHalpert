@@ -1,17 +1,21 @@
 <h1>Serviços</h1>
-<table class='table table-striped table-hover' aria-labelledby="tableLabel" *ngIf="forecasts">
+<table class='table table-striped table-hover' aria-labelledby="tableLabel" *ngIf="servicos">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Descrição</th>
-      <th>&nbsp;</th>
+      <th style="width:10% ;">#</th>
+      <th style="width:65% ;">Descrição</th>
+      <th style="width:5% ;">&nbsp;</th>
+      <th style="width:10% ;">&nbsp;</th>
+      <th style="width:10% ;">&nbsp;</th>
     </tr>
   </thead>
   <tbody>
     <tr scope="row" *ngFor="let servico of servicos">
-      <td scope="col">{{servico.ServicoId}}</td>
-      <td scope="col">{{servico.Descricao}}</td>
+      <td scope="col">{{servico.servicoId}}</td>
+      <td scope="col">{{servico.descricao}}</td>
       <td scope="col">&nbsp;</td>
+      <td scope="col"><button class="btn btn-success" type="button"><i class="">Editar</i></button></td>
+      <td scope="col"><button class="btn btn-danger" type="button"><i class="">Excluir</i></button></td>
     </tr>
   </tbody>
-</table> 
+</table>

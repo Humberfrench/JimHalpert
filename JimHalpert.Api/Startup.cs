@@ -21,23 +21,30 @@ namespace JimHalpert.Api
             Configuration = configuration;
         }
 
+        private readonly string myPolicy = "myPolicy";
         public IConfiguration Configuration { get; }
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy(MyAllowSpecificOrigins,
-                builder =>
-                {
-                    builder.WithOrigins("http://localhost:56879/");
-                });
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy(myPolicy,
+            //    builder =>
+            //    {
+            //        builder.WithOrigins("http://localhost:56879/");
+            //    });
+            //});
+            //services.AddCors(options =>
+            //{
+            //    options.AddDefaultPolicy(
+            //    builder =>
+            //    {
+            //        builder.WithOrigins("http://localhost:56879/");
+            //    });
+            //});
             Initializer(services, Configuration);
         }
 
@@ -49,17 +56,16 @@ namespace JimHalpert.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(option => 
+            {
+                
+                option.AllowAnyOrigin();
+                option.AllowAnyMethod();
+                option.AllowAnyHeader();
+                
+            });
+            
             app.UseHttpsRedirection();
-
-            app.UseCors(MyAllowSpecificOrigins);
-
-            //app.UseCors(option =>
-            //{
-            //    option.AllowAnyOrigin();
-            //    option.AllowAnyMethod();
-            //    option.AllowAnyHeader();
-            //}
-            //);
 
             app.UseRouting();
 

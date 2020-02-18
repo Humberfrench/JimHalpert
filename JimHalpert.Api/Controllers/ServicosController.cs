@@ -12,7 +12,6 @@ namespace JimHalpert.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [EnableCors("AllowSpecificOrigin")]
     public class ServicosController : ControllerBase
     {
         private readonly IServicoServiceApp servicoServiceApp;

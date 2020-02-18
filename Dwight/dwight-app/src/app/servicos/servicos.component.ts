@@ -27,11 +27,11 @@ export class ServicosComponent
         'Access-Control-Allow-Origin': '*',
       })
     };
-    
+
     this.clientApi.get<Servicos[]>(this.uri + 'servicos',httpOptions).subscribe(result =>
     {
       this.servicos = result;
-    }, error => 
+    }, error =>
     {
       console.error(error)
     });

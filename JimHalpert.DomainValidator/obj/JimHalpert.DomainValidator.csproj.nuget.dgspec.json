@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Humberto\\Desenvolvimento\\JimHalpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {}
+    "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {}
   },
   "projects": {
-    "C:\\Humberto\\Desenvolvimento\\JimHalpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {
+    "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Humberto\\Desenvolvimento\\JimHalpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj",
+        "projectUniqueName": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj",
         "projectName": "JimHalpert.DomainValidator",
-        "projectPath": "C:\\Humberto\\Desenvolvimento\\JimHalpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj",
+        "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\JimHalpert.DomainValidator.csproj",
         "packagesPath": "C:\\Users\\humbe\\.nuget\\packages\\",
-        "outputPath": "C:\\Humberto\\Desenvolvimento\\JimHalpert\\JimHalpert.DomainValidator\\obj\\",
+        "outputPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.DomainValidator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\humbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

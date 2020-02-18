@@ -9,26 +9,23 @@
   },
   "packageFolders": {
     "C:\\Users\\humbe\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Humberto\\Desenvolvimento\\JimHalpert\\JimHalpert.Extensions\\JimHalpert.Extensions.csproj",
+      "projectUniqueName": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Extensions\\JimHalpert.Extensions.csproj",
       "projectName": "JimHalpert.Extensions",
-      "projectPath": "C:\\Humberto\\Desenvolvimento\\JimHalpert\\JimHalpert.Extensions\\JimHalpert.Extensions.csproj",
+      "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Extensions\\JimHalpert.Extensions.csproj",
       "packagesPath": "C:\\Users\\humbe\\.nuget\\packages\\",
-      "outputPath": "C:\\Humberto\\Desenvolvimento\\JimHalpert\\JimHalpert.Extensions\\obj\\",
+      "outputPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.Extensions\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\humbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
