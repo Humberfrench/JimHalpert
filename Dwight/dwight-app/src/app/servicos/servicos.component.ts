@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -14,20 +14,18 @@ export class ServicosComponent
   clientApi: HttpClient ;
   public servicos: Servicos[];
   public servico: Servicos;
+  public showModal: boolean;
+
+  @ViewChild('modalEditar') modalEditar: any;
 
   constructor(client: HttpClient)
   {
     this.clientApi = client;
     this.ObterServicos();
+    this.showModal = false;
   }
   ObterServicos()
   {
-    //const httpOptions = {
-    //  headers: new HttpHeaders({
-    //    'Access-Control-Allow-Origin': '*',
-    //  })
-    //};
-
     this.clientApi.get<Servicos[]>(this.uri + 'servicos').subscribe(result =>
     {
       this.servicos = result;
@@ -40,7 +38,7 @@ export class ServicosComponent
 
   Editar(id: number)
   {
-
+    this.showModal = true;
   }
 
   Novo()
@@ -48,7 +46,7 @@ export class ServicosComponent
 
   }
 
-  Excluir(id: number)
+   Excluir(id: number)
   {
     alert(id);
     //this.clientApi.get<Servicos[]>(this.uri + `servicos/excluir/${id}`).subscribe(result =>
