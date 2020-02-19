@@ -14,8 +14,8 @@
       <td scope="col">{{servico.servicoId}}</td>
       <td scope="col">{{servico.descricao}}</td>
       <td scope="col">&nbsp;</td>
-      <td scope="col"><button class="btn btn-success" type="button"><i class="">Editar</i></button></td>
-      <td scope="col"><button class="btn btn-danger" type="button"><i class="">Excluir</i></button></td>
+      <td scope="col"><button class="btn btn-success" type="button" data-toggle="tooltip" data-placement="top" title="Editar Serviço" (click)=Editar(servico.servicoId)><i class="fa fa-edit"></i></button></td>
+      <td scope="col"><button class="btn btn-danger" type="button" data-toggle="tooltip" data-placement="top" title="Excluir Serviço" (click)=Excluir(servico.servicoId)><i class="fa fa-trash"></i></button></td>
     </tr>
   </tbody>
 </table>
