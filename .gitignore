@@ -1,2 +1,10 @@
 .vs/
 JimHalpert.WebSpa/ClientApp/node_modules/
+JimHalpert.Api/obj/
+JimHalpert.Application/obj/
+JimHalpert.Domain/obj/
+JimHalpert.DomainValidator/obj/
+JimHalpert.Extensions/obj/
+JimHalpert.Ioc/obj/
+JimHalpert.Repository/obj/
+JimHalpert.Services/obj/
