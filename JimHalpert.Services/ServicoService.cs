@@ -17,29 +17,29 @@ namespace JimHalpert.Services
             validationResult = new ValidationResult();
         }
 
-        public ValidationResult Gravar(Servico Servico)
+        public ValidationResult Gravar(Servico servico)
         {
             //validate
-            if (Servico.Nome.IsNullOrEmptyOrWhiteSpace())
+            if (servico.Nome.IsNullOrEmptyOrWhiteSpace())
             {
                 validationResult.Add("Nome não preenchido");
                 return validationResult;
             }
 
-            if (Servico.Descricao.IsNullOrEmptyOrWhiteSpace())
+            if (servico.Descricao.IsNullOrEmptyOrWhiteSpace())
             {
                 validationResult.Add("Descricao não preenchido");
                 return validationResult;
             }
 
             //add or update
-            if(Servico.ServicoId == 0)
+            if(servico.ServicoId == 0)
             {
-                base.Adicionar(Servico);
+                base.Adicionar(servico);
             }
             else
             {
-                base.Atualizar(Servico);
+                base.Atualizar(servico);
             }
 
             return validationResult;
@@ -47,14 +47,14 @@ namespace JimHalpert.Services
 
         public ValidationResult Excluir(int id)
         {
-            var Servico = ObterPorId(id);
-            if(Servico == null)
+            var servico = ObterPorId(id);
+            if(servico == null)
             {
                 validationResult.Add("Serviço inexistente");
                 return validationResult;
             }
 
-            base.Remover(Servico);
+            base.Remover(servico);
             
             return validationResult;
         }

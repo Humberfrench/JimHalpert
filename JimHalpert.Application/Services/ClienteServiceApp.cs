@@ -16,10 +16,10 @@ namespace JimHalpert.Application.Services
             this.service = service;
         }
 
-        public ValidationResult Gravar(ClienteViewModel Cliente)
+        public ValidationResult Gravar(ClienteViewModel cliente)
         {
             BeginTransaction();
-            var dadoIncluir = Mapper.Map<Cliente>(Cliente);
+            var dadoIncluir = Mapper.Map<Cliente>(cliente);
             var retorno = service.Gravar(dadoIncluir);
             if(retorno.IsValid)
             {

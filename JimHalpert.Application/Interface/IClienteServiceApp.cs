@@ -9,7 +9,7 @@ namespace JimHalpert.Application.Interface
     {
         IEnumerable<ClienteViewModel> ObterTodos();
         IEnumerable<ClienteViewModel> Filtrar(string query);
-        ValidationResult Gravar(ClienteViewModel Cliente);
+        ValidationResult Gravar(ClienteViewModel cliente);
         ValidationResult Excluir(int id);
         ClienteViewModel ObterPorId(int id);
     }

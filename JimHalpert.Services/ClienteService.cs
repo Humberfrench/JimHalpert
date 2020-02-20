@@ -3,6 +3,7 @@ using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
 using JimHalpert.DomainValidator;
 using JimHalpert.Extensions;
+using System;
 using System.Collections.Generic;
 
 namespace JimHalpert.Services
@@ -11,35 +12,56 @@ namespace JimHalpert.Services
     {
         private readonly IClienteRepository repository;
         private readonly ValidationResult validationResult;
-        public ClienteService(IBaseRepository<Cliente> baseRepository, IClienteRepository repository) : base(baseRepository)
+        public ClienteService(IBaseRepository<Cliente> baseRepository, 
+                              IClienteRepository repository) : base(baseRepository)
         {
             this.repository = repository;
             validationResult = new ValidationResult();
         }
 
-        public ValidationResult Gravar(Cliente Cliente)
+        public ValidationResult Gravar(Cliente cliente)
         {
-            ////validate
-            //if (Cliente.Nome.IsNullOrEmptyOrWhiteSpace())
-            //{
-            //    validationResult.Add("Nome não preenchido");
-            //    return validationResult;
-            //}
+            //validate
+            if (cliente.Nome.IsNullOrEmptyOrWhiteSpace())
+            {
+                validationResult.Add("Nome não preenchido");
+                return validationResult;
+            }
 
-            //if (Cliente.Descricao.IsNullOrEmptyOrWhiteSpace())
-            //{
-            //    validationResult.Add("Descricao não preenchido");
-            //    return validationResult;
-            //}
+            if (cliente.RazaoSocial.IsNullOrEmptyOrWhiteSpace())
+            {
+                validationResult.Add("Razão Social não preenchido");
+                return validationResult;
+            }
+
+            if (cliente.Documento.IsNullOrEmptyOrWhiteSpace())
+            {
+                validationResult.Add("Documento não preenchido");
+                return validationResult;
+            }
+
+            if (cliente.TipoDeClienteId == 0)
+            {
+                validationResult.Add("Tipo De Cliente não preenchido");
+                return validationResult;
+            }
+            if (cliente.TipoDePessoaId == 0)
+            {
+                validationResult.Add("Tipo De Pessoa não preenchido");
+                return validationResult;
+            }
 
             //add or update
-            if(Cliente.ClienteId == 0)
+            if (cliente.ClienteId == 0)
             {
-                base.Adicionar(Cliente);
+                cliente.DataAlteracao = DateTime.Now;
+                cliente.DataCriacao = DateTime.Now;
+                base.Adicionar(cliente);
             }
             else
             {
-                base.Atualizar(Cliente);
+                cliente.DataAlteracao = DateTime.Now;
+                base.Atualizar(cliente);
             }
 
             return validationResult;
@@ -47,14 +69,14 @@ namespace JimHalpert.Services
 
         public ValidationResult Excluir(int id)
         {
-            var Cliente = ObterPorId(id);
-            if(Cliente == null)
+            var cliente = ObterPorId(id);
+            if(cliente == null)
             {
                 validationResult.Add("Serviço inexistente");
                 return validationResult;
             }
 
-            base.Remover(Cliente);
+            base.Remover(cliente);
             
             return validationResult;
         }

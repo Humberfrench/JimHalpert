@@ -6,7 +6,7 @@ namespace JimHalpert.Domain.Inteface.Service
 {
     public interface IClienteService : IBaseService<Cliente> 
     { 
-        ValidationResult Gravar(Cliente aviao);
+        ValidationResult Gravar(Cliente cliente);
         ValidationResult Excluir(int id);
         IEnumerable<Cliente> Filtrar(string query);
     }
