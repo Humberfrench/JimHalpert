@@ -12,6 +12,7 @@ namespace JimHalpert.Domain.Entity
         }
 
         public int ServicoId { get; set; }
+        public string Nome { get; set; }
         public string Descricao { get; set; }
 
         public virtual ICollection<TarefaItem> TarefaItem { get; set; }

@@ -12,11 +12,14 @@ namespace JimHalpert.Repository.Maps
         {
             modelBuilder.Entity<Servico>(entity =>
             {
+                entity.Property(e => e.Nome)
+                    .IsRequired()
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
                 entity.Property(e => e.Descricao)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-            });
+                    .HasMaxLength(75)
+                    .IsUnicode(false);            });
 
         }
     }

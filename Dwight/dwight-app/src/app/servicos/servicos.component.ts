@@ -1,6 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
+import { Servicos } from "../Interfaces/Servicos.Interfaces";
+import { ToastService } from '../Util/toast-service';
 
 @Component({
   selector: 'app-servicos',
@@ -14,16 +18,34 @@ export class ServicosComponent
   clientApi: HttpClient ;
   public servicos: Servicos[];
   public servico: Servicos;
-  public showModal: boolean;
-
-  @ViewChild('modalEditar') modalEditar: any;
-
-  constructor(client: HttpClient)
+  public nome: string;
+  public id: number;
+  editForm: FormGroup;
+  
+  constructor(private client: HttpClient, private modalService: NgbModal,private formBuilder: FormBuilder, public toastService: ToastService )
   {
     this.clientApi = client;
-    this.ObterServicos();
-    this.showModal = false;
+    this.ObterServicos();  
+    
+    this.editForm = this.formBuilder.group({
+      servicoId: ['',],
+      nome: ['', Validators.compose([Validators.required])],
+      descricao: ['', Validators.required]
+    });
+  
   }
+
+ /* ngOnInit()
+  {
+
+    this.editForm = this.formBuilder.group({
+      servicoId: ['',],
+      nome: ['', Validators.compose([Validators.required])],
+      descricao: ['', Validators.required]
+    });
+
+  }*/
+
   ObterServicos()
   {
     this.clientApi.get<Servicos[]>(this.uri + 'servicos').subscribe(result =>
@@ -33,34 +55,68 @@ export class ServicosComponent
     {
       console.error(error)
     });
+  }
+
+  ObterServico(id : number)
+  {
+    this.clientApi.get<Servicos>(this.uri + `servicos\\${id}`).subscribe(result =>
+    {
+      this.servico = result;
+      this.editForm.setValue(this.servico);    
+    }, error =>
+    {
+      console.error(error)
+    });
 
   }
 
-  Editar(id: number)
+  Editar(modal: any, id: number)
   {
-    this.showModal = true;
+    this.ObterServico(id);
+    this.modalService.open(modal, { size: 'lg',centered: true  });
   }
 
   Novo()
   {
-
+    this.servico = 
+    {
+      ServicoId: 0,
+      Nome: '',
+      Descricao: ''
+    } as Servicos;
+    this.editForm.setValue(this.servico);
   }
 
-   Excluir(id: number)
+  Excluir(modal: any, id: number, descricao: string)
   {
-    alert(id);
-    //this.clientApi.get<Servicos[]>(this.uri + `servicos/excluir/${id}`).subscribe(result =>
-     // {
-      //  this.servicos = result;
-      //}, error =>
-     // {
-     //   console.error(error)
-     // });
+    this.id = id;;
+    this.nome = descricao;
+    this.modalService.open(modal, { size: 'md',centered: true } ).result.then((result) => 
+    {
+      this.ExcluirRegistro(result, id)
+    });
+  }  
+
+  ExcluirRegistro(reason: string, id:number)
+  {
+      if(reason === 'N')
+      {
+        return;
+      }
+      this.EfetuaExclusao(id);
+        
   }
+
+  EfetuaExclusao(id: number)
+  {
+    this.clientApi.post(this.uri + `servicos\\Excluir\\${id}`, null).subscribe(result =>
+      {
+        this.ObterServicos();    
+      }, error =>
+      {
+        console.error(error)
+      });
+  }
+
 }
 
-interface Servicos
-{
-  ServicoId: number;
-  Descricao: string;
-}

@@ -20,6 +20,12 @@ namespace JimHalpert.Services
         public ValidationResult Gravar(Servico Servico)
         {
             //validate
+            if (Servico.Nome.IsNullOrEmptyOrWhiteSpace())
+            {
+                validationResult.Add("Nome não preenchido");
+                return validationResult;
+            }
+
             if (Servico.Descricao.IsNullOrEmptyOrWhiteSpace())
             {
                 validationResult.Add("Descricao não preenchido");

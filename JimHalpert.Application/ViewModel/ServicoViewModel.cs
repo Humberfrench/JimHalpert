@@ -12,6 +12,7 @@ namespace JimHalpert.Application.ViewModel
         }
 
         public int ServicoId { get; set; }
+        public string Nome { get; set; }
         public string Descricao { get; set; }
 
         public virtual ICollection<TarefaItemViewModel> TarefaItem { get; set; }

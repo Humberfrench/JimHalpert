@@ -3,42 +3,77 @@
   <thead>
     <tr>
       <th style="width:10% ;">#</th>
-      <th style="width:65% ;">Descrição</th>
+      <th style="width:25% ;">Nome</th>      
+      <th style="width:50% ;">Descrição</th>
       <th style="width:5% ;">&nbsp;</th>
-      <th style="width:10% ;">&nbsp;</th>
-      <th style="width:10% ;">&nbsp;</th>
+      <th style="width:5% ;">&nbsp;</th>
+      <th style="width:5% ;">&nbsp;</th>
     </tr>
   </thead>
   <tbody>
     <tr scope="row" *ngFor="let servico of servicos">
       <td scope="col">{{servico.servicoId}}</td>
+      <td scope="col">{{servico.nome}}</td>      
       <td scope="col">{{servico.descricao}}</td>
       <td scope="col">&nbsp;</td>
-      <td scope="col"><button class="btn btn-success" type="button" data-toggle="tooltip" data-placement="top" title="Editar Serviço" (click)=Editar(servico.servicoId)><i class="fa fa-edit"></i></button></td>
-      <td scope="col"><button class="btn btn-danger" type="button" data-toggle="tooltip" data-placement="top" title="Excluir Serviço" (click)=Excluir(servico.servicoId)><i class="fa fa-trash"></i></button></td>
+      <td scope="col"><button class="btn btn-success" type="button" ngbTooltip="Editar Serviço" (click)=Editar(content,servico.servicoId)><i class="fa fa-edit"></i></button></td>
+      <td scope="col"><button class="btn btn-danger" type="button" ngbTooltip="Excluir Serviço" (click)=Excluir(excluirModal,servico.servicoId,servico.nome)><i class="fa fa-trash"></i></button></td>
     </tr>
   </tbody>
 </table>
+
 <!-- Modal -->
-<!-- https://ng-bootstrap.github.io/#/components/modal/examples -->
-<div *ngIf="showModal" >
-<div class="modal fade" id="modalEditar" #modalEditar tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Gravar</button>
-      </div>
-    </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edição de Serviços</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-</div>
-</div>
+  <div class="modal-body">
+    <form [formGroup]="editForm">
+      <div class="row">
+        <div class="col-2 sol-sm-2 col-md-2 col-lg-2 col-xl-2">
+          <div class="form-group">
+            <label for="servicoId">Id</label>
+            <input id="servicoId" name="servicoId" formControlName="servicoId"class="form-control" readonly="readonly" disabled="disabled">
+          </div>
+        </div>
+        <div class="col-10 sol-sm-10 col-md-10 col-lg-10 col-xl-10">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" formControlName="nome" class="form-control" maxlength="30" placeholder="Nome do Serviço" ngbAutofocus >
+            <div class="alert alert-danger" *ngIf="editForm.controls['nome'].hasError('required') && editForm.controls['nome'].touched">Nome do Serviço é requirido</div>
+          </div>   
+        </div>
+      </div>      
+      <div class="row">
+        <div class="col-12 sol-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input id="descricao" name="descricao" formControlName="descricao" class="form-control" maxlength="75" placeholder="Descrição do Serviço">
+            <div class="alert alert-danger" *ngIf="editForm.controls['descricao'].hasError('required') && editForm.controls['descricao'].touched">Descrição do Serviço é requirido</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #excluirModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Exclusão - Id: {{id}}</h4>
+  </div>
+  <div class="modal-body">
+    Deseja Excluir o Registro?<br>
+    <b>Id</b>: {{id}}<br>
+    <b>Nome</b>: {{nome}}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close('S')">Sim</button>    
+    <button type="button" class="btn btn-outline-success" (click)="modal.close('N')">Não</button>
+  </div>
+</ng-template>
