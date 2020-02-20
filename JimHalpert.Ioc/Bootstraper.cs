@@ -37,6 +37,12 @@ namespace JimHalpert.Ioc
             services.AddScoped<IAviaoService, AviaoService>();
             services.AddScoped<IAviaoServiceApp, AviaoServiceApp>();
 
+            #region Cliente
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IClienteService, ClienteService>();
+            services.AddScoped<IClienteServiceApp, ClienteServiceApp>();
+            #endregion
+
             #region Servicos
             services.AddScoped<IServicoRepository, ServicoRepository>();
             services.AddScoped<IServicoService, ServicoService>();

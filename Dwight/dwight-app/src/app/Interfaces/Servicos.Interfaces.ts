@@ -1,7 +1,7 @@
 export interface Servicos
 {
   ServicoId: number;
-  Nome: string;  
+  Nome: string;
   Descricao: string;
 }
 
