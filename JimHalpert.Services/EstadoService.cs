@@ -7,33 +7,33 @@ using System.Collections.Generic;
 
 namespace JimHalpert.Services
 {
-    public class AviaoService : BaseService<Aviao>, IAviaoService
+    public class EstadoService : BaseService<Estado>, IEstadoService
     {
-        private readonly IAviaoRepository repository;
+        private readonly IEstadoRepository repository;
         private readonly ValidationResult validationResult;
-        public AviaoService(IBaseRepository<Aviao> baseRepository, IAviaoRepository repository) : base(baseRepository)
+        public EstadoService(IBaseRepository<Estado> baseRepository, IEstadoRepository repository) : base(baseRepository)
         {
             this.repository = repository;
             validationResult = new ValidationResult();
         }
 
-        public ValidationResult Gravar(Aviao aviao)
+        public ValidationResult Gravar(Estado aviao)
         {
             //validate
-            if (aviao.Modelo.IsNullOrEmptyOrWhiteSpace())
+            if (aviao.NomeUf.IsNullOrEmptyOrWhiteSpace())
             {
-                validationResult.Add("Modelo não preenchido");
+                validationResult.Add("Nome não preenchido");
                 return validationResult;
             }
 
-            if (aviao.QuantidadeDePassageiros == 0)
+            if (aviao.SiglaUf.IsNullOrEmptyOrWhiteSpace())
             {
-                validationResult.Add("Quantidade de Passageiros não preenchido");
+                validationResult.Add("Sigla Uf não preenchido");
                 return validationResult;
             }
 
             //add or update
-            if(aviao.AviaoId == 0)
+            if(aviao.EstadoId == 0)
             {
                 base.Adicionar(aviao);
             }
@@ -59,7 +59,7 @@ namespace JimHalpert.Services
             return validationResult;
         }
 
-        public IEnumerable<Aviao> Filtrar(string query)
+        public IEnumerable<Estado> Filtrar(string query)
         {
             return repository.Filtrar(query);
         }

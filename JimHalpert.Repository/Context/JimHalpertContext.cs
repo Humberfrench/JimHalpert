@@ -6,7 +6,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using JimHalpert.Domain.Entity;
 using static Microsoft.Extensions.Configuration.ConfigurationExtensions;
 using static JimHalpert.Repository.Maps.AviaoMap;
+using static JimHalpert.Repository.Maps.CidadeMap;
+using static JimHalpert.Repository.Maps.ClienteMap;
 using static JimHalpert.Repository.Maps.ServicoMap;
+using static JimHalpert.Repository.Maps.TipoDeClienteMap;
+using static JimHalpert.Repository.Maps.TipoDePessoaMap;
 using static JimHalpert.Repository.Maps.TarefaItemMap;
 
 namespace JimHalpert.Repository.Context
@@ -68,8 +72,12 @@ namespace JimHalpert.Repository.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             MapAviao(modelBuilder);
+            MapCidade(modelBuilder);
+            MapCliente(modelBuilder);
             MapServico(modelBuilder);
             MapTarefaItem(modelBuilder);
+            MapTipoDeCliente(modelBuilder);
+            MapTipoDePessoa(modelBuilder);
 
             //mapear!
             //init to mapear
@@ -82,104 +90,6 @@ namespace JimHalpert.Repository.Context
                     .HasForeignKey(d => d.NotaFiscalId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ArquivoNotaFiscal_NotaFiscal");
-            });
-
-            modelBuilder.Entity<Cidade>(entity =>
-            {
-                entity.Property(e => e.CidadeId).HasComment("Codigo");
-
-                entity.Property(e => e.Nome)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasComment("Nome");
-
-                entity.HasOne(d => d.Estado)
-                    .WithMany(p => p.Cidade)
-                    .HasForeignKey(d => d.EstadoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Cidade_Estado");
-            });
-
-            modelBuilder.Entity<Cliente>(entity =>
-            {
-                entity.Property(e => e.Bairro)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.CadastroMunicipal)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Cep)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Complemento)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Contato)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.DataAlteracao).HasColumnType("datetime");
-
-                entity.Property(e => e.DataCriacao)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.Documento)
-                    .IsRequired()
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Email)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Endereco)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.InscricaoEstadual)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Nome)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Numero)
-                    .HasMaxLength(5)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.RazaoSocial)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Telefone)
-                    .HasMaxLength(20)
-                    .IsFixedLength();
-
-                entity.HasOne(d => d.Cidade)
-                    .WithMany(p => p.Cliente)
-                    .HasForeignKey(d => d.CidadeId)
-                    .HasConstraintName("FK_Cliente_Cidade");
-
-                entity.HasOne(d => d.TipoDeCliente)
-                    .WithMany(p => p.Cliente)
-                    .HasForeignKey(d => d.TipoDeClienteId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Cliente_TipoDeCliente");
-
-                entity.HasOne(d => d.TipoDePessoa)
-                    .WithMany(p => p.Cliente)
-                    .HasForeignKey(d => d.TipoDePessoaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Cliente_TipoDePessoa");
             });
 
             modelBuilder.Entity<ComposicaoNotaFiscal>(entity =>
@@ -283,7 +193,6 @@ namespace JimHalpert.Repository.Context
                     .HasConstraintName("FK_NotaFiscal_StatusNotaFiscal");
             });
 
-
             modelBuilder.Entity<StatusNotaFiscal>(entity =>
             {
                 entity.Property(e => e.StatusNotaFiscalId).ValueGeneratedOnAdd();
@@ -316,27 +225,6 @@ namespace JimHalpert.Repository.Context
                     .HasForeignKey(d => d.ClienteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Tarefa_Cliente");
-            });
-
-
-            modelBuilder.Entity<TipoDeCliente>(entity =>
-            {
-                entity.Property(e => e.TipoDeClienteId).ValueGeneratedOnAdd();
-
-                entity.Property(e => e.Descricao)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<TipoDePessoa>(entity =>
-            {
-                entity.Property(e => e.TipoDePessoaId).ValueGeneratedOnAdd();
-
-                entity.Property(e => e.Descricao)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Tributo>(entity =>
@@ -376,7 +264,6 @@ namespace JimHalpert.Repository.Context
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TributoNotaFiscal_Tributo");
             });
-
 
             //end to mapear
 

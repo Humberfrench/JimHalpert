@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace JimHalpert.Domain.Inteface.Service
 {
-    public interface IAviaoService:IBaseService<Aviao>
+    public interface IEstadoService:IBaseService<Estado>
     {
-        ValidationResult Gravar(Aviao aviao);
+        ValidationResult Gravar(Estado aviao);
         ValidationResult Excluir(int id);
-        IEnumerable<Aviao> Filtrar(string query);
+        IEnumerable<Estado> Filtrar(string query);
     }
 }

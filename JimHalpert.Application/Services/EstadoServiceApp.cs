@@ -8,18 +8,18 @@ using JimHalpert.Repository.Interfaces;
 
 namespace JimHalpert.Application.Services
 {
-    public class AviaoServiceApp :BaseServiceApp, IAviaoServiceApp
+    public class EstadoServiceApp :BaseServiceApp, IEstadoServiceApp
     {
-        private readonly IAviaoService service;
-        public AviaoServiceApp(IAviaoService service, IUnitOfWork uow) : base(uow)
+        private readonly IEstadoService service;
+        public EstadoServiceApp(IEstadoService service, IUnitOfWork uow) : base(uow)
         {
             this.service = service;
         }
 
-        public ValidationResult Gravar(AviaoViewModel aviao)
+        public ValidationResult Gravar(EstadoViewModel aviao)
         {
             BeginTransaction();
-            var dadoIncluir = Mapper.Map<Aviao>(aviao);
+            var dadoIncluir = Mapper.Map<Estado>(aviao);
             var retorno = service.Gravar(dadoIncluir);
             if(retorno.IsValid)
             {
@@ -53,25 +53,25 @@ namespace JimHalpert.Application.Services
 
         }
 
-        public AviaoViewModel ObterPorId(int id)
+        public EstadoViewModel ObterPorId(int id)
         {
             var avioes = service.ObterPorId(id);
-            var retorno = Mapper.Map<AviaoViewModel>(avioes);
+            var retorno = Mapper.Map<EstadoViewModel>(avioes);
             return retorno;
         }
 
-        public IEnumerable<AviaoViewModel> ObterTodos()
+        public IEnumerable<EstadoViewModel> ObterTodos()
         {
             var avioes = service.ObterTodos();
-            var retorno = Mapper.Map<IEnumerable<AviaoViewModel>>(avioes);
+            var retorno = Mapper.Map<IEnumerable<EstadoViewModel>>(avioes);
             return retorno;
 
         }
 
-        public IEnumerable<AviaoViewModel> Filtrar(string query)
+        public IEnumerable<EstadoViewModel> Filtrar(string query)
         {
             var avioes = service.Filtrar(query);
-            var retorno = Mapper.Map<IEnumerable<AviaoViewModel>>(avioes);
+            var retorno = Mapper.Map<IEnumerable<EstadoViewModel>>(avioes);
             return retorno;
 
         }

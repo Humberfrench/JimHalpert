@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace JimHalpert.Domain.Inteface.Repository
 {
-    public interface IAviaoRepository: IBaseRepository<Aviao>
+    public interface IEstadoRepository: IBaseRepository<Estado>
     {
-        IEnumerable<Aviao> Filtrar(string query);
+        IEnumerable<Estado> Filtrar(string query);
     }
 }

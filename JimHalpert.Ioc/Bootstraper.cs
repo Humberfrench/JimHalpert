@@ -33,9 +33,12 @@ namespace JimHalpert.Ioc
             //services.AddScoped<IConfiguration, ConfigurationRoot>();
             //services.AddScoped<IConfigurationProvider, ConfigurationProvider>();
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            services.AddScoped<IAviaoRepository, AviaoRepository>();
-            services.AddScoped<IAviaoService, AviaoService>();
-            services.AddScoped<IAviaoServiceApp, AviaoServiceApp>();
+
+            #region Estado
+            services.AddScoped<IEstadoRepository, EstadoRepository>();
+            services.AddScoped<IEstadoService, EstadoService>();
+            services.AddScoped<IEstadoServiceApp, EstadoServiceApp>();
+            #endregion
 
             #region Cliente
             services.AddScoped<IClienteRepository, ClienteRepository>();
@@ -47,6 +50,24 @@ namespace JimHalpert.Ioc
             services.AddScoped<IServicoRepository, ServicoRepository>();
             services.AddScoped<IServicoService, ServicoService>();
             services.AddScoped<IServicoServiceApp, ServicoServiceApp>();
+            #endregion
+
+            #region Cidade
+            services.AddScoped<ICidadeRepository, CidadeRepository>();
+            services.AddScoped<ICidadeService, CidadeService>();
+            services.AddScoped<ICidadeServiceApp, CidadeServiceApp>();
+            #endregion
+
+            #region Tipo de Cliente
+            services.AddScoped<ITipoDeClienteRepository, TipoDeClienteRepository>();
+            services.AddScoped<ITipoDeClienteService, TipoDeClienteService>();
+            services.AddScoped<ITipoDeClienteServiceApp, TipoDeClienteServiceApp>();
+            #endregion
+
+            #region Tipo de Pessoa
+            services.AddScoped<ITipoDePessoaRepository, TipoDePessoaRepository>();
+            services.AddScoped<ITipoDePessoaService, TipoDePessoaService>();
+            services.AddScoped<ITipoDePessoaServiceApp, TipoDePessoaServiceApp>();
             #endregion
 
             services.AddDbContext<JimHalpertContext>(options => options.UseSqlServer(configuration.GetConnectionString("RedDragonContext")));

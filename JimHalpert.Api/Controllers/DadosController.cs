@@ -17,11 +17,17 @@ namespace JimHalpert.Api.Controllers
     {
         private readonly ITipoDePessoaServiceApp tipoDePessoaServiceApp;
         private readonly ITipoDeClienteServiceApp tipoDeClienteServiceApp;
+        private readonly ICidadeServiceApp cidadeServiceApp;
+        private readonly IEstadoServiceApp estadoServiceApp;
         public DadosController(ITipoDePessoaServiceApp tipoDePessoaServiceApp, 
-                                       ITipoDeClienteServiceApp tipoDeClienteServiceApp)
+                               ITipoDeClienteServiceApp tipoDeClienteServiceApp, 
+                               ICidadeServiceApp cidadeServiceApp, 
+                               IEstadoServiceApp estadoServiceApp)
         {
             this.tipoDePessoaServiceApp = tipoDePessoaServiceApp;
             this.tipoDeClienteServiceApp = tipoDeClienteServiceApp;
+            this.cidadeServiceApp = cidadeServiceApp;
+            this.estadoServiceApp = estadoServiceApp;
         }
 
         [HttpGet("Tipo/Pessoa")]
@@ -29,6 +35,7 @@ namespace JimHalpert.Api.Controllers
         {
             return tipoDePessoaServiceApp.ObterTodos().ToList();
         }
+
         [HttpGet("Tipo/Pessoa/{id}")]
         public TipoDePessoaViewModel ObterTipoDePessoa(int id)
         {
@@ -36,25 +43,39 @@ namespace JimHalpert.Api.Controllers
         }
 
         [HttpGet("Tipo/Cliente")]
-        public IList<TipoDePessoaViewModel> ObterTiposDeClientes()
+        public IList<TipoDeClienteViewModel> ObterTiposDeClientes()
         {
-            return tipoDePessoaServiceApp.ObterTodos().ToList();
+            return tipoDeClienteServiceApp.ObterTodos().ToList();
         }
+
         [HttpGet("Tipo/Cliente/{id}")]
-        public TipoDePessoaViewModel ObterTipoDeCliente(int id)
+        public TipoDeClienteViewModel ObterTipoDeCliente(int id)
         {
-            return tipoDePessoaServiceApp.ObterPorId(id);
+            return tipoDeClienteServiceApp.ObterPorId(id);
         }
-        //cidades
-        [HttpGet("Tipo/Cliente")]
-        public IList<TipoDePessoaViewModel> ObterTiposDeClientes()
+
+        [HttpGet("Tipo/Cidade/{uf}")]
+        public IList<CidadeViewModel> ObterCidades(int uf)
         {
-            return tipoDePessoaServiceApp.ObterTodos().ToList();
+            return cidadeServiceApp.ObterCidades(uf).ToList();
         }
-        [HttpGet("Tipo/Cliente/{id}")]
-        public TipoDePessoaViewModel ObterTipoDeCliente(int id)
+
+        [HttpGet("Tipo/Cidade/Obter/{id}")]
+        public CidadeViewModel ObterCidade(int id)
         {
-            return tipoDePessoaServiceApp.ObterPorId(id);
+            return cidadeServiceApp.ObterPorId(id);
+        }
+
+        [HttpGet("Tipo/Estado")]
+        public IList<EstadoViewModel> ObterEstados()
+        {
+            return estadoServiceApp.ObterTodos().ToList();
+        }
+
+        [HttpGet("Tipo/Estado/{id}")]
+        public EstadoViewModel ObterEstado(int id)
+        {
+            return estadoServiceApp.ObterPorId(id);
         }
 
     }
