@@ -35,17 +35,6 @@ export class ServicosComponent
   
   }
 
- /* ngOnInit()
-  {
-
-    this.editForm = this.formBuilder.group({
-      servicoId: ['',],
-      nome: ['', Validators.compose([Validators.required])],
-      descricao: ['', Validators.required]
-    });
-
-  }*/
-
   ObterServicos()
   {
     this.clientApi.get<Servicos[]>(this.uri + 'servicos').subscribe(result =>
@@ -59,7 +48,7 @@ export class ServicosComponent
 
   ObterServico(id : number)
   {
-    this.clientApi.get<Servicos>(this.uri + `servicos\\${id}`).subscribe(result =>
+    this.clientApi.get<Servicos>(this.uri + `servicos/${id}`).subscribe(result =>
     {
       this.servico = result;
       this.editForm.setValue(this.servico);    

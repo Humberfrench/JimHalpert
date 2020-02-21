@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ServicosComponent } from './servicos/servicos.component';
+import { ClientesComponent } from './cliente/Cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
+    ClientesComponent,
     ServicosComponent
   ],
   imports: [
@@ -24,6 +26,7 @@ import { ServicosComponent } from './servicos/servicos.component';
     NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'clientes', component: ClientesComponent },
       { path: 'servicos', component: ServicosComponent },
     ])
   ],
