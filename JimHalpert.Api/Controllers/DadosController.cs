@@ -45,6 +45,17 @@ namespace JimHalpert.Api.Controllers
         {
             return tipoDePessoaServiceApp.ObterPorId(id);
         }
+        //cidades
+        [HttpGet("Tipo/Cliente")]
+        public IList<TipoDePessoaViewModel> ObterTiposDeClientes()
+        {
+            return tipoDePessoaServiceApp.ObterTodos().ToList();
+        }
+        [HttpGet("Tipo/Cliente/{id}")]
+        public TipoDePessoaViewModel ObterTipoDeCliente(int id)
+        {
+            return tipoDePessoaServiceApp.ObterPorId(id);
+        }
 
     }
 }

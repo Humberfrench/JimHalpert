@@ -8,18 +8,18 @@ using JimHalpert.Repository.Interfaces;
 
 namespace JimHalpert.Application.Services
 {
-    public class TipoDeClienteServiceApp :BaseServiceApp, ITipoDeClienteServiceApp
+    public class CidadeServiceApp :BaseServiceApp, ICidadeServiceApp
     {
-        private readonly ITipoDeClienteService service;
-        public TipoDeClienteServiceApp(ITipoDeClienteService service, IUnitOfWork uow) : base(uow)
+        private readonly ICidadeService service;
+        public CidadeServiceApp(ICidadeService service, IUnitOfWork uow) : base(uow)
         {
             this.service = service;
         }
 
-        public ValidationResult Gravar(TipoDeClienteViewModel tipoDeCliente)
+        public ValidationResult Gravar(CidadeViewModel cidade)
         {
             BeginTransaction();
-            var dadoIncluir = Mapper.Map<TipoDeCliente>(tipoDeCliente);
+            var dadoIncluir = Mapper.Map<Cidade>(cidade);
             var retorno = service.Gravar(dadoIncluir);
             if(retorno.IsValid)
             {
@@ -53,27 +53,35 @@ namespace JimHalpert.Application.Services
 
         }
 
-        public TipoDeClienteViewModel ObterPorId(int id)
+        public CidadeViewModel ObterPorId(int id)
         {
-            var tipoDeClientes = service.ObterPorId(id);
-            var retorno = Mapper.Map<TipoDeClienteViewModel>(tipoDeClientes);
+            var cidades = service.ObterPorId(id);
+            var retorno = Mapper.Map<CidadeViewModel>(cidades);
             return retorno;
         }
 
-        public IEnumerable<TipoDeClienteViewModel> ObterTodos()
+        public IEnumerable<CidadeViewModel> ObterTodos()
         {
-            var tipoDeClientes = service.ObterTodos();
-            var retorno = Mapper.Map<IEnumerable<TipoDeClienteViewModel>>(tipoDeClientes);
+            var cidades = service.ObterTodos();
+            var retorno = Mapper.Map<IEnumerable<CidadeViewModel>>(cidades);
             return retorno;
 
         }
 
-        public IEnumerable<TipoDeClienteViewModel> Filtrar(string query)
+        public IEnumerable<CidadeViewModel> Filtrar(string query)
         {
-            var tipoDeClientes = service.Filtrar(query);
-            var retorno = Mapper.Map<IEnumerable<TipoDeClienteViewModel>>(tipoDeClientes);
+            var cidades = service.Filtrar(query);
+            var retorno = Mapper.Map<IEnumerable<CidadeViewModel>>(cidades);
             return retorno;
 
         }
+        public IEnumerable<CidadeViewModel> ObterCidades(int ufId)
+        {
+            var cidades = service.ObterCidades(ufId);
+            var retorno = Mapper.Map<IEnumerable<CidadeViewModel>>(cidades);
+            return retorno;
+
+        }
+
     }
 }

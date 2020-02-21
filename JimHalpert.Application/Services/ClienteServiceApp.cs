@@ -55,23 +55,23 @@ namespace JimHalpert.Application.Services
 
         public ClienteViewModel ObterPorId(int id)
         {
-            var avioes = service.ObterPorId(id);
-            var retorno = Mapper.Map<ClienteViewModel>(avioes);
+            var clientes = service.ObterPorId(id);
+            var retorno = Mapper.Map<ClienteViewModel>(clientes);
             return retorno;
         }
 
         public IEnumerable<ClienteViewModel> ObterTodos()
         {
-            var avioes = service.ObterTodos();
-            var retorno = Mapper.Map<IEnumerable<ClienteViewModel>>(avioes);
+            var clientes = service.ObterTodos();
+            var retorno = Mapper.Map<IEnumerable<ClienteViewModel>>(clientes);
             return retorno;
 
         }
 
         public IEnumerable<ClienteViewModel> Filtrar(string query)
         {
-            var avioes = service.Filtrar(query);
-            var retorno = Mapper.Map<IEnumerable<ClienteViewModel>>(avioes);
+            var clientes = service.Filtrar(query);
+            var retorno = Mapper.Map<IEnumerable<ClienteViewModel>>(clientes);
             return retorno;
 
         }

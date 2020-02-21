@@ -7,34 +7,34 @@ using System.Collections.Generic;
 
 namespace JimHalpert.Services
 {
-    public class TipoDeClienteService : BaseService<TipoDeCliente>, ITipoDeClienteService
+    public class CidadeService : BaseService<Cidade>, ICidadeService
     {
-        private readonly ITipoDeClienteRepository repository;
+        private readonly ICidadeRepository repository;
         private readonly ValidationResult validationResult;
-        public TipoDeClienteService(IBaseRepository<TipoDeCliente> baseRepository, ITipoDeClienteRepository repository) : base(baseRepository)
+        public CidadeService(IBaseRepository<Cidade> baseRepository, ICidadeRepository repository) : base(baseRepository)
         {
             this.repository = repository;
             validationResult = new ValidationResult();
         }
 
-        public ValidationResult Gravar(TipoDeCliente tipoDeCliente)
+        public ValidationResult Gravar(Cidade cidade)
         {
             //validate
 
-            if (tipoDeCliente.Descricao.IsNullOrEmptyOrWhiteSpace())
+            if (cidade.Nome.IsNullOrEmptyOrWhiteSpace())
             {
-                validationResult.Add("Descricao não preenchido");
+                validationResult.Add("Nome não preenchido");
                 return validationResult;
             }
 
             //add or update
-            if(tipoDeCliente.TipoDeClienteId == 0)
+            if(cidade.CidadeId == 0)
             {
-                base.Adicionar(tipoDeCliente);
+                base.Adicionar(cidade);
             }
             else
             {
-                base.Atualizar(tipoDeCliente);
+                base.Atualizar(cidade);
             }
 
             return validationResult;
@@ -42,21 +42,26 @@ namespace JimHalpert.Services
 
         public ValidationResult Excluir(int id)
         {
-            var tipoDeCliente = ObterPorId(id);
-            if(tipoDeCliente == null)
+            var tipoDePessoa = ObterPorId(id);
+            if(tipoDePessoa == null)
             {
-                validationResult.Add("Tipo de Cliente inexistente");
+                validationResult.Add("Cidade inexistente");
                 return validationResult;
             }
 
-            base.Remover(tipoDeCliente);
+            base.Remover(tipoDePessoa);
             
             return validationResult;
         }
 
-        public IEnumerable<TipoDeCliente> Filtrar(string query)
+        public IEnumerable<Cidade> Filtrar(string query)
         {
             return repository.Filtrar(query);
+        }
+
+        public IEnumerable<Cidade> ObterCidades(int ufId)
+        {
+            return repository.ObterCidades(ufId);
         }
     }
 }

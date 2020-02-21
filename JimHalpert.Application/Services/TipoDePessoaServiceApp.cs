@@ -55,23 +55,23 @@ namespace JimHalpert.Application.Services
 
         public TipoDePessoaViewModel ObterPorId(int id)
         {
-            var avioes = service.ObterPorId(id);
-            var retorno = Mapper.Map<TipoDePessoaViewModel>(avioes);
+            var tipoDePessoas = service.ObterPorId(id);
+            var retorno = Mapper.Map<TipoDePessoaViewModel>(tipoDePessoas);
             return retorno;
         }
 
         public IEnumerable<TipoDePessoaViewModel> ObterTodos()
         {
-            var avioes = service.ObterTodos();
-            var retorno = Mapper.Map<IEnumerable<TipoDePessoaViewModel>>(avioes);
+            var tipoDePessoas = service.ObterTodos();
+            var retorno = Mapper.Map<IEnumerable<TipoDePessoaViewModel>>(tipoDePessoas);
             return retorno;
 
         }
 
         public IEnumerable<TipoDePessoaViewModel> Filtrar(string query)
         {
-            var avioes = service.Filtrar(query);
-            var retorno = Mapper.Map<IEnumerable<TipoDePessoaViewModel>>(avioes);
+            var tipoDePessoas = service.Filtrar(query);
+            var retorno = Mapper.Map<IEnumerable<TipoDePessoaViewModel>>(tipoDePessoas);
             return retorno;
 
         }

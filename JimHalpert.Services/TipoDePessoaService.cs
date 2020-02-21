@@ -45,7 +45,7 @@ namespace JimHalpert.Services
             var tipoDePessoa = ObterPorId(id);
             if(tipoDePessoa == null)
             {
-                validationResult.Add("Serviço inexistente");
+                validationResult.Add("Tipo de Pessoa inexistente");
                 return validationResult;
             }
 

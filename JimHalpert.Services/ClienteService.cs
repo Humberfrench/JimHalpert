@@ -72,7 +72,7 @@ namespace JimHalpert.Services
             var cliente = ObterPorId(id);
             if(cliente == null)
             {
-                validationResult.Add("Serviço inexistente");
+                validationResult.Add("Cliente inexistente");
                 return validationResult;
             }
 
