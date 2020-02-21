@@ -1,4 +1,5 @@
-﻿using JimHalpert.Domain.Entity;
+﻿using JimHalpert.Application.ObjectValue;
+using JimHalpert.Domain.Entity;
 using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
 using JimHalpert.DomainValidator;
@@ -59,7 +60,7 @@ namespace JimHalpert.Services
             return repository.Filtrar(query);
         }
 
-        public IEnumerable<Cidade> ObterCidades(int ufId)
+        public IEnumerable<CidadeValue> ObterCidades(int ufId)
         {
             return repository.ObterCidades(ufId);
         }

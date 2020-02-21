@@ -14,111 +14,105 @@ export class Dados
     uri: string  = 'http://localhost:56879/';
     clientApi: HttpClient ;
 
-    constructor(client: HttpClient ) 
+    public estado : Estado;
+    public estados : Estado[];
+    public cidade : Cidade;
+    public cidades : Cidade[];
+    public tipoDeCliente : TipoDeCliente;
+    public tipoDeClientes : TipoDeCliente[];
+    public tipoDePessoa : TipoDePessoa;
+    public tipoDePessoas : TipoDePessoa[];
+
+    constructor(client: HttpClient )
     {
         this.clientApi = client;
     }
 
     ObterCidades(uf: number)
-    {
-        let cidades : Cidade[];  
+        {
         this.clientApi.get<Cidade[]>(`${this.uri}Dados/Tipo/Cidade/${uf}`).subscribe(result =>
         {
-            cidades = result;
+          this.cidades = result;
         }, error =>
         {
             console.error(error)
         });
-        return cidades;        
     }
 
     ObterCidade(id: number)
     {
-        let cidade : Cidade;  
         this.clientApi.get<Cidade>(`${this.uri}Dados/Tipo/Cidade/Obter/${id}`).subscribe(result =>
         {
-            cidade = result;
+          this.cidade = result;
         }, error =>
         {
             console.error(error)
         });
-        return cidade;        
     }
 
-    ObterTipoDeClientes(): TipoDeCliente[]
+    ObterTipoDeClientes()
     {
-        let tipoDeClientes : TipoDeCliente[];  
-        this.clientApi.get<TipoDeCliente[]>(`${this.uri}Dados/Tipo/Pessoa`).subscribe(result =>
+        this.clientApi.get<TipoDeCliente[]>(`${this.uri}Dados/Tipo/Cliente`).subscribe(result =>
         {
-            tipoDeClientes = result;
+          this.tipoDeClientes = result;
         }, error =>
         {
             console.error(error)
         });
-        return tipoDeClientes;        
+
     }
 
-    ObterTipoDeCliente(id: number): TipoDeCliente
+    ObterTipoDeCliente(id: number)
     {
-        let tipoDeCliente : TipoDeCliente;  
-        this.clientApi.get<TipoDeCliente>(`${this.uri}Dados/Tipo/Cliente/${id}`).subscribe(result =>
+      this.clientApi.get<TipoDeCliente>(`${this.uri}Dados/Tipo/Cliente/${id}`).subscribe(result =>
         {
-            tipoDeCliente = result;
+          this.tipoDeCliente = result;
         }, error =>
         {
             console.error(error)
         });
-        return tipoDeCliente;        
     }
-    
+
     ObterTipoDePessoas()
     {
-        let tipoDePessoas : TipoDePessoa[];      
         this.clientApi.get<TipoDePessoa[]>(`${this.uri}Dados/Tipo/Pessoa`).subscribe(result =>
         {
-            tipoDePessoas = result;
-        }, error =>
+          this.tipoDePessoas = result;
+         }, error =>
         {
             console.error(error)
         });
-        return tipoDePessoas;        
     }
 
-    ObterTipoDePessoa(id: number) : TipoDePessoa
+    ObterTipoDePessoa(id: number)
     {
-        let tipoDePessoa : TipoDePessoa;
-        this.clientApi.get<TipoDePessoa>(`${this.uri}Dados/Tipo/Pessoa/${id}`).subscribe(result =>
+         this.clientApi.get<TipoDePessoa>(`${this.uri}Dados/Tipo/Pessoa/${id}`).subscribe(result =>
         {
-            tipoDePessoa = result;
+          this.tipoDePessoa = result;
         }, error =>
         {
             console.error(error)
         });
-        return tipoDePessoa;        
-    }
-    
-    ObterEstados() : Estado[]
-    {
-        let estados : Estado[];
-        this.clientApi.get<Estado[]>(`${this.uri}Dados/Tipo/Estado`).subscribe(result =>
-        {
-            estados =  result;
-        }, error =>
-        {
-            console.error(error)
-        });
-        return estados;        
     }
 
-    ObterEstado(id: number) : Estado
+    ObterEstados()
     {
-        let estado : Estado;
+         this.clientApi.get<Estado[]>(`${this.uri}Dados/Tipo/Estado`).subscribe(result =>
+        {
+          this.estados =  result;
+        }, error =>
+        {
+            console.error(error)
+        });
+    }
+
+    ObterEstado(id: number)
+    {
         this.clientApi.get<Estado>(`${this.uri}Dados/Tipo/Estado/${id}`).subscribe(result =>
         {
-            estado = result;
+          this.estado = result;
         }, error =>
         {
             console.error(error)
         });
-        return estado;        
     }}

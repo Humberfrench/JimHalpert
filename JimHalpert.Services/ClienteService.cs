@@ -85,5 +85,10 @@ namespace JimHalpert.Services
         {
             return repository.Filtrar(query);
         }
+
+        public new IEnumerable<Cliente> ObterTodos()
+        {
+            return repository.ObterTodos();
+        }
     }
 }

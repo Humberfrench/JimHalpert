@@ -1,5 +1,6 @@
 ﻿
 using Dapper;
+using JimHalpert.Application.ObjectValue;
 using JimHalpert.Domain.Entity;
 using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Repository.Interfaces;
@@ -14,11 +15,11 @@ namespace JimHalpert.Repository
 
         }
 
-        public IEnumerable<Cidade> ObterCidades(int ufId)
+        public IEnumerable<CidadeValue> ObterCidades(int ufId)
         {
-            var sql = $@"SELECT * FROM Cidade WHERE UfId like '%{ufId}%'";
+            var sql = $@"SELECT * FROM Cidade WHERE EstadoId = {ufId}";
 
-            return this.Connection.Query<Cidade>(sql);
+            return this.Connection.Query<CidadeValue>(sql);
 
         }
 

@@ -17,7 +17,7 @@ import { Dados } from '../Util/Dados.component';
 
   export class ClientesComponent
   {
-    uri: string  = 'http://localhost:56879/';
+    uri = 'http://localhost:56879/';
     clientApi: HttpClient ;
     cidades: Cidade[];
     tipoDeClientes: TipoDeCliente[]
@@ -30,14 +30,41 @@ import { Dados } from '../Util/Dados.component';
     public id: number;
     editForm: FormGroup;
 
-
-    constructor (clientApi: HttpClient)
+    constructor(clientApi: HttpClient,
+                private modalService: NgbModal,
+                private formBuilder: FormBuilder,)
     {
       this.clientApi = clientApi;
-      this.estados = this.dados.ObterEstados()      
-      this.tipoDeClientes = this.dados.ObterTipoDeClientes()      
-      this.tipoDePessoas = this.dados.ObterTipoDePessoas()
+      this.dados = new Dados(clientApi);
+      this.dados.ObterEstados();
+      this.dados.ObterTipoDeClientes();
+      this.dados.ObterTipoDePessoas();
+
+      this.estados = this.dados.estados;
+      this.tipoDeClientes = this.dados.tipoDeClientes;
+      this.tipoDePessoas = this.dados.tipoDePessoas;
+
       this.ObterClientes();
+
+      this.editForm = this.formBuilder.group({
+        clienteId: ['',],
+        nome: ['',Validators.required],
+        razaoSocial: ['',Validators.required],
+        documento: ['',Validators.required],
+        tipoDeClienteId: ['',Validators.required],
+        tipoDePessoaId: ['',Validators.required],
+        telefone: ['',],
+        contato: ['',],
+        email: ['',],
+        inscricaoEstadual: ['',],
+        cadastroMunicipal: ['',],
+        endereco: ['',],
+        numero: ['',],
+        complemento: ['',],
+        bairro: ['',],
+        cep: ['',],
+        cidadeId: ['',]
+      });
     }
 
     ObterClientes(): void
@@ -50,18 +77,23 @@ import { Dados } from '../Util/Dados.component';
         console.error(error)
       });
     }
-  
+
     ObterCliente(id : number): void
     {
       this.clientApi.get<Cliente>(this.uri + `Clientes\\${id}`).subscribe(result =>
       {
         this.cliente = result;
-        //this.editForm.setValue(this.Cliente);    
+        this.editForm.setValue(this.cliente);
       }, error =>
       {
         console.error(error)
       });
-  
+
     }
-  
+
+    Editar(modal: any, id: number)
+    {
+      this.ObterCliente(id);
+      this.modalService.open(modal, { size: 'xl',centered: true  });
+    }
   }

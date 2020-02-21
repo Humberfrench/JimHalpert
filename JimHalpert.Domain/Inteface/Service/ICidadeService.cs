@@ -1,4 +1,5 @@
-﻿using JimHalpert.Domain.Entity;
+﻿using JimHalpert.Application.ObjectValue;
+using JimHalpert.Domain.Entity;
 using JimHalpert.DomainValidator;
 using System.Collections.Generic;
 
@@ -9,6 +10,6 @@ namespace JimHalpert.Domain.Inteface.Service
         ValidationResult Gravar(Cidade cidade);
         ValidationResult Excluir(int id);
         IEnumerable<Cidade> Filtrar(string query);
-        IEnumerable<Cidade> ObterCidades(int ufId);
+        IEnumerable<CidadeValue> ObterCidades(int ufId);
     }
 }

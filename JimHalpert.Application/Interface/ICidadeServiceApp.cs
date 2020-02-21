@@ -12,6 +12,6 @@ namespace JimHalpert.Application.Interface
         ValidationResult Gravar(CidadeViewModel cidade);
         ValidationResult Excluir(int id);
         CidadeViewModel ObterPorId(int id);
-        IEnumerable<CidadeViewModel> ObterCidades(int ufId);
+        IEnumerable<CidadeValueViewModel> ObterCidades(int ufId);
     }
 }

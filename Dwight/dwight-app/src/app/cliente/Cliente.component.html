@@ -3,10 +3,10 @@
   <thead>
     <tr>
       <th style="width:10% ;">#</th>
-      <th style="width:25% ;">Nome</th>      
-      <th style="width:15% ;">Documento</th>      
-      <th style="width:15% ;">Telefone</th>      
-      <th style="width:15% ;">Contato</th>      
+      <th style="width:25% ;">Nome</th>
+      <th style="width:15% ;">Documento</th>
+      <th style="width:15% ;">Telefone</th>
+      <th style="width:15% ;">Contato</th>
       <th style="width:15% ;">Tipo</th>
       <th style="width:5% ;">&nbsp;</th>
       <th style="width:5% ;">&nbsp;</th>
@@ -15,13 +15,93 @@
   <tbody>
     <tr scope="row" *ngFor="let cliente as Cliente of clientes">
         <td scope="col">{{cliente.clienteId}}</td>
-        <td scope="col">{{cliente.nome}}</td>      
+        <td scope="col">{{cliente.nome}}</td>
         <td scope="col">{{cliente.documento}}</td>
         <td scope="col">{{cliente.telefone}}</td>
-        <td scope="col">{{cliente.contato}}</td>      
+        <td scope="col">{{cliente.contato}}</td>
         <td scope="col">{{cliente.tipoDePessoa.descricao}}</td>
-        <td scope="col"><button class="btn btn-success" type="button" ngbTooltip="Editar Cliente"><i class="fa fa-edit"></i></button></td>
+        <td scope="col"><button class="btn btn-success" type="button"(click)=Editar(content,cliente.clienteId) ngbTooltip="Editar Cliente"><i class="fa fa-edit"></i></button></td>
         <td scope="col"><button class="btn btn-danger" type="button" ngbTooltip="Excluir Cliente"><i class="fa fa-trash"></i></button></td>
     </tr>
   </tbody>
 </table>
+
+<!-- Modal -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edição de Serviços</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm">
+      <div class="row">
+        <div class="col-2 sol-sm-2 col-md-2 col-lg-2 col-xl-2">
+          <div class="form-group">
+            <label for="clienteId">Id</label>
+            <input id="clienteId" name="clienteId" formControlName="clienteId"class="form-control" readonly="readonly" disabled="disabled">
+          </div>
+        </div>
+        <div class="col-7 sol-sm-7 col-md-7 col-lg-7 col-xl-7">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" formControlName="nome" class="form-control" maxlength="30" placeholder="Nome do Cliente" ngbAutofocus >
+            <div class="alert alert-danger" *ngIf="editForm.controls['nome'].hasError('required') && editForm.controls['nome'].touched">Nome do Cliente é requirido</div>
+          </div>
+        </div>
+        <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <label for="documento">Documento</label>
+            <input id="documento" name="documento" formControlName="documento" class="form-control" maxlength="75" placeholder="Descrição do Serviço">
+            <div class="alert alert-danger" *ngIf="editForm.controls['documento'].hasError('required') && editForm.controls['documento'].touched">Documento é requirido</div>
+          </div>
+        </div>      </div>
+      <div class="row">
+        <div class="col-6 sol-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <div class="form-group">
+            <label for="razaoSocial">Razão Social</label>
+            <input id="razaoSocial" name="razaoSocial" formControlName="razaoSocial" class="form-control" maxlength="75" placeholder="Razão Social">
+            <div class="alert alert-danger" *ngIf="editForm.controls['razaoSocial'].hasError('required') && editForm.controls['razaoSocial'].touched">Razão Social é requirido</div>
+          </div>
+        </div>
+        <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <label for="tipoDePessoaId">Tipo de Pessoa</label>
+            <select id="tipoDePessoaId" name="tipoDePessoaId" formControlName="tipoDePessoaId" class="form-control">
+              <option *ngFor="let tipoDePessoa as TipoDePessoa of tipoDePessoas" value={{tipoDePessoa.tipoDePessoaId}}>{{tipoDePessoa.descricao}}</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="editForm.controls['tipoDePessoaId'].hasError('required') && editForm.controls['tipoDePessoaId'].touched">Tipo de Pessoa é requirido</div>
+          </div>
+        </div>
+        <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <label for="tipoDeClienteId">Tipo de Cliente</label>
+            <select id="tipoDeClienteId" name="tipoDeClienteId" formControlName="tipoDeClienteId" class="form-control">
+              <option *ngFor="let tipoDeCliente as tipoDeCliente of tipoDeClientes" value={{tipoDeCliente.tipoDeClienteId}}>{{tipoDeCliente.descricao}}</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="editForm.controls['tipoDeClienteId'].hasError('required') && editForm.controls['tipoDeClienteId'].touched">Tipo de Documento é requirido</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #excluirModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Exclusão - Id: {{id}}</h4>
+  </div>
+  <div class="modal-body">
+    Deseja Excluir o Registro?<br>
+    <b>Id</b>: {{id}}<br>
+    <b>Nome</b>: {{nome}}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close('S')">Sim</button>
+    <button type="button" class="btn btn-outline-success" (click)="modal.close('N')">Não</button>
+  </div>
+</ng-template>

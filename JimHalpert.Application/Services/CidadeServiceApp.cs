@@ -75,10 +75,10 @@ namespace JimHalpert.Application.Services
             return retorno;
 
         }
-        public IEnumerable<CidadeViewModel> ObterCidades(int ufId)
+        public IEnumerable<CidadeValueViewModel> ObterCidades(int ufId)
         {
             var cidades = service.ObterCidades(ufId);
-            var retorno = Mapper.Map<IEnumerable<CidadeViewModel>>(cidades);
+            var retorno = Mapper.Map<IEnumerable<CidadeValueViewModel>>(cidades);
             return retorno;
 
         }

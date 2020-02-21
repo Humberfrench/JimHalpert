@@ -55,7 +55,7 @@ namespace JimHalpert.Api.Controllers
         }
 
         [HttpGet("Tipo/Cidade/{uf}")]
-        public IList<CidadeViewModel> ObterCidades(int uf)
+        public IList<CidadeValueViewModel> ObterCidades(int uf)
         {
             return cidadeServiceApp.ObterCidades(uf).ToList();
         }

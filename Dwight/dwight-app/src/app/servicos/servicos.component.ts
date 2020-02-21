@@ -14,25 +14,28 @@ import { ToastService } from '../Util/toast-service';
 
 export class ServicosComponent
 {
-  uri: string  = 'http://localhost:56879/';
+  uri = 'http://localhost:56879/';
   clientApi: HttpClient ;
   public servicos: Servicos[];
   public servico: Servicos;
   public nome: string;
   public id: number;
   editForm: FormGroup;
-  
-  constructor(private client: HttpClient, private modalService: NgbModal,private formBuilder: FormBuilder, public toastService: ToastService )
+
+  constructor(private client: HttpClient,
+              private modalService: NgbModal,
+              private formBuilder: FormBuilder,
+              public toastService: ToastService )
   {
     this.clientApi = client;
-    this.ObterServicos();  
-    
+    this.ObterServicos();
+
     this.editForm = this.formBuilder.group({
       servicoId: ['',],
       nome: ['', Validators.compose([Validators.required])],
       descricao: ['', Validators.required]
     });
-  
+
   }
 
   ObterServicos()
@@ -51,7 +54,7 @@ export class ServicosComponent
     this.clientApi.get<Servicos>(this.uri + `servicos/${id}`).subscribe(result =>
     {
       this.servico = result;
-      this.editForm.setValue(this.servico);    
+      this.editForm.setValue(this.servico);
     }, error =>
     {
       console.error(error)
@@ -67,7 +70,7 @@ export class ServicosComponent
 
   Novo()
   {
-    this.servico = 
+    this.servico =
     {
       ServicoId: 0,
       Nome: '',
@@ -80,11 +83,11 @@ export class ServicosComponent
   {
     this.id = id;;
     this.nome = descricao;
-    this.modalService.open(modal, { size: 'md',centered: true } ).result.then((result) => 
+    this.modalService.open(modal, { size: 'md',centered: true } ).result.then((result) =>
     {
       this.ExcluirRegistro(result, id)
     });
-  }  
+  }
 
   ExcluirRegistro(reason: string, id:number)
   {
@@ -93,14 +96,14 @@ export class ServicosComponent
         return;
       }
       this.EfetuaExclusao(id);
-        
+
   }
 
   EfetuaExclusao(id: number)
   {
     this.clientApi.post(this.uri + `servicos\\Excluir\\${id}`, null).subscribe(result =>
       {
-        this.ObterServicos();    
+        this.ObterServicos();
       }, error =>
       {
         console.error(error)
