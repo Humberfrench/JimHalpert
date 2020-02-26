@@ -9,8 +9,8 @@ export interface Cliente
   Documento: string;
   TipoDeClienteId: number;
   TipoDePessoaId: number;
-  TipoDeCliente: TipoDeCliente;
-  TipoDePessoa: TipoDePessoa;
+  tipoDeCliente: TipoDeCliente;
+  tipoDePessoa: TipoDePessoa;
   Telefone: string;
   Contato: string;
   Email: string;
@@ -22,7 +22,7 @@ export interface Cliente
   Bairro: string;
   Cep: string;
   CidadeId: number;
-  Cidade: Cidade;
+  cidade: Cidade;
   DataCriacao: Date;
   DataAlteracao: Date;
 }

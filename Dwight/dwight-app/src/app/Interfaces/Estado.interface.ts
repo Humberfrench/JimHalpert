@@ -1,7 +1,7 @@
 export interface Estado
 {
-    EstadoId: number;
-    SiglaUf: string;
-    NomeUf: string;
-    
+    estadoId: number;
+    siglaUf: string;
+    nomeUf: string;
+
 }

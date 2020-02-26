@@ -2,7 +2,8 @@ import { Estado } from './Estado.interface';
 
 export interface Cidade
 {
-  CidadeId: number;
-  Nome: string;
-  EstadoId: number;
+  cidadeId: number;
+  nome: string;
+  estadoId: number;
+  cidade: Cidade;
 }

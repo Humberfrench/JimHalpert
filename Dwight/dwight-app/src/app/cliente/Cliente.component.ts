@@ -86,9 +86,10 @@ import { Estado } from '../Interfaces/Estado.interface';
       this.clientApi.get<Cliente>(this.uri + `Clientes\\${id}`).subscribe(result =>
       {
         this.cliente = result;
-        this.estadoId = this.cliente.Cidade.EstadoId;
-        this.ObterCidades(this.cliente.Cidade.EstadoId);
-        
+        this.estadoId = this.cliente.cidade.estadoId;
+        this.ObterEstados();
+        this.ObterCidades(this.cliente.cidade.estadoId);
+
         this.editForm.setValue(this.cliente);
       }, error =>
       {
