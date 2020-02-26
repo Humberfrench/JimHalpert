@@ -11,17 +11,15 @@ import { TipoDePessoa } from "../Interfaces/TipoDePessoa.interface";
 export class Dados
 {
     //objs
-    uri: string  = 'http://localhost:56879/';
+    uri = 'http://localhost:56879/';
     clientApi: HttpClient ;
 
-    public estado : Estado;
-    public estados : Estado[];
-    public cidade : Cidade;
-    public cidades : Cidade[];
-    public tipoDeCliente : TipoDeCliente;
-    public tipoDeClientes : TipoDeCliente[];
-    public tipoDePessoa : TipoDePessoa;
-    public tipoDePessoas : TipoDePessoa[];
+    estado: Estado;
+    estados: Estado[];
+    cidade: Cidade;
+    cidades: Cidade[];
+    tipoDeCliente: TipoDeCliente;
+    tipoDePessoa: TipoDePessoa;
 
     constructor(client: HttpClient )
     {
@@ -50,17 +48,6 @@ export class Dados
         });
     }
 
-    ObterTipoDeClientes()
-    {
-        this.clientApi.get<TipoDeCliente[]>(`${this.uri}Dados/Tipo/Cliente`).subscribe(result =>
-        {
-          this.tipoDeClientes = result;
-        }, error =>
-        {
-            console.error(error)
-        });
-
-    }
 
     ObterTipoDeCliente(id: number)
     {
@@ -68,17 +55,6 @@ export class Dados
         {
           this.tipoDeCliente = result;
         }, error =>
-        {
-            console.error(error)
-        });
-    }
-
-    ObterTipoDePessoas()
-    {
-        this.clientApi.get<TipoDePessoa[]>(`${this.uri}Dados/Tipo/Pessoa`).subscribe(result =>
-        {
-          this.tipoDePessoas = result;
-         }, error =>
         {
             console.error(error)
         });
@@ -115,4 +91,5 @@ export class Dados
         {
             console.error(error)
         });
-    }}
+    }
+  }

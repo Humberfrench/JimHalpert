@@ -56,7 +56,8 @@
             <input id="documento" name="documento" formControlName="documento" class="form-control" maxlength="75" placeholder="Descrição do Serviço">
             <div class="alert alert-danger" *ngIf="editForm.controls['documento'].hasError('required') && editForm.controls['documento'].touched">Documento é requirido</div>
           </div>
-        </div>      </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-6 sol-sm-6 col-md-6 col-lg-6 col-xl-6">
           <div class="form-group">
@@ -68,22 +69,43 @@
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
             <label for="tipoDePessoaId">Tipo de Pessoa</label>
-            <select id="tipoDePessoaId" name="tipoDePessoaId" formControlName="tipoDePessoaId" class="form-control">
-              <option *ngFor="let tipoDePessoa as TipoDePessoa of tipoDePessoas" value={{tipoDePessoa.tipoDePessoaId}}>{{tipoDePessoa.descricao}}</option>
-            </select>
+            <app-tipo-pessoa></app-tipo-pessoa>
             <div class="alert alert-danger" *ngIf="editForm.controls['tipoDePessoaId'].hasError('required') && editForm.controls['tipoDePessoaId'].touched">Tipo de Pessoa é requirido</div>
           </div>
         </div>
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
             <label for="tipoDeClienteId">Tipo de Cliente</label>
-            <select id="tipoDeClienteId" name="tipoDeClienteId" formControlName="tipoDeClienteId" class="form-control">
-              <option *ngFor="let tipoDeCliente as tipoDeCliente of tipoDeClientes" value={{tipoDeCliente.tipoDeClienteId}}>{{tipoDeCliente.descricao}}</option>
-            </select>
+            <app-tipo-cliente [myvalue]="0"></app-tipo-cliente>
             <div class="alert alert-danger" *ngIf="editForm.controls['tipoDeClienteId'].hasError('required') && editForm.controls['tipoDeClienteId'].touched">Tipo de Documento é requirido</div>
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <label for="razaoSocial">Estado</label>
+            <app-estado></app-estado>
+            <div class="alert alert-danger" *ngIf="editForm.controls['razaoSocial'].hasError('required') && editForm.controls['razaoSocial'].touched">Razão Social é requirido</div>
+          </div>
+        </div>
+        <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <label for="tipoDePessoaId">Tipo de Pessoa</label>
+            <app-cidade></app-tipo-pessoa>
+            <div class="alert alert-danger" *ngIf="editForm.controls['tipoDePessoaId'].hasError('required') && editForm.controls['tipoDePessoaId'].touched">Tipo de Pessoa é requirido</div>
+          </div>
+        </div>
+        <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <label for="tipoDeClienteId">Tipo de Cliente</label>
+            <app-tipo-cliente [myvalue]="0"></app-tipo-cliente>
+            <div class="alert alert-danger" *ngIf="editForm.controls['tipoDeClienteId'].hasError('required') && editForm.controls['tipoDeClienteId'].touched">Tipo de Documento é requirido</div>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" name="dataCriacao" id="dataCriacao" formControlName="dataCriacao"/>
+      <input type="hidden" name="dataAlteracao" id="dataAlteracao" formControlName="dataAlteracao"/>
     </form>
   </div>
   <div class="modal-footer">
