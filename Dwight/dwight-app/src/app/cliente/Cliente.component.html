@@ -91,8 +91,8 @@
           <div class="form-group">
             <label for="estadoId">Estado</label>
             <select id="estadoId" name="estadoId" class="form-control" (change)="onChangeEstado($event)">
-              <option value="0" ng-selected="0">Selecione Uf</option>
-              <option *ngFor="let estado as Estado of estados" value={{estado.estadoId}}>{{estado.siglaUf}} - {{estado.nomeUf}}</option>
+              <option value="0" ng-selected="estadoId == 0">Selecione Uf</option>
+              <option ng-selected="estadoId == estado.estadoId" *ngFor="let estado as Estado of estados" value={{estado.estadoId}}>{{estado.siglaUf}} - {{estado.nomeUf}}</option>
             </select>
           </div>
         </div>
@@ -100,7 +100,7 @@
           <div class="form-group">
             <label for="cidadeId">Cidade</label>
             <select id="cidadeId" name="cidadeId" formControlName="cidadeId" class="form-control" >
-              <option value="0" ng-selected="0">Selecione Cidade</option>
+              <option value="0">Selecione Cidade</option>
               <option *ngFor="let cidade as cidade of cidades" value={{cidade.cidadeId}}>{{cidade.nome}}</option>
             </select>
           </div>
@@ -112,6 +112,9 @@
           </div>
         </div>
       </div>
+      <input type="hidden" name="cidade" id="cidade" formControlName="cidade"/>
+      <input type="hidden" name="tipoDePessoa" id="tipoDePessoa" formControlName="tipoDePessoa"/>
+      <input type="hidden" name="tipoDeCliente" id="tipoDeCliente" formControlName="tipoDeCliente"/>
       <input type="hidden" name="dataCriacao" id="dataCriacao" formControlName="dataCriacao"/>
       <input type="hidden" name="dataAlteracao" id="dataAlteracao" formControlName="dataAlteracao"/>
     </form>

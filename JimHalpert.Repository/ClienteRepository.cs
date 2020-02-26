@@ -18,10 +18,19 @@ namespace JimHalpert.Repository
 
         public new IEnumerable<Cliente> ObterTodos()
         {
-            return DbSet.Include(c => c.TipoDeCliente)
+            return DbSet.Include(c => c.Cidade).ThenInclude(c => c.Estado)
+                        .Include(c => c.TipoDeCliente)
                         .Include(c => c.TipoDePessoa)
-                        .Include(c => c.Cidade)
                         .ToList();
+        }
+
+        public new Cliente ObterPorId(int id)
+        {
+
+            return DbSet.Include(c => c.Cidade).ThenInclude(c => c.Estado)
+                        .Include(c => c.TipoDeCliente)
+                        .Include(c => c.TipoDePessoa)
+                        .Where(c => c.ClienteId == id).FirstOrDefault();
         }
 
         public IEnumerable<Cliente> Filtrar(string query)

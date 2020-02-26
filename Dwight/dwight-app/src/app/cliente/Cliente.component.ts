@@ -32,6 +32,7 @@ import { Estado } from '../Interfaces/Estado.interface';
     cidades: Cidade[];
     estado: Estado;
     estados: Estado[];
+    estadoId: number;
 
     constructor(clientApi: HttpClient,
                 private modalService: NgbModal,
@@ -61,6 +62,9 @@ import { Estado } from '../Interfaces/Estado.interface';
         bairro: ['', ],
         cep: ['', ],
         cidadeId: ['', ],
+        cidade: ['', ],
+        tipoDeCliente: ['', ],
+        tipoDePessoa: ['', ],
         dataCriacao: ['', ],
         dataAlteracao: ['', ]
       });
@@ -82,6 +86,9 @@ import { Estado } from '../Interfaces/Estado.interface';
       this.clientApi.get<Cliente>(this.uri + `Clientes\\${id}`).subscribe(result =>
       {
         this.cliente = result;
+        this.estadoId = this.cliente.Cidade.EstadoId;
+        this.ObterCidades(this.cliente.Cidade.EstadoId);
+        
         this.editForm.setValue(this.cliente);
       }, error =>
       {
