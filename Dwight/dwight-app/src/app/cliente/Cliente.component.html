@@ -69,14 +69,19 @@
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
             <label for="tipoDePessoaId">Tipo de Pessoa</label>
-            <app-tipo-pessoa></app-tipo-pessoa>
+            <select id="tipoDePessoaId" name="tipoDePessoaId" formControlName="tipoDePessoaId" class="form-control">
+              <option *ngFor="let tipoDePessoa as TipoDePessoa of tipoDePessoas" value={{tipoDePessoa.tipoDePessoaId}}>{{tipoDePessoa.descricao}}</option>
+            </select>
             <div class="alert alert-danger" *ngIf="editForm.controls['tipoDePessoaId'].hasError('required') && editForm.controls['tipoDePessoaId'].touched">Tipo de Pessoa é requirido</div>
           </div>
         </div>
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
             <label for="tipoDeClienteId">Tipo de Cliente</label>
-            <app-tipo-cliente [myvalue]="0"></app-tipo-cliente>
+            <select id="tipoDeClienteId" name="tipoDeClienteId" formControlName="tipoDeClienteId" class="form-control">
+              <option value="0" ng-selected="myvalue == 0">Selecione Tipo</option>
+              <option ng-selected="myvalue == tipoDeCliente.tipoDeClienteId" *ngFor="let tipoDeCliente as TipoDeCliente of tipoDeClientes" value={{tipoDeCliente.tipoDeClienteId}}>{{tipoDeCliente.descricao}}</option>
+              </select>
             <div class="alert alert-danger" *ngIf="editForm.controls['tipoDeClienteId'].hasError('required') && editForm.controls['tipoDeClienteId'].touched">Tipo de Documento é requirido</div>
           </div>
         </div>
@@ -84,22 +89,25 @@
       <div class="row">
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
-            <label for="razaoSocial">Estado</label>
-            <app-estado></app-estado>
-            <div class="alert alert-danger" *ngIf="editForm.controls['razaoSocial'].hasError('required') && editForm.controls['razaoSocial'].touched">Razão Social é requirido</div>
+            <label for="estadoId">Estado</label>
+            <select id="estadoId" name="estadoId" class="form-control" (change)="onChangeEstado($event)">
+              <option value="0" ng-selected="0">Selecione Uf</option>
+              <option *ngFor="let estado as Estado of estados" value={{estado.estadoId}}>{{estado.siglaUf}} - {{estado.nomeUf}}</option>
+            </select>
           </div>
         </div>
-        <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
+        <div class="col-4 sol-sm-4 col-md-4 col-lg-4 col-xl-4">
           <div class="form-group">
-            <label for="tipoDePessoaId">Tipo de Pessoa</label>
-            <app-cidade></app-tipo-pessoa>
-            <div class="alert alert-danger" *ngIf="editForm.controls['tipoDePessoaId'].hasError('required') && editForm.controls['tipoDePessoaId'].touched">Tipo de Pessoa é requirido</div>
+            <label for="cidadeId">Cidade</label>
+            <select id="cidadeId" name="cidadeId" formControlName="cidadeId" class="form-control" >
+              <option value="0" ng-selected="0">Selecione Cidade</option>
+              <option *ngFor="let cidade as cidade of cidades" value={{cidade.cidadeId}}>{{cidade.nome}}</option>
+            </select>
           </div>
         </div>
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
             <label for="tipoDeClienteId">Tipo de Cliente</label>
-            <app-tipo-cliente [myvalue]="0"></app-tipo-cliente>
             <div class="alert alert-danger" *ngIf="editForm.controls['tipoDeClienteId'].hasError('required') && editForm.controls['tipoDeClienteId'].touched">Tipo de Documento é requirido</div>
           </div>
         </div>

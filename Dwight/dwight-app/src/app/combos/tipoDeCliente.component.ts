@@ -12,13 +12,14 @@ import { Component, Input } from '@angular/core';
 `
 })
 
-export class TipoDeClienteCompomnent
+export class TipoDeClienteComponent
 {
 
 
     //objs
     uri  = 'http://localhost:56879/';
-    clientApi: HttpClient ; tipoDeCliente: TipoDeCliente;
+    clientApi: HttpClient ;
+    tipoDeCliente: TipoDeCliente;
     tipoDeClientes: TipoDeCliente[];
     @Input()
     myvalue: number;

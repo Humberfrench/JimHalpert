@@ -14,11 +14,12 @@ import { Component } from '@angular/core';
 
 
 
-export class TipoDePessoaCompomnent
+export class TipoDePessoaComponent
 {
      //objs
      uri  = 'http://localhost:56879/';
-     clientApi: HttpClient ; tipoDePessoa: TipoDePessoa;
+     clientApi: HttpClient ;
+     tipoDePessoa: TipoDePessoa;
      tipoDePessoas: TipoDePessoa[];
 
   constructor(client: HttpClient )

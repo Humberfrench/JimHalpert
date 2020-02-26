@@ -10,8 +10,6 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { ClientesComponent } from './cliente/Cliente.component';
-import { TipoDePessoaCompomnent } from './combos/tipoDePessoa.component';
-import { TipoDeClienteCompomnent } from './combos/tipoDeCliente.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +18,6 @@ import { TipoDeClienteCompomnent } from './combos/tipoDeCliente.component';
     HomeComponent,
     ClientesComponent,
     ServicosComponent,
-    TipoDeClienteCompomnent,
-    TipoDePessoaCompomnent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

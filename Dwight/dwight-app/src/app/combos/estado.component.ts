@@ -3,24 +3,24 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-tipo-cliente',
+  selector: 'app-estado',
   template: `
   <select id="estadoId" name="estadoId" formControlName="estadoId" class="form-control">
   <option value="0" ng-selected="myvalue == 0">Selecione Tipo</option>
-  <option ng-selected="myvalue == Estado.estadoId" *ngFor="let Estado as Estado of Estados" value={{Estado.EstadoId}}>{{Estado.descricao}}</option>
+  <option ng-selected="myvalue == estado.estadoId" *ngFor="let estado as Estado of estados" value={{estado.EstadoId}}>{{Estado.siglaUf}} - {{Estado.nomeUf}}</option>
   </select>
 `
 })
 
-export class EstadoCompomnent
+export class EstadoComponent
 {
 
 
     //objs
     uri  = 'http://localhost:56879/';
     clientApi: HttpClient ;
-    Estado: Estado;
-    Estados: Estado[];
+    estado: Estado;
+    estados: Estado[];
     @Input()
     myvalue: number;
 
