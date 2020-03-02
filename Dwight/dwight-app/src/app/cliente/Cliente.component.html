@@ -91,8 +91,8 @@
           <div class="form-group">
             <label for="estadoId">Estado</label>
             <select id="estadoId" name="estadoId" class="form-control" (change)="onChangeEstado($event)">
-              <option value="0" ng-selected="estadoId == 0">Selecione Uf</option>
-              <option ng-selected="estadoId == estado.estadoId" *ngFor="let estado as Estado of estados" value={{estado.estadoId}}>{{estado.siglaUf}} - {{estado.nomeUf}}</option>
+              <option value="0" ng-selected="estadoIdValue == 0">Selecione Uf</option>
+              <option ng-selected="estadoIdValue == estado.estadoId" *ngFor="let estado as Estado of estados" value={{estado.estadoId}}>{{estado.siglaUf}} - {{estado.nomeUf}}</option>
             </select>
           </div>
         </div>
