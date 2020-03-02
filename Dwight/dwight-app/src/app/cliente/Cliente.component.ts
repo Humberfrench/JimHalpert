@@ -65,6 +65,7 @@ import { Estado } from '../Interfaces/Estado.interface';
         cep: ['', ],
         cidadeId: ['', ],
         cidade: ['', ],
+        faturamento: ['', ],
         tipoDeCliente: ['', ],
         tipoDePessoa: ['', ],
         dataCriacao: ['', ],

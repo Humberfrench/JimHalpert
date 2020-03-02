@@ -46,14 +46,14 @@
         <div class="col-7 sol-sm-7 col-md-7 col-lg-7 col-xl-7">
           <div class="form-group">
             <label class="font-weight-bold" for="nome">Nome</label>
-            <input id="nome" name="nome" formControlName="nome" class="form-control" maxlength="30" placeholder="Nome do Cliente" ngbAutofocus >
+            <input id="nome" name="nome" formControlName="nome" class="form-control" maxlength="50" placeholder="Nome do Cliente" ngbAutofocus >
             <div class="alert alert-danger" *ngIf="editForm.controls['nome'].hasError('required') && editForm.controls['nome'].touched">Nome do Cliente é requirido</div>
           </div>
         </div>
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
             <label class="font-weight-bold" for="documento">Documento(CPF/CNPJ)</label>
-            <input id="documento" name="documento" formControlName="documento" class="form-control" maxlength="75" placeholder="Documento">
+            <input id="documento" name="documento" formControlName="documento" class="form-control" maxlength="30" placeholder="Documento">
             <div class="alert alert-danger" *ngIf="editForm.controls['documento'].hasError('required') && editForm.controls['documento'].touched">Documento (C.P.F ou C.N.P.J.) é requirido</div>
           </div>
         </div>
@@ -62,7 +62,7 @@
         <div class="col-6 sol-sm-6 col-md-6 col-lg-6 col-xl-6">
           <div class="form-group">
             <label class="font-weight-bold" for="razaoSocial">Razão Social</label>
-            <input id="razaoSocial" name="razaoSocial" formControlName="razaoSocial" class="form-control" maxlength="75" placeholder="Razão Social">
+            <input id="razaoSocial" name="razaoSocial" formControlName="razaoSocial" class="form-control" maxlength="100" placeholder="Razão Social">
             <div class="alert alert-danger" *ngIf="editForm.controls['razaoSocial'].hasError('required') && editForm.controls['razaoSocial'].touched">Razão Social é requirido</div>
           </div>
         </div>
@@ -90,39 +90,75 @@
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
             <label class="font-weight-bold" for="inscricaoEstadual">Inscrição Estadual</label>
-            <input id="inscricaoEstadual" name="inscricaoEstadual" formControlName="inscricaoEstadual" class="form-control" maxlength="75" placeholder="Inscrição Estadual">
+            <input id="inscricaoEstadual" name="inscricaoEstadual" formControlName="inscricaoEstadual" class="form-control" maxlength="50" placeholder="Inscrição Estadual">
             <div class="alert alert-danger" *ngIf="editForm.controls['inscricaoEstadual'].hasError('required') && editForm.controls['inscricaoEstadual'].touched">Inscrição Estadual é requirido</div>
           </div>
         </div>
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
             <label class="font-weight-bold" for="cadastroMunicipal">Inscrição Municipal</label>
-            <input id="cadastroMunicipal" name="cadastroMunicipal" formControlName="cadastroMunicipal" class="form-control" maxlength="75" placeholder="Inscrição Municipal">
+            <input id="cadastroMunicipal" name="cadastroMunicipal" formControlName="cadastroMunicipal" class="form-control" maxlength="50" placeholder="Inscrição Municipal">
             <div class="alert alert-danger" *ngIf="editForm.controls['cadastroMunicipal'].hasError('required') && editForm.controls['cadastroMunicipal'].touched">Inscrição Municipal é requirido</div>
           </div>
         </div>
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
             <label class="font-weight-bold" for="telefone">Telefone</label>
-            <input id="telefone" name="telefone" formControlName="telefone" class="form-control" maxlength="75" placeholder="00-0000-0000">
+            <input id="telefone" name="telefone" formControlName="telefone" class="form-control" maxlength="20" placeholder="00-0000-0000">
             <div class="alert alert-danger" *ngIf="editForm.controls['telefone'].hasError('required') && editForm.controls['telefone'].touched">Número de Telefone é requirido</div>
           </div>
         </div>
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
             <label class="font-weight-bold" for="contato">Contato</label>
-            <input id="contato" name="contato" formControlName="contato" class="form-control" maxlength="75" placeholder="Contato">
+            <input id="contato" name="contato" formControlName="contato" class="form-control" maxlength="50" placeholder="Contato">
             <div class="alert alert-danger" *ngIf="editForm.controls['contato'].hasError('required') && editForm.controls['contato'].touched">Contato é requirido</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-7 sol-sm-7 col-md-7 col-lg-7 col-xl-7">
+          <div class="form-group">
+            <label class="font-weight-bold" for="endereco">Endereço</label>
+            <input id="endereco" name="endereco" formControlName="endereco" class="form-control" maxlength="100" placeholder="Endereço do Cliente" >
+            <div class="alert alert-danger" *ngIf="editForm.controls['endereco'].hasError('required') && editForm.controls['endereco'].touched">Endereço do Cliente é requirido</div>
+          </div>
+        </div>
+        <div class="col-2 sol-sm-2 col-md-2 col-lg-2 col-xl-2">
+          <div class="form-group">
+            <label class="font-weight-bold" for="clienteId">Número</label>
+            <input id="numero" name="numero" formControlName="numero"class="form-control" readonly="readonly" >
+          </div>
+        </div>
+        <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <label class="font-weight-bold" for="complemento">Complemento</label>
+            <input id="complemento" name="complemento" formControlName="complemento" class="form-control" maxlength="20" placeholder="Complemento">
+            <div class="alert alert-danger" *ngIf="editForm.controls['complemento'].hasError('required') && editForm.controls['complemento'].touched">Complemento é requirido</div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
           <div class="form-group">
+            <label class="font-weight-bold" for="bairro">Bairro</label>
+            <input id="bairro" name="bairro" formControlName="bairro" class="form-control" maxlength="20" placeholder="Contato">
+            <div class="alert alert-danger" *ngIf="editForm.controls['bairro'].hasError('required') && editForm.controls['bairro'].touched">Bairro é requirido</div>
+          </div>
+        </div>
+        <div class="col-2 sol-sm-2 col-md-2 col-lg-2 col-xl-2">
+          <div class="form-group">
+            <label class="font-weight-bold" for="cep">C.e.p.</label>
+            <input id="cep" name="cep" formControlName="cep" class="form-control" maxlength="20" placeholder="Contato">
+            <div class="alert alert-danger" *ngIf="editForm.controls['bairro'].hasError('required') && editForm.controls['bairro'].touched">Bairro é requirido</div>
+          </div>
+        </div>
+        <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
             <label class="font-weight-bold" for="estadoId">Estado</label>
             <select id="estadoId" name="estadoId" class="form-control" (change)="onChangeEstado($event)">
-              <option value="0" ng-selected="estadoIdValue==0">Selecione Uf</option>
-              <option ng-selected="estadoIdValue==estado.estadoId" *ngFor="let estado as Estado of estados" value={{estado.estadoId}}>{{estado.siglaUf}} - {{estado.nomeUf}}</option>
+              <option value="0" ng-selected="estadoIdValue == 0">Selecione Uf</option>
+              <option ng-selected="estadoIdValue == estado.estadoId" *ngFor="let estado as Estado of estados" value={{estado.estadoId}}>{{estado.siglaUf}} - {{estado.nomeUf}}</option>
             </select>
           </div>
         </div>
@@ -135,12 +171,7 @@
             </select>
           </div>
         </div>
-        <div class="col-3 sol-sm-3 col-md-3 col-lg-3 col-xl-3">
-          <div class="form-group">
-            <label class="font-weight-bold" for="tipoDeClienteId">Tipo de Cliente</label>
-            <div class="alert alert-danger" *ngIf="editForm.controls['tipoDeClienteId'].hasError('required') && editForm.controls['tipoDeClienteId'].touched">Tipo de Documento é requirido</div>
-          </div>
-        </div>
+
       </div>
       <input type="hidden" name="cidade" id="cidade" formControlName="cidade"/>
       <input type="hidden" name="faturamento" id="faturamento" formControlName="faturamento"/>
