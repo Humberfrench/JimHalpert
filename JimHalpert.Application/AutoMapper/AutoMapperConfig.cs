@@ -18,6 +18,9 @@ namespace JimHalpert.Application.AutoMapper
                 cfg.CreateMap<CidadeValue, CidadeValueViewModel>().MaxDepth(0).ReverseMap();
                 cfg.CreateMap<Cliente, ClienteViewModel>().MaxDepth(1).ReverseMap();
                 cfg.CreateMap<Estado, EstadoViewModel>().MaxDepth(1).ReverseMap();
+                cfg.CreateMap<Mes, MesViewModel>().MaxDepth(0).ReverseMap();
+                cfg.CreateMap<NotaFiscal, NotaFiscalViewModel>().MaxDepth(0).ReverseMap();
+                cfg.CreateMap<StatusNotaFiscal, StatusNotaFiscalViewModel>().MaxDepth(0).ReverseMap();
                 cfg.CreateMap<Servico, ServicoViewModel>().MaxDepth(0).ReverseMap();
                 cfg.CreateMap<Tarefa, TarefaViewModel>().MaxDepth(1).ReverseMap();
                 cfg.CreateMap<TarefaItem, TarefaItemViewModel>().MaxDepth(0).ReverseMap();

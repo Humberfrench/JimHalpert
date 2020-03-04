@@ -46,16 +46,27 @@ namespace JimHalpert.Ioc
             services.AddScoped<IClienteServiceApp, ClienteServiceApp>();
             #endregion
 
-            #region Servicos
-            services.AddScoped<IServicoRepository, ServicoRepository>();
-            services.AddScoped<IServicoService, ServicoService>();
-            services.AddScoped<IServicoServiceApp, ServicoServiceApp>();
-            #endregion
-
             #region Cidade
             services.AddScoped<ICidadeRepository, CidadeRepository>();
             services.AddScoped<ICidadeService, CidadeService>();
             services.AddScoped<ICidadeServiceApp, CidadeServiceApp>();
+            #endregion
+
+            #region NotaFiscal
+            services.AddScoped<INotaFiscalService, NotaFiscalService>();
+            services.AddScoped<INotaFiscalRepository, NotaFiscalRepository>();
+            services.AddScoped<IStatusNotaFiscalRepository, StatusNotaFiscalRepository>();
+            #endregion
+
+            #region Outros
+            services.AddScoped<IMesRepository, MesRepository>();
+
+            #endregion
+
+            #region Servicos
+            services.AddScoped<IServicoRepository, ServicoRepository>();
+            services.AddScoped<IServicoService, ServicoService>();
+            services.AddScoped<IServicoServiceApp, ServicoServiceApp>();
             #endregion
 
             #region Tipo de Cliente
