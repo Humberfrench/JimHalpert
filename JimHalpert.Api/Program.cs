@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace JimHalpert.Api
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
@@ -18,20 +13,12 @@ namespace JimHalpert.Api
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+                .ConfigureWebHostDefaults(
+                webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://localhost:56879/");
+                    webBuilder.UseIISIntegration();
+                    webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
                 });
-
-        //var host = new WebHostBuilder()
-        //   .UseKestrel()
-        //   .UseContentRoot(Directory.GetCurrentDirectory())
-        //   .UseIISIntegration()
-        //   .UseStartup<Startup>()
-        //   .UseUrls("http://localhost:5001/")
-        //   .Build();
-
-        //host.Run();
     }
 }

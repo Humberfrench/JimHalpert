@@ -1,7 +1,9 @@
-﻿using JimHalpert.Repository.Context;
+﻿using Dietcode.Core.DomainValidator;
+using JimHalpert.Domain.Inteface.Repository;
+using JimHalpert.Repository.Context;
 using JimHalpert.Repository.Interfaces;
 using System;
-using JimHalpert.DomainValidator;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Repository.UnitOfWork
 {
@@ -35,19 +37,20 @@ namespace JimHalpert.Repository.UnitOfWork
             {
                 var dados = this.dbContext.SaveChanges();
             }
-            //EntityValidationException
-            //catch (Microsoft.EntityFrameworkCore.DbUpdateException   exValidation)
-            //{
-            //    var erros = exValidation.Entries.ToList();
-            //    if (erros.Any())
-            //    {
-            //        erros.ForEach(e => e.ValidationErrors.ToList().ForEach(ev => validationResult.Add($"Erro de Validção ao Gravar: {ev.ErrorMessage}")));
-            //    }
-            //    else
-            //    {
-            //        validationResult.Add(exValidation.Message);
-            //    }
-            //}
+            catch (Exception ex)
+            {
+                validationResult.Add(ex.Message);
+            }
+            return validationResult;
+        }
+
+
+        public async Task<ValidationResult> SaveChangesAsync()
+        {
+            try
+            {
+                var dados = await this.dbContext.SaveChangesAsync();
+            }
             catch (Exception ex)
             {
                 validationResult.Add(ex.Message);

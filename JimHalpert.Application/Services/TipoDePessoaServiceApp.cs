@@ -1,78 +1,99 @@
-﻿using System.Collections.Generic;
-using JimHalpert.Application.Interface;
-using JimHalpert.Application.ViewModel;
+﻿using Dietcode.Api.Core.Results;
+using Dietcode.Core.DomainValidator;
+using Dietcode.Core.Lib;
+using JimHalpert.App.ViewModel;
+using JimHalpert.App.ViewModel.Interface;
 using JimHalpert.Domain.Entity;
+using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
-using JimHalpert.DomainValidator;
-using JimHalpert.Repository.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace JimHalpert.Application.Services
+namespace JimHalpert.App.Services
 {
-    public class TipoDePessoaServiceApp :BaseServiceApp, ITipoDePessoaServiceApp
+    public class TipoDePessoaServiceApp : BaseServiceApp<TipoDePessoaViewModel>, ITipoDePessoaServiceApp
     {
         private readonly ITipoDePessoaService service;
+
         public TipoDePessoaServiceApp(ITipoDePessoaService service, IUnitOfWork uow) : base(uow)
         {
             this.service = service;
         }
 
-        public ValidationResult Gravar(TipoDePessoaViewModel tipoDePessoa)
+        public MethodResult Gravar(TipoDePessoaViewModel tipoDePessoa)
         {
             BeginTransaction();
-            var dadoIncluir = Mapper.Map<TipoDePessoa>(tipoDePessoa);
+            var dadoIncluir = tipoDePessoa.ConvertObjects<TipoDePessoa>(); //Mapper.Map<TipoDePessoa>(tipoDePessoa);
             var retorno = service.Gravar(dadoIncluir);
-            if(retorno.IsValid)
+            if (retorno.Valid)
             {
                 //commit transaction
                 Commit();
                 //commit error
-                if(!ValidationResults.IsValid)
+                if (!ValidationResults.Valid)
                 {
-                    return ValidationResults;
+                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
                 }
             }
-            return retorno;
-
+            return Ok(retorno);
         }
 
-        public ValidationResult Excluir(int id)
+        public MethodResult Excluir(int id)
         {
             BeginTransaction();
             var retorno = service.Excluir(id);
-            if (retorno.IsValid)
+            if (retorno.Valid)
             {
                 //commit transaction
                 Commit();
                 //commit error
-                if (!ValidationResults.IsValid)
+                if (!ValidationResults.Valid)
                 {
-                    return ValidationResults;
+                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
                 }
             }
-            return retorno;
+            return Ok(retorno);
 
         }
 
-        public TipoDePessoaViewModel ObterPorId(int id)
+        public MethodResult ObterPorId(int id)
         {
             var tipoDePessoas = service.ObterPorId(id);
-            var retorno = Mapper.Map<TipoDePessoaViewModel>(tipoDePessoas);
-            return retorno;
+            var retorno = tipoDePessoas.ConvertObjects<TipoDePessoaViewModel>(); //Mapper.Map<TipoDePessoaViewModel>(tipoDePessoas);
+
+            if(retorno == null)
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
         }
 
-        public IEnumerable<TipoDePessoaViewModel> ObterTodos()
+        public MethodResult ObterTodos()
         {
             var tipoDePessoas = service.ObterTodos();
-            var retorno = Mapper.Map<IEnumerable<TipoDePessoaViewModel>>(tipoDePessoas);
-            return retorno;
+            var retorno = tipoDePessoas.ConvertObjects<List<TipoDePessoaViewModel>>(); //Mapper.Map<IEnumerable<TipoDePessoaViewModel>>(tipoDePessoas);
+
+            if (!retorno.Any())
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
 
         }
 
-        public IEnumerable<TipoDePessoaViewModel> Filtrar(string query)
+        public MethodResult Filtrar(string query)
         {
             var tipoDePessoas = service.Filtrar(query);
-            var retorno = Mapper.Map<IEnumerable<TipoDePessoaViewModel>>(tipoDePessoas);
-            return retorno;
+            var retorno = tipoDePessoas.ConvertObjects<List<TipoDePessoaViewModel>>(); //Mapper.Map<IEnumerable<TipoDePessoaViewModel>>(tipoDePessoas);
+
+            if (!retorno.Any())
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
 
         }
     }

@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using JimHalpert.Repository.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using JimHalpert.Repository.Interfaces;
 
 namespace JimHalpert.Repository.Context
 {
@@ -10,7 +10,7 @@ namespace JimHalpert.Repository.Context
         private readonly IHttpContextAccessor context;
         private readonly IConfiguration configuration;
 
-        public ContextManager(IHttpContextAccessor context, 
+        public ContextManager(IHttpContextAccessor context,
                               IConfiguration configuration)
         {
             this.context = context;

@@ -1,7 +1,7 @@
 ﻿using JimHalpert.Domain.Entity;
 using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
-using JimHalpert.DomainValidator;
+using Dietcode.Core.DomainValidator;
 using JimHalpert.Extensions;
 using System;
 using System.Collections.Generic;

@@ -1,46 +1,49 @@
-﻿using System;
+﻿using Dietcode.Api.Core;
+using Dietcode.Core.DomainValidator;
+using JimHalpert.App.ViewModel;
+using JimHalpert.App.ViewModel.Interface;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using JimHalpert.Application.Interface;
-using JimHalpert.Application.ViewModel;
-using JimHalpert.DomainValidator;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace JimHalpert.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ClientesController : ControllerBase
+    public class ClientesController : ApiControllerBase
     {
-        private readonly IClienteServiceApp servicoServiceApp;
-        public ClientesController(IClienteServiceApp servicoServiceApp)
+        private readonly IClienteServiceApp clienteServiceApp;
+        public ClientesController(IClienteServiceApp clienteServiceApp)
         {
-            this.servicoServiceApp = servicoServiceApp;
+            this.clienteServiceApp = clienteServiceApp;
         }
 
         [HttpGet]
-        public IList<ClienteViewModel> ObterTodos()
+        public IActionResult ObterTodos()
         {
-            return servicoServiceApp.ObterTodos().ToList();
+            var retorno = clienteServiceApp.ObterTodos();
+            return Completed<List<ClienteViewModel>>(retorno);
         }
+
         [HttpGet("{id}")]
-        public ClienteViewModel Obter(int id)
+        public IActionResult Obter(int id)
         {
-            return servicoServiceApp.ObterPorId(id);
+            var retorno = clienteServiceApp.ObterPorId(id);
+            return Completed<ClienteViewModel>(retorno);
         }
 
         [HttpPost("Excluir/{id}")]
-        public ValidationResult Excluir(int id)
+        public IActionResult Excluir(int id)
         {
-            return servicoServiceApp.Excluir(id);
+            var retorno = clienteServiceApp.Excluir(id);
+            return Completed<ValidationResult>(retorno);
         }
+
         [HttpPost("Gravar")]
-        public ValidationResult Gravar(ClienteViewModel cliente)
+        public IActionResult Gravar(ClienteViewModel cliente)
         {
-            return servicoServiceApp.Gravar(cliente);
+            var retorno = clienteServiceApp.Gravar(cliente);
+            return Completed<ValidationResult>(retorno);
         }
 
     }

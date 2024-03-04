@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
-using JimHalpert.Application.Interface;
-using JimHalpert.Application.ViewModel;
+﻿using Dietcode.Api.Core.Results;
+using Dietcode.Core.DomainValidator;
+using Dietcode.Core.Lib;
+using JimHalpert.App.ViewModel;
+using JimHalpert.App.ViewModel.Interface;
 using JimHalpert.Domain.Entity;
+using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
-using JimHalpert.DomainValidator;
-using JimHalpert.Repository.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace JimHalpert.Application.Services
+namespace JimHalpert.App.Services
 {
-    public class ServicoServiceApp :BaseServiceApp, IServicoServiceApp
+    public class ServicoServiceApp : BaseServiceApp<ServicoViewModel>, IServicoServiceApp
     {
         private readonly IServicoService service;
         public ServicoServiceApp(IServicoService service, IUnitOfWork uow) : base(uow)
@@ -16,63 +19,78 @@ namespace JimHalpert.Application.Services
             this.service = service;
         }
 
-        public ValidationResult Gravar(ServicoViewModel servico)
+        public MethodResult Gravar(ServicoViewModel servico)
         {
             BeginTransaction();
-            var dadoIncluir = Mapper.Map<Servico>(servico);
+            var dadoIncluir = servico.ConvertObjects<Servico>();
             var retorno = service.Gravar(dadoIncluir);
-            if(retorno.IsValid)
+            if (retorno.Valid)
             {
                 //commit transaction
                 Commit();
                 //commit error
-                if(!ValidationResults.IsValid)
+                if (!ValidationResults.Valid)
                 {
-                    return ValidationResults;
+                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
                 }
             }
-            return retorno;
+            return Ok(retorno);
 
         }
 
-        public ValidationResult Excluir(int id)
+        public MethodResult Excluir(int id)
         {
             BeginTransaction();
             var retorno = service.Excluir(id);
-            if (retorno.IsValid)
+            if (retorno.Valid)
             {
                 //commit transaction
                 Commit();
                 //commit error
-                if (!ValidationResults.IsValid)
+                if (!ValidationResults.Valid)
                 {
-                    return ValidationResults;
+                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
                 }
             }
-            return retorno;
+            return Ok(retorno);
 
         }
 
-        public ServicoViewModel ObterPorId(int id)
+        public MethodResult ObterPorId(int id)
         {
             var servicos = service.ObterPorId(id);
-            var retorno = Mapper.Map<ServicoViewModel>(servicos);
-            return retorno;
+            var retorno = servicos.ConvertObjects<ServicoViewModel>();
+            if (retorno == null)
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
         }
 
-        public IEnumerable<ServicoViewModel> ObterTodos()
+        public MethodResult ObterTodos()
         {
             var servicos = service.ObterTodos();
-            var retorno = Mapper.Map<IEnumerable<ServicoViewModel>>(servicos);
-            return retorno;
+            var retorno = servicos.ConvertObjects<List<ServicoViewModel>>();
+            if (!retorno.Any())
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
 
         }
 
-        public IEnumerable<ServicoViewModel> Filtrar(string query)
+        public MethodResult Filtrar(string query)
         {
             var servicos = service.Filtrar(query);
-            var retorno = Mapper.Map<IEnumerable<ServicoViewModel>>(servicos);
-            return retorno;
+            var retorno = servicos.ConvertObjects<List<ServicoViewModel>>();
+            if (!retorno.Any())
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
 
         }
     }

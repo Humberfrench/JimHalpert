@@ -8,13 +8,13 @@ namespace JimHalpert.Domain.Entity
     {
         public Estado()
         {
-            Cidade = new HashSet<Cidade>();
+            Cidade = new List<Cidade>();
         }
 
         public short EstadoId { get; set; }
         public string SiglaUf { get; set; }
         public string NomeUf { get; set; }
 
-        public virtual ICollection<Cidade> Cidade { get; set; }
+        public virtual List<Cidade> Cidade { get; set; }
     }
 }

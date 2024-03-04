@@ -1,14 +1,18 @@
-﻿using System.Collections.Generic;
-using JimHalpert.Application.Interface;
-using JimHalpert.Application.ViewModel;
+﻿using Dietcode.Api.Core.Results;
+using Dietcode.Core.DomainValidator;
+using Dietcode.Core.Lib;
+using JimHalpert.App.ViewModel;
+using JimHalpert.App.ViewModel.Interface;
 using JimHalpert.Domain.Entity;
+using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
-using JimHalpert.DomainValidator;
-using JimHalpert.Repository.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace JimHalpert.Application.Services
+
+namespace JimHalpert.App.Services
 {
-    public class EstadoServiceApp :BaseServiceApp, IEstadoServiceApp
+    public class EstadoServiceApp : BaseServiceApp<EstadoViewModel>, IEstadoServiceApp
     {
         private readonly IEstadoService service;
         public EstadoServiceApp(IEstadoService service, IUnitOfWork uow) : base(uow)
@@ -16,63 +20,78 @@ namespace JimHalpert.Application.Services
             this.service = service;
         }
 
-        public ValidationResult Gravar(EstadoViewModel aviao)
+        public MethodResult Gravar(EstadoViewModel estado)
         {
             BeginTransaction();
-            var dadoIncluir = Mapper.Map<Estado>(aviao);
+            var dadoIncluir = estado.ConvertObjects<Estado>();
             var retorno = service.Gravar(dadoIncluir);
-            if(retorno.IsValid)
+            if (retorno.Valid)
             {
                 //commit transaction
                 Commit();
                 //commit error
-                if(!ValidationResults.IsValid)
+                if (!ValidationResults.Valid)
                 {
-                    return ValidationResults;
+                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
                 }
             }
-            return retorno;
+            return Ok(retorno);
 
         }
 
-        public ValidationResult Excluir(int id)
+        public MethodResult Excluir(int id)
         {
             BeginTransaction();
             var retorno = service.Excluir(id);
-            if (retorno.IsValid)
+            if (retorno.Valid)
             {
                 //commit transaction
                 Commit();
                 //commit error
-                if (!ValidationResults.IsValid)
+                if (!ValidationResults.Valid)
                 {
-                    return ValidationResults;
+                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
                 }
             }
-            return retorno;
+            return Ok(retorno);
 
         }
 
-        public EstadoViewModel ObterPorId(int id)
+        public MethodResult ObterPorId(int id)
         {
-            var avioes = service.ObterPorId(id);
-            var retorno = Mapper.Map<EstadoViewModel>(avioes);
-            return retorno;
+            var estados = service.ObterPorId(id);
+            var retorno = estados.ConvertObjects<EstadoViewModel>();
+            if (retorno == null)
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
         }
 
-        public IEnumerable<EstadoViewModel> ObterTodos()
+        public MethodResult ObterTodos()
         {
-            var avioes = service.ObterTodos();
-            var retorno = Mapper.Map<IEnumerable<EstadoViewModel>>(avioes);
-            return retorno;
+            var estados = service.ObterTodos();
+            var retorno = estados.ConvertObjects<List<EstadoViewModel>>();
+            if (!retorno.Any())
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
 
         }
 
-        public IEnumerable<EstadoViewModel> Filtrar(string query)
+        public MethodResult Filtrar(string query)
         {
-            var avioes = service.Filtrar(query);
-            var retorno = Mapper.Map<IEnumerable<EstadoViewModel>>(avioes);
-            return retorno;
+            var estados = service.Filtrar(query);
+            var retorno = estados.ConvertObjects<List<EstadoViewModel>>();
+            if (!retorno.Any())
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
 
         }
     }

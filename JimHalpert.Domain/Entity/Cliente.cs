@@ -8,9 +8,9 @@ namespace JimHalpert.Domain.Entity
     {
         public Cliente()
         {
-            Faturamento = new HashSet<Faturamento>();
-            NotaFiscal = new HashSet<NotaFiscal>();
-            Tarefa = new HashSet<Tarefa>();
+            Faturamento = new List<Faturamento>();
+            NotaFiscal = new List<NotaFiscal>();
+            Tarefa = new List<Tarefa>();
         }
 
         public int ClienteId { get; set; }
@@ -36,8 +36,8 @@ namespace JimHalpert.Domain.Entity
         public virtual Cidade Cidade { get; set; }
         public virtual TipoDeCliente TipoDeCliente { get; set; }
         public virtual TipoDePessoa TipoDePessoa { get; set; }
-        public virtual ICollection<Faturamento> Faturamento { get; set; }
-        public virtual ICollection<NotaFiscal> NotaFiscal { get; set; }
-        public virtual ICollection<Tarefa> Tarefa { get; set; }
+        public virtual List<Faturamento> Faturamento { get; set; }
+        public virtual List<NotaFiscal> NotaFiscal { get; set; }
+        public virtual List<Tarefa> Tarefa { get; set; }
     }
 }

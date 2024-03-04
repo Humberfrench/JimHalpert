@@ -1,11 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JimHalpert.DomainValidator\JimHalpert.DomainValidator.csproj" />
+    <PackageReference Include="Dietcode.Core.DomainValidator" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JimHalpert.Domain\JimHalpert.Domain.csproj" />
     <ProjectReference Include="..\JimHalpert.Extensions\JimHalpert.Extensions.csproj" />
   </ItemGroup>

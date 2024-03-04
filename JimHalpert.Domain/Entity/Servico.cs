@@ -8,13 +8,13 @@ namespace JimHalpert.Domain.Entity
     {
         public Servico()
         {
-            TarefaItem = new HashSet<TarefaItem>();
+            TarefaItem = new List<TarefaItem>();
         }
 
         public int ServicoId { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
 
-        public virtual ICollection<TarefaItem> TarefaItem { get; set; }
+        public virtual List<TarefaItem> TarefaItem { get; set; }
     }
 }

@@ -8,12 +8,12 @@ namespace JimHalpert.Domain.Entity
     {
         public StatusNotaFiscal()
         {
-            NotaFiscal = new HashSet<NotaFiscal>();
+            NotaFiscal = new List<NotaFiscal>();
         }
 
         public byte StatusNotaFiscalId { get; set; }
         public string Descricao { get; set; }
 
-        public virtual ICollection<NotaFiscal> NotaFiscal { get; set; }
+        public virtual List<NotaFiscal> NotaFiscal { get; set; }
     }
 }

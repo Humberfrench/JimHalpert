@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
+using Dietcode.Core.DomainValidator;
 
 namespace JimHalpert.Services
 {

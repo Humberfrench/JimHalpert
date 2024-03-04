@@ -1,5 +1,5 @@
 ﻿using JimHalpert.Domain.Entity;
-using JimHalpert.DomainValidator;
+using Dietcode.Core.DomainValidator;
 using System.Collections.Generic;
 
 namespace JimHalpert.Domain.Inteface.Service

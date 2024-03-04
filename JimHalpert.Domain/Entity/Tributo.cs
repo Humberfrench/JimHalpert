@@ -8,7 +8,7 @@ namespace JimHalpert.Domain.Entity
     {
         public Tributo()
         {
-            TributoNotaFiscal = new HashSet<TributoNotaFiscal>();
+            TributoNotaFiscal = new List<TributoNotaFiscal>();
         }
 
         public int TributoId { get; set; }
@@ -19,6 +19,6 @@ namespace JimHalpert.Domain.Entity
         public decimal FaixaFinal { get; set; }
         public decimal ValorDeducao { get; set; }
 
-        public virtual ICollection<TributoNotaFiscal> TributoNotaFiscal { get; set; }
+        public virtual List<TributoNotaFiscal> TributoNotaFiscal { get; set; }
     }
 }

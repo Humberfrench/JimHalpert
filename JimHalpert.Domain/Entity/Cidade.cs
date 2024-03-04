@@ -8,7 +8,7 @@ namespace JimHalpert.Domain.Entity
     {
         public Cidade()
         {
-            Cliente = new HashSet<Cliente>();
+            Cliente = new List<Cliente>();
         }
 
         public int CidadeId { get; set; }
@@ -16,6 +16,6 @@ namespace JimHalpert.Domain.Entity
         public short EstadoId { get; set; }
 
         public virtual Estado Estado { get; set; }
-        public virtual ICollection<Cliente> Cliente { get; set; }
+        public virtual List<Cliente> Cliente { get; set; }
     }
 }

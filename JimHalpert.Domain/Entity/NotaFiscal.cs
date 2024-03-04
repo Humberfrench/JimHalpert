@@ -8,9 +8,9 @@ namespace JimHalpert.Domain.Entity
     {
         public NotaFiscal()
         {
-            ArquivoNotaFiscal = new HashSet<ArquivoNotaFiscal>();
-            ComposicaoNotaFiscal = new HashSet<ComposicaoNotaFiscal>();
-            TributoNotaFiscal = new HashSet<TributoNotaFiscal>();
+            ArquivoNotaFiscal = new List<ArquivoNotaFiscal>();
+            ComposicaoNotaFiscal = new List<ComposicaoNotaFiscal>();
+            TributoNotaFiscal = new List<TributoNotaFiscal>();
         }
 
         public int NotaFiscalId { get; set; }
@@ -26,8 +26,8 @@ namespace JimHalpert.Domain.Entity
 
         public virtual Cliente Cliente { get; set; }
         public virtual StatusNotaFiscal StatusNotaFiscal { get; set; }
-        public virtual ICollection<ArquivoNotaFiscal> ArquivoNotaFiscal { get; set; }
-        public virtual ICollection<ComposicaoNotaFiscal> ComposicaoNotaFiscal { get; set; }
-        public virtual ICollection<TributoNotaFiscal> TributoNotaFiscal { get; set; }
+        public virtual List<ArquivoNotaFiscal> ArquivoNotaFiscal { get; set; }
+        public virtual List<ComposicaoNotaFiscal> ComposicaoNotaFiscal { get; set; }
+        public virtual List<TributoNotaFiscal> TributoNotaFiscal { get; set; }
     }
 }

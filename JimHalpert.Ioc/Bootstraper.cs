@@ -1,22 +1,21 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using System;
 
 namespace JimHalpert.Ioc
 {
-    using Application.Interface;
     using Application.Services;
-    using Domain.Inteface.Service;
     using Domain.Inteface.Repository;
+    using Domain.Inteface.Service;
+    using JimHalpert.App.Services;
+    using JimHalpert.App.ViewModel.Interface;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc.Infrastructure;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
     using Repository;
     using Repository.Context;
     using Repository.Interfaces;
     using Repository.UnitOfWork;
     using Services;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc.Infrastructure;
 
     public static class Bootstraper
     {

@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using JimHalpert.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using JimHalpert.Domain.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace JimHalpert.Repository.Maps
 {
@@ -19,7 +16,8 @@ namespace JimHalpert.Repository.Maps
                 entity.Property(e => e.Descricao)
                     .IsRequired()
                     .HasMaxLength(75)
-                    .IsUnicode(false);            });
+                    .IsUnicode(false);
+            });
 
         }
     }

@@ -1,14 +1,18 @@
-﻿using System.Collections.Generic;
-using JimHalpert.Application.Interface;
-using JimHalpert.Application.ViewModel;
+﻿using Dietcode.Api.Core.Results;
+using Dietcode.Core.DomainValidator;
+using Dietcode.Core.Lib;
+using JimHalpert.App.Services;
+using JimHalpert.App.ViewModel;
+using JimHalpert.App.ViewModel.Interface;
 using JimHalpert.Domain.Entity;
+using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
-using JimHalpert.DomainValidator;
-using JimHalpert.Repository.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JimHalpert.Application.Services
 {
-    public class CidadeServiceApp :BaseServiceApp, ICidadeServiceApp
+    public class CidadeServiceApp : BaseServiceApp<CidadeViewModel>, ICidadeServiceApp
     {
         private readonly ICidadeService service;
         public CidadeServiceApp(ICidadeService service, IUnitOfWork uow) : base(uow)
@@ -16,70 +20,85 @@ namespace JimHalpert.Application.Services
             this.service = service;
         }
 
-        public ValidationResult Gravar(CidadeViewModel cidade)
+        public MethodResult Gravar(CidadeViewModel cidade)
         {
             BeginTransaction();
-            var dadoIncluir = Mapper.Map<Cidade>(cidade);
+            var dadoIncluir = cidade.ConvertObjects<Cidade>();
             var retorno = service.Gravar(dadoIncluir);
-            if(retorno.IsValid)
+            if (retorno.Valid)
             {
                 //commit transaction
                 Commit();
                 //commit error
-                if(!ValidationResults.IsValid)
+                if (!ValidationResults.Valid)
                 {
-                    return ValidationResults;
+                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
                 }
             }
-            return retorno;
+            return Ok(retorno);
 
         }
 
-        public ValidationResult Excluir(int id)
+        public MethodResult Excluir(int id)
         {
             BeginTransaction();
             var retorno = service.Excluir(id);
-            if (retorno.IsValid)
+            if (retorno.Valid)
             {
                 //commit transaction
                 Commit();
                 //commit error
-                if (!ValidationResults.IsValid)
+                if (!ValidationResults.Valid)
                 {
-                    return ValidationResults;
+                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
                 }
             }
-            return retorno;
+            return Ok(retorno);
 
         }
 
-        public CidadeViewModel ObterPorId(int id)
+        public MethodResult ObterPorId(int id)
         {
             var cidades = service.ObterPorId(id);
-            var retorno = Mapper.Map<CidadeViewModel>(cidades);
-            return retorno;
+            var retorno = cidades.ConvertObjects<CidadeViewModel>();
+            return Ok(retorno);
         }
 
-        public IEnumerable<CidadeViewModel> ObterTodos()
+        public MethodResult ObterTodos()
         {
             var cidades = service.ObterTodos();
-            var retorno = Mapper.Map<IEnumerable<CidadeViewModel>>(cidades);
-            return retorno;
+            var retorno = cidades.ConvertObjects<List<CidadeViewModel>>();
+            if (retorno == null)
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
 
         }
 
-        public IEnumerable<CidadeViewModel> Filtrar(string query)
+        public MethodResult Filtrar(string query)
         {
             var cidades = service.Filtrar(query);
-            var retorno = Mapper.Map<IEnumerable<CidadeViewModel>>(cidades);
-            return retorno;
+            var retorno = cidades.ConvertObjects<List<CidadeViewModel>>();
+            if (!retorno.Any())
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
 
         }
-        public IEnumerable<CidadeValueViewModel> ObterCidades(int ufId)
+        public MethodResult ObterCidades(int ufId)
         {
             var cidades = service.ObterCidades(ufId);
-            var retorno = Mapper.Map<IEnumerable<CidadeValueViewModel>>(cidades);
-            return retorno;
+            var retorno = cidades.ConvertObjects<List<CidadeViewModel>>();
+            if (!retorno.Any())
+            {
+                return NotFound("Não foi encontrado registros");
+            }
+
+            return Ok(retorno);
 
         }
 

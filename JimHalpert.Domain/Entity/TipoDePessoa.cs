@@ -8,12 +8,12 @@ namespace JimHalpert.Domain.Entity
     {
         public TipoDePessoa()
         {
-            Cliente = new HashSet<Cliente>();
+            Cliente = new List<Cliente>();
         }
 
         public byte TipoDePessoaId { get; set; }
         public string Descricao { get; set; }
 
-        public virtual ICollection<Cliente> Cliente { get; set; }
+        public virtual List<Cliente> Cliente { get; set; }
     }
 }

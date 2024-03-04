@@ -1,17 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JimHalpert.Domain.Entity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.IO;
-using Microsoft.EntityFrameworkCore.Metadata;
-using JimHalpert.Domain.Entity;
-using static Microsoft.Extensions.Configuration.ConfigurationExtensions;
-using static JimHalpert.Repository.Maps.AviaoMap;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using static JimHalpert.Repository.Maps.CidadeMap;
 using static JimHalpert.Repository.Maps.ClienteMap;
 using static JimHalpert.Repository.Maps.ServicoMap;
+using static JimHalpert.Repository.Maps.TarefaItemMap;
 using static JimHalpert.Repository.Maps.TipoDeClienteMap;
 using static JimHalpert.Repository.Maps.TipoDePessoaMap;
-using static JimHalpert.Repository.Maps.TarefaItemMap;
+using static Microsoft.Extensions.Configuration.ConfigurationExtensions;
+
 
 namespace JimHalpert.Repository.Context
 {
@@ -23,15 +23,15 @@ namespace JimHalpert.Repository.Context
             //this.
             //Configuration.LazyLoadingEnabled = false;
             //Configuration.ProxyCreationEnabled = false;
+            this.ChangeTracker.LazyLoadingEnabled = false;
         }
 
         public JimHalpertContext(DbContextOptions<JimHalpertContext> options)
             : base(options)
         {
+            this.ChangeTracker.LazyLoadingEnabled = false;
         }
-       
-        //old
-        public DbSet<Aviao> Aviao { get; set; }
+
         //new
         public virtual DbSet<ArquivoNotaFiscal> ArquivoNotaFiscal { get; set; }
         public virtual DbSet<Cidade> Cidade { get; set; }
@@ -62,6 +62,18 @@ namespace JimHalpert.Repository.Context
                 var connectionString = configuration.GetConnectionString("JimHalpertContext");
                 optionsBuilder.UseSqlServer(connectionString);
             }
+
+
+            // Obtenha uma instância do LoggerFactory
+            var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddConsole(); // Registra o log no console
+                //builder.AddDebug(); // Se preferir, também pode adicionar o log no debugger
+            });
+
+            // Configure o DbContext para usar o loggerFactory
+            optionsBuilder.UseLoggerFactory(loggerFactory);
+ 
             //if (!optionsBuilder.IsConfigured)
             //{
             //    optionsBuilder.UseSqlServer(@"Server=.\Web17;Database=RedDragon;Trusted_Connection=True;");
@@ -71,7 +83,6 @@ namespace JimHalpert.Repository.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            MapAviao(modelBuilder);
             MapCidade(modelBuilder);
             MapCliente(modelBuilder);
             MapServico(modelBuilder);

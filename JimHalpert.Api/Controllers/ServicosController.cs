@@ -1,19 +1,16 @@
-﻿using System;
+﻿using Dietcode.Api.Core;
+using Dietcode.Core.DomainValidator;
+using JimHalpert.App.ViewModel;
+using JimHalpert.App.ViewModel.Interface;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using JimHalpert.Application.Interface;
-using JimHalpert.Application.ViewModel;
-using JimHalpert.DomainValidator;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace JimHalpert.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ServicosController : ControllerBase
+    public class ServicosController : ApiControllerBase
     {
         private readonly IServicoServiceApp servicoServiceApp;
         public ServicosController(IServicoServiceApp servicoServiceApp)
@@ -22,25 +19,31 @@ namespace JimHalpert.Api.Controllers
         }
 
         [HttpGet]
-        public IList<ServicoViewModel> ObterTodos()
+        public IActionResult ObterTodos()
         {
-            return servicoServiceApp.ObterTodos().ToList();
+            var retorno = servicoServiceApp.ObterTodos();
+            return Completed<List<ServicoViewModel>>(retorno);
         }
+
         [HttpGet("{id}")]
-        public ServicoViewModel Obter(int id)
+        public IActionResult Obter(int id)
         {
-            return servicoServiceApp.ObterPorId(id);
+            var retorno = servicoServiceApp.ObterPorId(id);
+            return Completed<ServicoViewModel>(retorno);
         }
 
         [HttpPost("Excluir/{id}")]
-        public ValidationResult Excluir(int id)
+        public IActionResult Excluir(int id)
         {
-            return servicoServiceApp.Excluir(id);
+            var retorno = servicoServiceApp.Excluir(id);
+            return Completed<ValidationResult>(retorno);
         }
+
         [HttpPost("Gravar")]
-        public ValidationResult Gravar(ServicoViewModel servico)
+        public IActionResult Gravar(ServicoViewModel servico)
         {
-            return servicoServiceApp.Gravar(servico);
+            var retorno = servicoServiceApp.Gravar(servico);
+            return Completed<ValidationResult>(retorno);
         }
 
     }

@@ -1,0 +1,13 @@
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\bin\Debug\net8.0\JimHalpert.App.ViewModel.deps.json
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\bin\Debug\net8.0\JimHalpert.App.ViewModel.dll
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\bin\Debug\net8.0\JimHalpert.App.ViewModel.pdb
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\obj\Debug\net8.0\JimHalpert.App.ViewModel.csproj.AssemblyReference.cache
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\obj\Debug\net8.0\JimHalpert.App.ViewModel.GeneratedMSBuildEditorConfig.editorconfig
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\obj\Debug\net8.0\JimHalpert.App.ViewModel.AssemblyInfoInputs.cache
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\obj\Debug\net8.0\JimHalpert.App.ViewModel.AssemblyInfo.cs
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\obj\Debug\net8.0\JimHalpert.App.ViewModel.csproj.CoreCompileInputs.cache
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\obj\Debug\net8.0\JimHalpert.App.ViewModel.sourcelink.json
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\obj\Debug\net8.0\JimHalpert.App.ViewModel.dll
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\obj\Debug\net8.0\refint\JimHalpert.App.ViewModel.dll
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\obj\Debug\net8.0\JimHalpert.App.ViewModel.pdb
+D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\obj\Debug\net8.0\ref\JimHalpert.App.ViewModel.dll

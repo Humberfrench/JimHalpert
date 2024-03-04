@@ -8,8 +8,8 @@ namespace JimHalpert.Domain.Entity
     {
         public Tarefa()
         {
-            ComposicaoNotaFiscal = new HashSet<ComposicaoNotaFiscal>();
-            TarefaItem = new HashSet<TarefaItem>();
+            ComposicaoNotaFiscal = new List<ComposicaoNotaFiscal>();
+            TarefaItem = new List<TarefaItem>();
         }
 
         public int TarefaId { get; set; }
@@ -21,7 +21,7 @@ namespace JimHalpert.Domain.Entity
         public DateTime? DataFim { get; set; }
 
         public virtual Cliente Cliente { get; set; }
-        public virtual ICollection<ComposicaoNotaFiscal> ComposicaoNotaFiscal { get; set; }
-        public virtual ICollection<TarefaItem> TarefaItem { get; set; }
+        public virtual List<ComposicaoNotaFiscal> ComposicaoNotaFiscal { get; set; }
+        public virtual List<TarefaItem> TarefaItem { get; set; }
     }
 }
