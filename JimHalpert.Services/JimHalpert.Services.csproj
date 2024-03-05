@@ -6,11 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="Dietcode.Core.DomainValidator" Version="1.1.0" />
+    <PackageReference Include="Dietcode.Core.Lib" Version="1.7.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\JimHalpert.Domain\JimHalpert.Domain.csproj" />
-    <ProjectReference Include="..\JimHalpert.Extensions\JimHalpert.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

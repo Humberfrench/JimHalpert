@@ -2,7 +2,7 @@
 using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
 using Dietcode.Core.DomainValidator;
-using JimHalpert.Extensions;
+using Dietcode.Core.Lib;
 using System.Collections.Generic;
 
 namespace JimHalpert.Services

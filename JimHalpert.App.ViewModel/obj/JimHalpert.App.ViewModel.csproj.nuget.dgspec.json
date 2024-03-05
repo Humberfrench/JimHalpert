@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.App.ViewModel\\JimHalpert.App.ViewModel.csproj": {}
+    "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.App.ViewModel\\JimHalpert.App.ViewModel.csproj": {}
   },
   "projects": {
-    "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.App.ViewModel\\JimHalpert.App.ViewModel.csproj": {
+    "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.App.ViewModel\\JimHalpert.App.ViewModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.App.ViewModel\\JimHalpert.App.ViewModel.csproj",
+        "projectUniqueName": "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.App.ViewModel\\JimHalpert.App.ViewModel.csproj",
         "projectName": "JimHalpert.App.ViewModel",
-        "projectPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.App.ViewModel\\JimHalpert.App.ViewModel.csproj",
+        "projectPath": "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.App.ViewModel\\JimHalpert.App.ViewModel.csproj",
         "packagesPath": "C:\\Users\\Humber\\.nuget\\packages\\",
-        "outputPath": "D:\\Desenvolvimento\\Sistemas\\Jim Halpert\\JimHalpert.App.ViewModel\\obj\\",
+        "outputPath": "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.App.ViewModel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -54,6 +54,10 @@
             "Dietcode.Core.DomainValidator": {
               "target": "Package",
               "version": "[1.1.0, )"
+            },
+            "Dietcode.Core.Lib": {
+              "target": "Package",
+              "version": "[1.7.0, )"
             }
           },
           "imports": [

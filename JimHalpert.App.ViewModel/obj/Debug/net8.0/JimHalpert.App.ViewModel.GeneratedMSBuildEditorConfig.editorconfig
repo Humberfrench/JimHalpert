@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = JimHalpert.App.ViewModel
-build_property.ProjectDir = D:\Desenvolvimento\Sistemas\Jim Halpert\JimHalpert.App.ViewModel\
+build_property.ProjectDir = D:\Desenvolvimento\Sistemas\JimHalpert\JimHalpert.App.ViewModel\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

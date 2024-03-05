@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
+using Dietcode.Core.DomainValidator;
 using JimHalpert.Application.ViewModel;
-using JimHalpert.DomainValidator;
 
 namespace JimHalpert.Application.Interface
 {

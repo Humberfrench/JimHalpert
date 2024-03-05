@@ -10,6 +10,7 @@ using static JimHalpert.Repository.Maps.ServicoMap;
 using static JimHalpert.Repository.Maps.TarefaItemMap;
 using static JimHalpert.Repository.Maps.TipoDeClienteMap;
 using static JimHalpert.Repository.Maps.TipoDePessoaMap;
+using static JimHalpert.Repository.Maps.UsuarioMap;
 using static Microsoft.Extensions.Configuration.ConfigurationExtensions;
 
 
@@ -50,6 +51,7 @@ namespace JimHalpert.Repository.Context
         public virtual DbSet<TipoDePessoa> TipoDePessoa { get; set; }
         public virtual DbSet<Tributo> Tributo { get; set; }
         public virtual DbSet<TributoNotaFiscal> TributoNotaFiscal { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -89,6 +91,7 @@ namespace JimHalpert.Repository.Context
             MapTarefaItem(modelBuilder);
             MapTipoDeCliente(modelBuilder);
             MapTipoDePessoa(modelBuilder);
+            MapUsuario(modelBuilder);
 
             //mapear!
             //init to mapear

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <UserSecretsId>f900b910-cf33-4536-936f-e1ab97be4643</UserSecretsId>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JimHalpert.Application\JimHalpert.App.csproj" />
-    <ProjectReference Include="..\JimHalpert.Extensions\JimHalpert.Extensions.csproj" />
     <ProjectReference Include="..\JimHalpert.Ioc\JimHalpert.Ioc.csproj" />
   </ItemGroup>
 
