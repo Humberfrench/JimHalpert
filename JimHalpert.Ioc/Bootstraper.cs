@@ -80,6 +80,12 @@ namespace JimHalpert.Ioc
             services.AddScoped<ITipoDePessoaServiceApp, TipoDePessoaServiceApp>();
             #endregion
 
+            #region Usuario
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IUsuarioServiceApp, UsuarioServiceApp>();
+            #endregion
+
             services.AddDbContext<JimHalpertContext>(options => options.UseSqlServer(configuration.GetConnectionString("RedDragonContext")));
 
         }

@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Domain.Inteface.Repository
 {
     public interface IUsuarioRepository : IBaseRepository<Usuario>
     {
-        IEnumerable<Usuario> Filtrar(string query);
+        Task<Usuario> ObterUsuario(string login);
+        Task<IEnumerable<Usuario>> Filtrar(string query);
 
     }
 }

@@ -3,7 +3,9 @@ using Dapper;
 using JimHalpert.Domain.Entity;
 using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Repository
 {
@@ -14,11 +16,17 @@ namespace JimHalpert.Repository
 
         }
 
-        public IEnumerable<Usuario> Filtrar(string query)
+        public async Task<IEnumerable<Usuario>> Filtrar(string query)
         {
             var sql = $@"SELECT * FROM Usuario WHERE Descricao Nome '%{query}%'";
 
-            return this.Connection.Query<Usuario>(sql);
+            return await this.Connection.QueryAsync<Usuario>(sql);
+        }
+
+        public async Task<Usuario> ObterUsuario(string login)
+        {
+            return await DbSet.FirstOrDefaultAsync(u => 
+                                     string.Equals(u.Login, login, System.StringComparison.CurrentCultureIgnoreCase));
         }
     }
 }

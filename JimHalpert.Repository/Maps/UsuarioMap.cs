@@ -16,6 +16,7 @@ namespace JimHalpert.Repository.Maps
                 entity.Property(e => e.Email).IsRequired().HasMaxLength(100).IsUnicode(false);
                 entity.Property(e => e.Celular).IsRequired().HasMaxLength(20).IsUnicode(false);
                 entity.Property(e => e.Documento).IsRequired().HasMaxLength(50).IsUnicode(false);
+                entity.Property(e => e.TentativasInvalidas).IsRequired();
                 entity.Property(e => e.Senha).IsRequired();
                 entity.Ignore(e => e.SenhaTexto);
                 entity.Property(e => e.DataNascimento).HasColumnType("date").IsRequired();

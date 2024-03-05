@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Repository
 {
@@ -26,7 +27,8 @@ namespace JimHalpert.Repository
 
         //for dapper
         public IDbConnection Connection => new SqlConnection(contextManager.GetConnectionString);
-
+       
+        #region NoAsync
         public virtual void Adicionar(TEntity obj)
         {
             var entry = this.Context.Entry(obj);
@@ -69,6 +71,63 @@ namespace JimHalpert.Repository
         {
             return this.DbSet.Where(predicate);
         }
+
+        #endregion
+
+        #region Async
+        public virtual async Task AdicionarAsync(TEntity obj)
+        {
+            await Task.Run(() =>
+            {
+                var entry = this.Context.Entry(obj);
+                DbSet.Add(obj);
+                entry.State = EntityState.Added;
+            });
+        }
+
+        public virtual async Task AtualizarAsync(TEntity obj)
+        {
+            await Task.Run(() =>
+            {
+                var entry = this.Context.Entry(obj);
+                DbSet.Attach(obj);
+                entry.State = EntityState.Modified;
+            });
+        }
+
+        public virtual async Task RemoverAsync(TEntity obj)
+        {
+            await Task.Run(() =>
+            {
+                var entry = this.Context.Entry(obj);
+                DbSet.Remove(obj);
+                entry.State = EntityState.Deleted;
+            });
+        }
+
+        public virtual async Task<TEntity> ObterPorIdAsync(int id)
+        {
+            var resultado = await this.DbSet.FindAsync(id);
+            return resultado;
+        }
+
+        public virtual async Task<IEnumerable<TEntity>> ObterTodosAsync()
+        {
+            return await this.DbSet.ToListAsync();
+        }
+
+        public virtual async Task<IEnumerable<TEntity>> ObterTodosPaginadoAsync(int pagina, int registros)
+        {
+            var resultado = this.DbSet.Take(pagina).Skip(registros);
+            return await this.DbSet.ToListAsync();
+        }
+
+        public virtual async Task<IEnumerable<TEntity>> PesquisarAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await this.DbSet.Where(predicate).ToListAsync();
+        }
+
+        #endregion
 
         public void Dispose()
         {
