@@ -8,6 +8,7 @@ using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace JimHalpert.App.Services
 {
@@ -19,11 +20,11 @@ namespace JimHalpert.App.Services
             this.service = service;
         }
 
-        public MethodResult Gravar(ClienteViewModel cliente)
+        public async Task<MethodResult> Gravar(ClienteViewModel cliente)
         {
             BeginTransaction();
             var dadoIncluir = cliente.ConvertObjects<Cliente>();
-            var retorno = service.Gravar(dadoIncluir);
+            var retorno = await service.Gravar(dadoIncluir);
             if (retorno.Valid)
             {
                 //commit transaction
@@ -38,10 +39,10 @@ namespace JimHalpert.App.Services
 
         }
 
-        public MethodResult Excluir(int id)
+        public async Task<MethodResult> Excluir(int id)
         {
             BeginTransaction();
-            var retorno = service.Excluir(id);
+            var retorno = await service.Excluir(id);
             if (retorno.Valid)
             {
                 //commit transaction
@@ -56,9 +57,9 @@ namespace JimHalpert.App.Services
 
         }
 
-        public MethodResult ObterPorId(int id)
+        public async Task<MethodResult> ObterPorId(int id)
         {
-            var clientes = service.ObterPorId(id);
+            var clientes = await service.ObterPorId(id);
             var retorno = clientes.ConvertObjects<ClienteViewModel>();
             if (retorno == null)
             {
@@ -68,9 +69,9 @@ namespace JimHalpert.App.Services
             return Ok(retorno);
         }
 
-        public MethodResult ObterTodos()
+        public async Task<MethodResult> ObterTodos()
         {
-            var clientes = service.ObterTodos();
+            var clientes = await service.ObterTodos();
             var retorno = clientes.ConvertObjects<List<ClienteViewModel>>();
             if (!retorno.Any())
             {
@@ -81,9 +82,9 @@ namespace JimHalpert.App.Services
 
         }
 
-        public MethodResult Filtrar(string query)
+        public async Task<MethodResult> Filtrar(string query)
         {
-            var clientes = service.Filtrar(query);
+            var clientes = await service.Filtrar(query);
             var retorno = clientes.ConvertObjects<List<ClienteViewModel>>();
             if (!retorno.Any())
             {

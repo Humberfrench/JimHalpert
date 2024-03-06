@@ -8,6 +8,7 @@ using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace JimHalpert.App.Services
 {
@@ -19,11 +20,11 @@ namespace JimHalpert.App.Services
             this.service = service;
         }
 
-        public MethodResult Gravar(TipoDeClienteViewModel tipoDeCliente)
+        public async Task<MethodResult> Gravar(TipoDeClienteViewModel tipoDeCliente)
         {
             BeginTransaction();
             var dadoIncluir = tipoDeCliente.ConvertObjects<TipoDeCliente>(); //Mapper.Map<TipoDeCliente>(tipoDeCliente);
-            var retorno = service.Gravar(dadoIncluir);
+            var retorno = await service.Gravar(dadoIncluir);
             if (retorno.Valid)
             {
                 //commit transaction
@@ -38,10 +39,10 @@ namespace JimHalpert.App.Services
 
         }
 
-        public MethodResult Excluir(int id)
+        public async Task<MethodResult> Excluir(int id)
         {
             BeginTransaction();
-            var retorno = service.Excluir(id);
+            var retorno = await service.Excluir(id);
             if (retorno.Valid)
             {
                 //commit transaction
@@ -56,9 +57,9 @@ namespace JimHalpert.App.Services
 
         }
 
-        public MethodResult ObterPorId(int id)
+        public async Task<MethodResult> ObterPorId(int id)
         {
-            var tipoDeCliente = service.ObterPorId(id);
+            var tipoDeCliente = await service.ObterPorId(id);
             var retorno = tipoDeCliente.ConvertObjects<TipoDeClienteViewModel>(); //Mapper.Map<TipoDeClienteViewModel>(tipoDeClientes);
             if (retorno == null)
             {
@@ -68,9 +69,9 @@ namespace JimHalpert.App.Services
             return Ok(retorno);
         }
 
-        public MethodResult ObterTodos()
+        public async Task<MethodResult> ObterTodos()
         {
-            var tipoDeClientes = service.ObterTodos();
+            var tipoDeClientes = await service.ObterTodos();
             var retorno = tipoDeClientes.ConvertObjects<List<TipoDeClienteViewModel>>();//Mapper.Map<IEnumerable<TipoDeClienteViewModel>>(tipoDeClientes);
             if (!retorno.Any())
             {
@@ -82,9 +83,9 @@ namespace JimHalpert.App.Services
 
         }
 
-        public MethodResult Filtrar(string query)
+        public async Task<MethodResult> Filtrar(string query)
         {
-            var tipoDeClientes = service.Filtrar(query);
+            var tipoDeClientes = await service.Filtrar(query);
             var retorno = tipoDeClientes.ConvertObjects<List<TipoDeClienteViewModel>>();
             if (!retorno.Any())
             {

@@ -5,6 +5,7 @@ using JimHalpert.App.ViewModel.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Api.Controllers
 {
@@ -19,30 +20,30 @@ namespace JimHalpert.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult ObterTodos()
+        public async Task<IActionResult> ObterTodos()
         {
-            var retorno = servicoServiceApp.ObterTodos();
+            var retorno = await servicoServiceApp.ObterTodos();
             return Completed<List<ServicoViewModel>>(retorno);
         }
 
         [HttpGet("{id}")]
-        public IActionResult Obter(int id)
+        public async Task<IActionResult> Obter(int id)
         {
-            var retorno = servicoServiceApp.ObterPorId(id);
+            var retorno = await servicoServiceApp.ObterPorId(id);
             return Completed<ServicoViewModel>(retorno);
         }
 
         [HttpPost("Excluir/{id}")]
-        public IActionResult Excluir(int id)
+        public async Task<IActionResult> Excluir(int id)
         {
-            var retorno = servicoServiceApp.Excluir(id);
+            var retorno = await servicoServiceApp.Excluir(id);
             return Completed<ValidationResult>(retorno);
         }
 
         [HttpPost("Gravar")]
-        public IActionResult Gravar(ServicoViewModel servico)
+        public async Task<IActionResult> Gravar(ServicoViewModel servico)
         {
-            var retorno = servicoServiceApp.Gravar(servico);
+            var retorno = await servicoServiceApp.Gravar(servico);
             return Completed<ValidationResult>(retorno);
         }
 

@@ -8,6 +8,7 @@ using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 
 namespace JimHalpert.App.Services
@@ -20,11 +21,11 @@ namespace JimHalpert.App.Services
             this.service = service;
         }
 
-        public MethodResult Gravar(EstadoViewModel estado)
+        public async Task<MethodResult> Gravar(EstadoViewModel estado)
         {
             BeginTransaction();
             var dadoIncluir = estado.ConvertObjects<Estado>();
-            var retorno = service.Gravar(dadoIncluir);
+            var retorno = await service.Gravar(dadoIncluir);
             if (retorno.Valid)
             {
                 //commit transaction
@@ -39,10 +40,10 @@ namespace JimHalpert.App.Services
 
         }
 
-        public MethodResult Excluir(int id)
+        public async Task<MethodResult> Excluir(int id)
         {
             BeginTransaction();
-            var retorno = service.Excluir(id);
+            var retorno = await service.Excluir(id);
             if (retorno.Valid)
             {
                 //commit transaction
@@ -57,9 +58,9 @@ namespace JimHalpert.App.Services
 
         }
 
-        public MethodResult ObterPorId(int id)
+        public async Task<MethodResult> ObterPorId(int id)
         {
-            var estados = service.ObterPorId(id);
+            var estados = await service.ObterPorId(id);
             var retorno = estados.ConvertObjects<EstadoViewModel>();
             if (retorno == null)
             {
@@ -69,9 +70,9 @@ namespace JimHalpert.App.Services
             return Ok(retorno);
         }
 
-        public MethodResult ObterTodos()
+        public async Task<MethodResult> ObterTodos()
         {
-            var estados = service.ObterTodos();
+            var estados = await service.ObterTodos();
             var retorno = estados.ConvertObjects<List<EstadoViewModel>>();
             if (!retorno.Any())
             {
@@ -82,9 +83,9 @@ namespace JimHalpert.App.Services
 
         }
 
-        public MethodResult Filtrar(string query)
+        public async Task<MethodResult> Filtrar(string query)
         {
-            var estados = service.Filtrar(query);
+            var estados = await service.Filtrar(query);
             var retorno = estados.ConvertObjects<List<EstadoViewModel>>();
             if (!retorno.Any())
             {

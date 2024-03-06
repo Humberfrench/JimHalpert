@@ -7,6 +7,7 @@ using JimHalpert.Domain.Entity;
 using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
 using JimHalpert.Domain.ObjectValue;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -98,6 +99,12 @@ namespace JimHalpert.App.Services
 
             return Ok(retorno);
 
+        }
+
+        [Obsolete("Método não implementado. Não usar.")]
+        public Task<MethodResult> Gravar(UsuarioViewModel dado)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

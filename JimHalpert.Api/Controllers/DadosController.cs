@@ -4,6 +4,7 @@ using JimHalpert.App.ViewModel.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Api.Controllers
 {
@@ -28,58 +29,58 @@ namespace JimHalpert.Api.Controllers
         }
 
         [HttpGet("Tipo/Pessoa")]
-        public IActionResult ObterTiposDePessoas()
+        public async Task<IActionResult> ObterTiposDePessoas()
         {
-            var retorno = tipoDePessoaServiceApp.ObterTodos();
+            var retorno = await tipoDePessoaServiceApp.ObterTodos();
             return Completed<List<TipoDePessoaViewModel>>(retorno);
         }
 
         [HttpGet("Tipo/Pessoa/{id}")]
-        public IActionResult ObterTipoDePessoa(int id)
+        public async Task<IActionResult> ObterTipoDePessoa(int id)
         {
-            var retorno = tipoDePessoaServiceApp.ObterPorId(id);
+            var retorno = await tipoDePessoaServiceApp.ObterPorId(id);
             return Completed<TipoDePessoaViewModel>(retorno);
         }
 
         [HttpGet("Tipo/Cliente")]
-        public IActionResult ObterTiposDeClientes()
+        public async Task<IActionResult> ObterTiposDeClientes()
         {
-            var retorno = tipoDeClienteServiceApp.ObterTodos();
+            var retorno = await tipoDeClienteServiceApp.ObterTodos();
             return Completed<List<TipoDeClienteViewModel>>(retorno);
         }
 
         [HttpGet("Tipo/Cliente/{id}")]
-        public IActionResult ObterTipoDeCliente(int id)
+        public async Task<IActionResult> ObterTipoDeCliente(int id)
         {
-            var retorno = tipoDeClienteServiceApp.ObterPorId(id);
+            var retorno = await tipoDeClienteServiceApp.ObterPorId(id);
             return Completed<TipoDeClienteViewModel>(retorno);
         }
 
         [HttpGet("Tipo/Cidade/{uf}")]
-        public IActionResult ObterCidades(int uf)
+        public async Task<IActionResult> ObterCidades(int uf)
         {
-            var retorno = cidadeServiceApp.ObterCidades(uf);
+            var retorno = await cidadeServiceApp.ObterCidades(uf);
             return Completed<List<CidadeViewModel>>(retorno);
         }
 
         [HttpGet("Tipo/Cidade/Obter/{id}")]
-        public IActionResult ObterCidade(int id)
+        public async Task<IActionResult> ObterCidade(int id)
         {
-            var retorno = cidadeServiceApp.ObterPorId(id);
+            var retorno = await cidadeServiceApp.ObterPorId(id);
             return Completed<CidadeViewModel>(retorno);
         }
 
         [HttpGet("Tipo/Estado")]
-        public IActionResult ObterEstados()
+        public async Task<IActionResult> ObterEstados()
         {
-            var retorno = estadoServiceApp.ObterTodos();
+            var retorno = await estadoServiceApp.ObterTodos();
             return Completed<List<EstadoViewModel>>(retorno);
         }
 
         [HttpGet("Tipo/Estado/{id}")]
-        public IActionResult ObterEstado(int id)
+        public async Task<IActionResult> ObterEstado(int id)
         {
-            var retorno = estadoServiceApp.ObterPorId(id);
+            var retorno = await estadoServiceApp.ObterPorId(id);
             return Completed<EstadoViewModel>(retorno);
         }
 
