@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
 using Dietcode.Core.DomainValidator;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Services
 {
@@ -17,29 +18,29 @@ namespace JimHalpert.Services
             this.repository = repository;
         }
 
-        public virtual void Adicionar(TEntity obj)
+        public virtual async Task Adicionar(TEntity obj)
         {
-            this.repository.Adicionar(obj);
+            await this.repository.Adicionar(obj);
         }
 
-        public virtual void Atualizar(TEntity obj)
+        public virtual async Task Atualizar(TEntity obj)
         {
-            this.repository.Atualizar(obj);
+            await this.repository.Atualizar(obj);
         }
 
-        public virtual void Remover(TEntity obj)
+        public virtual async Task Remover(TEntity obj)
         {
-            this.repository.Remover(obj);
+            await this.repository.Remover(obj);
         }
 
-        public virtual TEntity ObterPorId(int id)
+        public virtual async Task<TEntity> ObterPorId(int id)
         {
-            return this.repository.ObterPorId(id);
+            return await this.repository.ObterPorId(id);
         }
 
-        public virtual IEnumerable<TEntity> ObterTodos()
+        public virtual async Task<IEnumerable<TEntity>>ObterTodos()
         {
-            return this.repository.ObterTodos();
+            return await this.repository.ObterTodos();
         }
 
         public void Dispose()
@@ -47,9 +48,9 @@ namespace JimHalpert.Services
             this.repository.Dispose();
         }
 
-        public IEnumerable<TEntity> Pesquisar(Expression<Func<TEntity, bool>> predicate)
+        public async Task<IEnumerable<TEntity>> Pesquisar(Expression<Func<TEntity, bool>> predicate)
         {
-            return this.repository.Pesquisar(predicate);
+            return await this.repository.Pesquisar(predicate);
         }
     }
 }

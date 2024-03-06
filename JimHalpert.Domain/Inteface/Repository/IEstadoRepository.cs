@@ -1,10 +1,11 @@
 ﻿using JimHalpert.Domain.Entity;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Domain.Inteface.Repository
 {
     public interface IEstadoRepository: IBaseRepository<Estado>
     {
-        IEnumerable<Estado> Filtrar(string query);
+        Task<IEnumerable<Estado>> Filtrar(string query);
     }
 }

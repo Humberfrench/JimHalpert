@@ -4,6 +4,7 @@ using JimHalpert.Domain.Inteface.Service;
 using Dietcode.Core.DomainValidator;
 using Dietcode.Core.Lib;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Services
 {
@@ -17,7 +18,7 @@ namespace JimHalpert.Services
             validationResult = new ValidationResult();
         }
 
-        public ValidationResult Gravar(Servico servico)
+        public async Task<ValidationResult> Gravar(Servico servico)
         {
             //validate
             if (servico.Nome.IsNullOrEmptyOrWhiteSpace())
@@ -35,33 +36,33 @@ namespace JimHalpert.Services
             //add or update
             if(servico.ServicoId == 0)
             {
-                base.Adicionar(servico);
+                await base.Adicionar(servico);
             }
             else
             {
-                base.Atualizar(servico);
+                await base.Atualizar(servico);
             }
 
             return validationResult;
         }
 
-        public ValidationResult Excluir(int id)
+        public async Task<ValidationResult> Excluir(int id)
         {
-            var servico = ObterPorId(id);
+            var servico = await ObterPorId(id);
             if(servico == null)
             {
                 validationResult.Add("Serviço inexistente");
                 return validationResult;
             }
 
-            base.Remover(servico);
+            await base.Remover(servico);
             
             return validationResult;
         }
 
-        public IEnumerable<Servico> Filtrar(string query)
+        public async Task<IEnumerable<Servico>> Filtrar(string query)
         {
-            return repository.Filtrar(query);
+            return await repository.Filtrar(query);
         }
     }
 }

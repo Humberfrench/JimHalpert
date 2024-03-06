@@ -5,6 +5,7 @@ using Dietcode.Core.DomainValidator;
 using Dietcode.Core.Lib;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Services
 {
@@ -19,7 +20,7 @@ namespace JimHalpert.Services
             validationResult = new ValidationResult();
         }
 
-        public ValidationResult Gravar(Cliente cliente)
+        public async Task<ValidationResult> Gravar(Cliente cliente)
         {
             //validate
             if (cliente.Nome.IsNullOrEmptyOrWhiteSpace())
@@ -56,42 +57,34 @@ namespace JimHalpert.Services
             {
                 cliente.DataAlteracao = DateTime.Now;
                 cliente.DataCriacao = DateTime.Now;
-                base.Adicionar(cliente);
+                await base.Adicionar(cliente);
             }
             else
             {
                 cliente.DataAlteracao = DateTime.Now;
-                base.Atualizar(cliente);
+                await base.Atualizar(cliente);
             }
 
             return validationResult;
         }
 
-        public ValidationResult Excluir(int id)
+        public async Task<ValidationResult> Excluir(int id)
         {
-            var cliente = ObterPorId(id);
+            var cliente = await ObterPorId(id);
             if(cliente == null)
             {
                 validationResult.Add("Cliente inexistente");
                 return validationResult;
             }
 
-            base.Remover(cliente);
-            
+            await base.Remover(cliente);
+
             return validationResult;
         }
 
-        public IEnumerable<Cliente> Filtrar(string query)
+        public async Task<IEnumerable<Cliente>> Filtrar(string query)
         {
-            return repository.Filtrar(query);
-        }
-        public new Cliente ObterPorId(int id)
-        {
-            return repository.ObterPorId(id);
-        }
-        public new IEnumerable<Cliente> ObterTodos()
-        {
-            return repository.ObterTodos();
+            return await repository.Filtrar(query);
         }
     }
 }

@@ -25,6 +25,8 @@ namespace JimHalpert.Services
             validationResult = new ValidationResult();
         }
 
+
+
         public async Task<ValidationResult> Gravar(UsuarioDados usuarioDados)
         {
             //validate
@@ -82,7 +84,7 @@ namespace JimHalpert.Services
             }
             else
             {
-                usuario = await repository.ObterPorIdAsync(usuarioDados.UsuarioId);
+                usuario = await repository.ObterPorId(usuarioDados.UsuarioId);
                 usuario.Login = usuarioDados.Login;
                 usuario.Nome = usuarioDados.Nome;
                 usuario.Email = usuarioDados.Email;
@@ -97,11 +99,11 @@ namespace JimHalpert.Services
             //add or update
             if (usuarioDados.UsuarioId == 0)
             {
-                await repository.AdicionarAsync(usuario);
+                await repository.Adicionar(usuario);
             }
             else
             {
-                await repository.AtualizarAsync(usuario);
+                await repository.Atualizar(usuario);
             }
 
             return validationResult;
@@ -109,7 +111,7 @@ namespace JimHalpert.Services
 
         public async Task<ValidationResult> Excluir(int id)
         {
-            var usuario = await repository.ObterPorIdAsync(id);
+            var usuario = await repository.ObterPorId(id);
 
             if (usuario == null)
             {
@@ -128,7 +130,7 @@ namespace JimHalpert.Services
 
         private async Task<ValidationResult> ObterUsuario(int usuarioId)
         {
-            var usuario = await repository.ObterPorIdAsync(usuarioId);
+            var usuario = await repository.ObterPorId(usuarioId);
 
             if (usuario == null)
             {
@@ -152,12 +154,11 @@ namespace JimHalpert.Services
             return validationResult;
         }
 
-
         public async Task<ValidationResult> AlterarSenha(AlterarSenhaObject dado)
         {
             var usuarioValidator = await ObterUsuario(dado.Login);
 
-            if(usuarioValidator.Invalid)
+            if (usuarioValidator.Invalid)
             {
                 validationResult.Add("Usuario não encontrado");
                 return validationResult;
@@ -166,7 +167,7 @@ namespace JimHalpert.Services
             var usuario = usuarioValidator.Retorno as Usuario;
             var senha = convertKey.Decript(usuario.Senha).ChaveDecript;
 
-            if(senha != dado.SenhaAtual)
+            if (senha != dado.SenhaAtual)
             {
                 validationResult.Add("Senha atual incorreta");
                 return validationResult;
@@ -180,14 +181,35 @@ namespace JimHalpert.Services
 
             usuario.Senha = convertKey.Encript(dado.SenhaNova).ChaveEncript;
 
-            await repository.AtualizarAsync(usuario);
+            await repository.Atualizar(usuario);
 
             return null;
         }
 
         public async Task<ValidationResult> Login(LoginDado login)
         {
-            return null;
+            var usuarioValidator = await ObterUsuario(login.Login);
+
+            if (usuarioValidator.Invalid)
+            {
+                validationResult.Add("Login e ou Senha incorreta");
+                return validationResult;
+            }
+
+            var usuario = usuarioValidator.Retorno as Usuario;
+            var senha = convertKey.Decript(usuario.Senha).ChaveDecript;
+
+            if (senha != login.Senha)
+            {
+                validationResult.Add("Login e ou Senha incorreta");
+                return validationResult;
+            }
+
+            usuario.TentativasInvalidas = 0;
+            usuario.DataLogin = System.DateTime.Now;
+            await repository.Atualizar(usuario);
+
+            return validationResult;
         }
 
         public async Task<ValidationResult> DesbloqueiaUsuario(int usuarioId)
@@ -203,6 +225,7 @@ namespace JimHalpert.Services
 
             return await DesbloqueiaUsuario(usuario);
         }
+
         public async Task<ValidationResult> DesbloqueiaUsuario(string login)
         {
             var usuarioValidator = await ObterUsuario(login);
@@ -223,10 +246,11 @@ namespace JimHalpert.Services
             usuario.Ativo = true;
             usuario.TentativasInvalidas = 0;
             usuario.DataAtualizacao = System.DateTime.Now;
-            await repository.AtualizarAsync(usuario);
+            await repository.Atualizar(usuario);
 
             return validationResult;
         }
+
         public async Task<ValidationResult> BloqueiaUsuario(int usuarioId)
         {
             var usuarioValidator = await ObterUsuario(usuarioId);
@@ -242,7 +266,7 @@ namespace JimHalpert.Services
             usuario.Ativo = false;
             usuario.TentativasInvalidas = 0;
             usuario.DataAtualizacao = System.DateTime.Now;
-            await repository.AtualizarAsync(usuario);
+            await repository.Atualizar(usuario);
 
             return validationResult;
         }

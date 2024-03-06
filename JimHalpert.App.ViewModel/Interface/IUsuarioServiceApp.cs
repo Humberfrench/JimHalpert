@@ -3,12 +3,8 @@ using Dietcode.Core.DomainValidator;
 
 namespace JimHalpert.App.ViewModel.Interface
 {
-    public interface IUsuarioServiceApp
+    public interface IUsuarioServiceApp: IBaseService<UsuarioViewModel>
     {
-        MethodResult ObterTodos();
-        MethodResult Filtrar(string query);
-        MethodResult Gravar(UsuarioDadosViewModel Usuario);
-        MethodResult Excluir(int id);
-        MethodResult ObterPorId(int id);
+        Task<MethodResult> Gravar(UsuarioDadosViewModel Usuario);
     }
 }

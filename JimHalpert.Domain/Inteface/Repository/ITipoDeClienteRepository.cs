@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Domain.Inteface.Repository
 {
     public interface ITipoDeClienteRepository : IBaseRepository<TipoDeCliente>
     {
-        IEnumerable<TipoDeCliente> Filtrar(string query);
+        Task<IEnumerable<TipoDeCliente>> Filtrar(string query);
 
     }
 }

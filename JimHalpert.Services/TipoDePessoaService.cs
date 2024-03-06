@@ -4,6 +4,7 @@ using JimHalpert.Domain.Inteface.Service;
 using Dietcode.Core.DomainValidator;
 using Dietcode.Core.Lib;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Services
 {
@@ -17,7 +18,7 @@ namespace JimHalpert.Services
             validationResult = new ValidationResult();
         }
 
-        public ValidationResult Gravar(TipoDePessoa tipoDePessoa)
+        public async Task<ValidationResult> Gravar(TipoDePessoa tipoDePessoa)
         {
             //validate
 
@@ -30,33 +31,33 @@ namespace JimHalpert.Services
             //add or update
             if(tipoDePessoa.TipoDePessoaId == 0)
             {
-                base.Adicionar(tipoDePessoa);
+                await base.Adicionar(tipoDePessoa);
             }
             else
             {
-                base.Atualizar(tipoDePessoa);
+                await base.Atualizar(tipoDePessoa);
             }
 
             return validationResult;
         }
 
-        public ValidationResult Excluir(int id)
+        public async Task<ValidationResult> Excluir(int id)
         {
-            var tipoDePessoa = ObterPorId(id);
+            var tipoDePessoa = await ObterPorId(id);
             if(tipoDePessoa == null)
             {
                 validationResult.Add("Tipo de Pessoa inexistente");
                 return validationResult;
             }
 
-            base.Remover(tipoDePessoa);
+            await base.Remover(tipoDePessoa);
             
             return validationResult;
         }
 
-        public IEnumerable<TipoDePessoa> Filtrar(string query)
+        public async Task<IEnumerable<TipoDePessoa>> Filtrar(string query)
         {
-            return repository.Filtrar(query);
+            return await repository.Filtrar(query);
         }
     }
 }

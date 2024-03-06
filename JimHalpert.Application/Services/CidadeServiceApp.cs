@@ -9,6 +9,7 @@ using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Domain.Inteface.Service;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Application.Services
 {
@@ -20,11 +21,11 @@ namespace JimHalpert.Application.Services
             this.service = service;
         }
 
-        public MethodResult Gravar(CidadeViewModel cidade)
+        public async Task<MethodResult> Gravar(CidadeViewModel cidade)
         {
             BeginTransaction();
             var dadoIncluir = cidade.ConvertObjects<Cidade>();
-            var retorno = service.Gravar(dadoIncluir);
+            var retorno = await service.Gravar(dadoIncluir);
             if (retorno.Valid)
             {
                 //commit transaction
@@ -39,10 +40,10 @@ namespace JimHalpert.Application.Services
 
         }
 
-        public MethodResult Excluir(int id)
+        public async Task<MethodResult> Excluir(int id)
         {
             BeginTransaction();
-            var retorno = service.Excluir(id);
+            var retorno = await service.Excluir(id);
             if (retorno.Valid)
             {
                 //commit transaction
@@ -57,16 +58,16 @@ namespace JimHalpert.Application.Services
 
         }
 
-        public MethodResult ObterPorId(int id)
+        public async Task<MethodResult> ObterPorId(int id)
         {
-            var cidades = service.ObterPorId(id);
+            var cidades = await service.ObterPorId(id);
             var retorno = cidades.ConvertObjects<CidadeViewModel>();
             return Ok(retorno);
         }
 
-        public MethodResult ObterTodos()
+        public async Task<MethodResult> ObterTodos()
         {
-            var cidades = service.ObterTodos();
+            var cidades = await service.ObterTodos();
             var retorno = cidades.ConvertObjects<List<CidadeViewModel>>();
             if (retorno == null)
             {
@@ -77,9 +78,9 @@ namespace JimHalpert.Application.Services
 
         }
 
-        public MethodResult Filtrar(string query)
+        public async Task<MethodResult> Filtrar(string query)
         {
-            var cidades = service.Filtrar(query);
+            var cidades = await service.Filtrar(query);
             var retorno = cidades.ConvertObjects<List<CidadeViewModel>>();
             if (!retorno.Any())
             {
@@ -89,9 +90,9 @@ namespace JimHalpert.Application.Services
             return Ok(retorno);
 
         }
-        public MethodResult ObterCidades(int ufId)
+        public async Task<MethodResult> ObterCidades(int ufId)
         {
-            var cidades = service.ObterCidades(ufId);
+            var cidades = await service.ObterCidades(ufId);
             var retorno = cidades.ConvertObjects<List<CidadeViewModel>>();
             if (!retorno.Any())
             {

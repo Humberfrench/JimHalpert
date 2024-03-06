@@ -4,6 +4,7 @@ using JimHalpert.Domain.Inteface.Service;
 using Dietcode.Core.DomainValidator;
 using Dietcode.Core.Lib;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Services
 {
@@ -24,63 +25,63 @@ namespace JimHalpert.Services
             validationResult = new ValidationResult();
         }
 
-        public ValidationResult Gravar(NotaFiscal aviao)
+        public async Task<ValidationResult> Gravar(NotaFiscal notaFiscal)
         {
             //validate
-            //if (aviao.NomeUf.IsNullOrEmptyOrWhiteSpace())
+            //if (notaFiscal.NomeUf.IsNullOrEmptyOrWhiteSpace())
             //{
             //    validationResult.Add("Nome não preenchido");
             //    return validationResult;
             //}
 
-            //if (aviao.SiglaUf.IsNullOrEmptyOrWhiteSpace())
+            //if (notaFiscal.SiglaUf.IsNullOrEmptyOrWhiteSpace())
             //{
             //    validationResult.Add("Sigla Uf não preenchido");
             //    return validationResult;
             //}
 
             //add or update
-            if(aviao.NotaFiscalId == 0)
+            if(notaFiscal.NotaFiscalId == 0)
             {
-                base.Adicionar(aviao);
+                await base.Adicionar(notaFiscal);
             }
             else
             {
-                base.Atualizar(aviao);
+                await base.Atualizar(notaFiscal);
             }
 
             return validationResult;
         }
 
-        public ValidationResult Excluir(int id)
+        public async Task<ValidationResult> Excluir(int id)
         {
-            var aviao = ObterPorId(id);
-            if(aviao == null)
+            var notaFiscal = await ObterPorId(id);
+            if(notaFiscal == null)
             {
                 validationResult.Add("Avião inexistente");
                 return validationResult;
             }
 
-            base.Remover(aviao);
-            
+            await base.Remover(notaFiscal);
+
             return validationResult;
         }
 
-        public IEnumerable<StatusNotaFiscal> StatusNotaFiscais() 
+        public async Task<IEnumerable<StatusNotaFiscal>> StatusNotaFiscais() 
         {
-            return statusNotaFiscalRepository.ObterTodos();
+            return await statusNotaFiscalRepository.ObterTodos();
         }
 
-        public StatusNotaFiscal StatusNotaFiscalPorId(int id)
+        public async Task<StatusNotaFiscal> StatusNotaFiscalPorId(int id)
         {
-            return statusNotaFiscalRepository.ObterPorId(id);
+            return await statusNotaFiscalRepository.ObterPorId(id);
         }
-        public IEnumerable<Mes> ObterListaMes()
+        public async Task<IEnumerable<Mes>> ObterListaMes()
         {
-            return mesRepository.ObterTodos();
+            return await mesRepository.ObterTodos();
         }
 
-        public IEnumerable<NotaFiscal> Filtrar(string query)
+        public async Task<IEnumerable<NotaFiscal>> Filtrar(string query)
         {
             return null;// notaFiscalRepository.Filtrar(query);
         }

@@ -3,12 +3,7 @@ using Dietcode.Core.DomainValidator;
 
 namespace JimHalpert.App.ViewModel.Interface
 {
-    public interface ITipoDeClienteServiceApp
+    public interface ITipoDeClienteServiceApp : IBaseService<TipoDeClienteViewModel>
     {
-        MethodResult ObterTodos();
-        MethodResult Filtrar(string query);
-        MethodResult Gravar(TipoDeClienteViewModel tipoDeCliente);
-        MethodResult Excluir(int id);
-        MethodResult ObterPorId(int id);
     }
 }

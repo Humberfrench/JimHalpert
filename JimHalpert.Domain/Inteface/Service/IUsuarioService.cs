@@ -14,7 +14,7 @@ namespace JimHalpert.Domain.Inteface.Service
         Task<ValidationResult> BloqueiaUsuario(int usuario);
         Task<ValidationResult> DesbloqueiaUsuario(string login);
         Task<ValidationResult> DesbloqueiaUsuario(int usuario);
-        Task<ValidationResult> Login(string query);
-        Task<ValidationResult> AlterarSenha(string query);
+        Task<ValidationResult> Login(LoginDado login);
+        Task<ValidationResult> AlterarSenha(AlterarSenhaObject dado);
     }
 }

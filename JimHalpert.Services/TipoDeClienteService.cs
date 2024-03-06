@@ -4,6 +4,7 @@ using JimHalpert.Domain.Inteface.Service;
 using Dietcode.Core.DomainValidator;
 using Dietcode.Core.Lib;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Services
 {
@@ -17,7 +18,7 @@ namespace JimHalpert.Services
             validationResult = new ValidationResult();
         }
 
-        public ValidationResult Gravar(TipoDeCliente tipoDeCliente)
+        public async Task<ValidationResult> Gravar(TipoDeCliente tipoDeCliente)
         {
             //validate
 
@@ -28,35 +29,35 @@ namespace JimHalpert.Services
             }
 
             //add or update
-            if(tipoDeCliente.TipoDeClienteId == 0)
+            if (tipoDeCliente.TipoDeClienteId == 0)
             {
-                base.Adicionar(tipoDeCliente);
+                await base.Adicionar(tipoDeCliente);
             }
             else
             {
-                base.Atualizar(tipoDeCliente);
+                await base.Atualizar(tipoDeCliente);
             }
 
             return validationResult;
         }
 
-        public ValidationResult Excluir(int id)
+        public async Task<ValidationResult> Excluir(int id)
         {
-            var tipoDeCliente = ObterPorId(id);
-            if(tipoDeCliente == null)
+            var tipoDeCliente = await ObterPorId(id);
+            if (tipoDeCliente == null)
             {
                 validationResult.Add("Tipo de Cliente inexistente");
                 return validationResult;
             }
 
-            base.Remover(tipoDeCliente);
-            
+            await base.Remover(tipoDeCliente);
+
             return validationResult;
         }
 
-        public IEnumerable<TipoDeCliente> Filtrar(string query)
+        public async Task<IEnumerable<TipoDeCliente>> Filtrar(string query)
         {
-            return repository.Filtrar(query);
+            return await repository.Filtrar(query);
         }
     }
 }

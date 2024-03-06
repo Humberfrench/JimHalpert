@@ -4,6 +4,7 @@ using JimHalpert.Domain.Entity;
 using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Repository.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Repository
 {
@@ -14,11 +15,11 @@ namespace JimHalpert.Repository
 
         }
 
-        public IEnumerable<TipoDePessoa> Filtrar(string query)
+        public async Task<IEnumerable<TipoDePessoa>> Filtrar(string query)
         {
             var sql = $@"SELECT * FROM TipoDePessoa WHERE Descricao like '%{query}%'";
 
-            return this.Connection.Query<TipoDePessoa>(sql);
+            return await this.Connection.QueryAsync<TipoDePessoa>(sql);
         }
     }
 }

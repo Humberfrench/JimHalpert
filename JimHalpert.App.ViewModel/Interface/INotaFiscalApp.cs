@@ -1,17 +1,13 @@
 ﻿using Dietcode.Core.DomainValidator;
+using System.Threading.Tasks;
 
 namespace JimHalpert.App.ViewModel.Interface
 {
-    public interface INotaFiscalServiceApp
+    public interface INotaFiscalServiceApp : IBaseService<NotaFiscalViewModel>
     {
-        IEnumerable<NotaFiscalViewModel> ObterTodos();
-        IEnumerable<NotaFiscalViewModel> Filtrar(string query);
-        ValidationResult Gravar(NotaFiscalViewModel servico);
-        ValidationResult Excluir(int id);
-        NotaFiscalViewModel ObterPorId(int id);
-        IEnumerable<StatusNotaFiscalViewModel> StatusNotaFiscais();
-        StatusNotaFiscalViewModel StatusNotaFiscalPorId(int id);
-        IEnumerable<MesViewModel> ObterListaMes();
+        Task<IEnumerable<StatusNotaFiscalViewModel>> StatusNotaFiscais();
+        Task<StatusNotaFiscalViewModel> StatusNotaFiscalPorId(int id);
+        Task<IEnumerable<MesViewModel>> ObterListaMes();
 
     }
 }

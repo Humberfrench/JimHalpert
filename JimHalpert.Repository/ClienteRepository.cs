@@ -6,6 +6,7 @@ using JimHalpert.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Repository
 {
@@ -33,11 +34,11 @@ namespace JimHalpert.Repository
         //                .Where(c => c.ClienteId == id).FirstOrDefault();
         //}
 
-        public IEnumerable<Cliente> Filtrar(string query)
+        public async Task<IEnumerable<Cliente>> Filtrar(string query)
         {
             var sql = $@"SELECT * FROM Cliente WHERE Descricao like '%{query}%'";
 
-            return this.Connection.Query<Cliente>(sql);
+            return await this.Connection.QueryAsync<Cliente>(sql);
         }
     }
 }

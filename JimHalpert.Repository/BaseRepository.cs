@@ -27,55 +27,9 @@ namespace JimHalpert.Repository
 
         //for dapper
         public IDbConnection Connection => new SqlConnection(contextManager.GetConnectionString);
-       
-        #region NoAsync
-        public virtual void Adicionar(TEntity obj)
-        {
-            var entry = this.Context.Entry(obj);
-            DbSet.Add(obj);
-            entry.State = EntityState.Added;
-        }
-
-        public virtual void Atualizar(TEntity obj)
-        {
-            var entry = this.Context.Entry(obj);
-            DbSet.Attach(obj);
-            entry.State = EntityState.Modified;
-        }
-
-        public virtual void Remover(TEntity obj)
-        {
-            var entry = this.Context.Entry(obj);
-            DbSet.Remove(obj);
-            entry.State = EntityState.Deleted;
-        }
-
-        public virtual TEntity ObterPorId(int id)
-        {
-            var resultado = this.DbSet.Find(id);
-            return resultado;
-        }
-
-        public virtual IEnumerable<TEntity> ObterTodos()
-        {
-            return this.DbSet.ToList();
-        }
-
-        public virtual IEnumerable<TEntity> ObterTodosPaginado(int pagina, int registros)
-        {
-            var resultado = this.DbSet.Take(pagina).Skip(registros);
-            return this.DbSet.ToList();
-        }
-
-        public virtual IEnumerable<TEntity> Pesquisar(Expression<Func<TEntity, bool>> predicate)
-        {
-            return this.DbSet.Where(predicate);
-        }
-
-        #endregion
 
         #region Async
-        public virtual async Task AdicionarAsync(TEntity obj)
+        public virtual async Task Adicionar(TEntity obj)
         {
             await Task.Run(() =>
             {
@@ -85,7 +39,7 @@ namespace JimHalpert.Repository
             });
         }
 
-        public virtual async Task AtualizarAsync(TEntity obj)
+        public virtual async Task Atualizar(TEntity obj)
         {
             await Task.Run(() =>
             {
@@ -95,7 +49,7 @@ namespace JimHalpert.Repository
             });
         }
 
-        public virtual async Task RemoverAsync(TEntity obj)
+        public virtual async Task Remover(TEntity obj)
         {
             await Task.Run(() =>
             {
@@ -105,24 +59,24 @@ namespace JimHalpert.Repository
             });
         }
 
-        public virtual async Task<TEntity> ObterPorIdAsync(int id)
+        public virtual async Task<TEntity> ObterPorId(int id)
         {
             var resultado = await this.DbSet.FindAsync(id);
             return resultado;
         }
 
-        public virtual async Task<IEnumerable<TEntity>> ObterTodosAsync()
+        public virtual async Task<IEnumerable<TEntity>> ObterTodos()
         {
             return await this.DbSet.ToListAsync();
         }
 
-        public virtual async Task<IEnumerable<TEntity>> ObterTodosPaginadoAsync(int pagina, int registros)
+        public virtual async Task<IEnumerable<TEntity>> ObterTodosPaginado(int pagina, int registros)
         {
             var resultado = this.DbSet.Take(pagina).Skip(registros);
             return await this.DbSet.ToListAsync();
         }
 
-        public virtual async Task<IEnumerable<TEntity>> PesquisarAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual async Task<IEnumerable<TEntity>> Pesquisar(Expression<Func<TEntity, bool>> predicate)
         {
             return await this.DbSet.Where(predicate).ToListAsync();
         }

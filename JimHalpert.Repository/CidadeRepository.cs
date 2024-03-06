@@ -5,6 +5,7 @@ using JimHalpert.Domain.Entity;
 using JimHalpert.Domain.Inteface.Repository;
 using JimHalpert.Repository.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Repository
 {
@@ -15,19 +16,19 @@ namespace JimHalpert.Repository
 
         }
 
-        public IEnumerable<CidadeValue> ObterCidades(int ufId)
+        public async Task<IEnumerable<CidadeValue>> ObterCidades(int ufId)
         {
             var sql = $@"SELECT * FROM Cidade WHERE EstadoId = {ufId}";
 
-            return this.Connection.Query<CidadeValue>(sql);
+            return await this.Connection.QueryAsync<CidadeValue>(sql);
 
         }
 
-        public IEnumerable<Cidade> Filtrar(string query)
+        public async Task<IEnumerable<Cidade>> Filtrar(string query)
         {
             var sql = $@"SELECT * FROM Cidade WHERE Nome like '%{query}%'";
 
-            return this.Connection.Query<Cidade>(sql);
+            return await this.Connection.QueryAsync<Cidade>(sql);
         }
     }
 }

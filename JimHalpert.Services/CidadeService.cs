@@ -5,6 +5,7 @@ using JimHalpert.Domain.Inteface.Service;
 using Dietcode.Core.DomainValidator;
 using Dietcode.Core.Lib;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JimHalpert.Services
 {
@@ -18,7 +19,7 @@ namespace JimHalpert.Services
             validationResult = new ValidationResult();
         }
 
-        public ValidationResult Gravar(Cidade cidade)
+        public async Task<ValidationResult> Gravar(Cidade cidade)
         {
             //validate
 
@@ -31,38 +32,38 @@ namespace JimHalpert.Services
             //add or update
             if(cidade.CidadeId == 0)
             {
-                base.Adicionar(cidade);
+                await base.Adicionar(cidade);
             }
             else
             {
-                base.Atualizar(cidade);
+                await base.Atualizar(cidade);
             }
 
             return validationResult;
         }
 
-        public ValidationResult Excluir(int id)
+        public async Task<ValidationResult> Excluir(int id)
         {
-            var tipoDePessoa = ObterPorId(id);
+            var tipoDePessoa = await ObterPorId(id);
             if(tipoDePessoa == null)
             {
                 validationResult.Add("Cidade inexistente");
                 return validationResult;
             }
 
-            base.Remover(tipoDePessoa);
-            
+            await base.Remover(tipoDePessoa);
+
             return validationResult;
         }
 
-        public IEnumerable<Cidade> Filtrar(string query)
+        public async Task<IEnumerable<Cidade>> Filtrar(string query)
         {
-            return repository.Filtrar(query);
+            return await repository.Filtrar(query);
         }
 
-        public IEnumerable<CidadeValue> ObterCidades(int ufId)
+        public async Task<IEnumerable<CidadeValue>> ObterCidades(int ufId)
         {
-            return repository.ObterCidades(ufId);
+            return await repository.ObterCidades(ufId);
         }
     }
 }

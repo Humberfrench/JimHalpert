@@ -3,13 +3,8 @@ using Dietcode.Core.DomainValidator;
 
 namespace JimHalpert.App.ViewModel.Interface
 {
-    public interface ICidadeServiceApp
+    public interface ICidadeServiceApp : IBaseService<CidadeViewModel>
     {
-        MethodResult ObterTodos();
-        MethodResult Filtrar(string query);
-        MethodResult Gravar(CidadeViewModel cidade);
-        MethodResult Excluir(int id);
-        MethodResult ObterPorId(int id);
-        MethodResult ObterCidades(int ufId);
+        Task<MethodResult> ObterCidades(int ufId);
     }
 }
