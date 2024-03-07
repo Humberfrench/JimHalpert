@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JimHalpert.Api", "JimHalper
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JimHalpert.App.ViewModel", "JimHalpert.App.ViewModel\JimHalpert.App.ViewModel.csproj", "{5AAEAD20-4990-4CD8-A750-785127CDF7B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JimHalpert.Web", "JimHalpert.Web\JimHalpert.Web.csproj", "{71C533B9-B9C3-47D3-AB88-509AB58564D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{5AAEAD20-4990-4CD8-A750-785127CDF7B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AAEAD20-4990-4CD8-A750-785127CDF7B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AAEAD20-4990-4CD8-A750-785127CDF7B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71C533B9-B9C3-47D3-AB88-509AB58564D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C533B9-B9C3-47D3-AB88-509AB58564D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C533B9-B9C3-47D3-AB88-509AB58564D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C533B9-B9C3-47D3-AB88-509AB58564D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{F3FC364C-AA8E-4C7E-A3E6-001250370025} = {AA48995F-34E6-4C0A-BC15-9E50B3253977}
 		{C7268F38-0AC6-4DA9-969F-4B339158ECAD} = {D45C74AB-8CAE-4D00-92E0-7CEF4D0602A2}
 		{5AAEAD20-4990-4CD8-A750-785127CDF7B2} = {2AC6B2F3-6F8A-43E6-BE2B-6EAF41EECEAC}
+		{71C533B9-B9C3-47D3-AB88-509AB58564D6} = {D45C74AB-8CAE-4D00-92E0-7CEF4D0602A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6846CFD2-DA66-4890-BF7B-FD332673F7B2}

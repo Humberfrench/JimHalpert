@@ -7,6 +7,7 @@ namespace JimHalpert.Ioc
     using Domain.Inteface.Service;
     using JimHalpert.App.Services;
     using JimHalpert.App.ViewModel.Interface;
+    using JimHalpert.Repository.Keys;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc.Infrastructure;
     using Microsoft.EntityFrameworkCore;
@@ -85,6 +86,8 @@ namespace JimHalpert.Ioc
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IUsuarioServiceApp, UsuarioServiceApp>();
             #endregion
+
+            services.AddScoped<IConvertKey, ConvertKey>();
 
             services.AddDbContext<JimHalpertContext>(options => options.UseSqlServer(configuration.GetConnectionString("RedDragonContext")));
 
