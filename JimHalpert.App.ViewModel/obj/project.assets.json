@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Dietcode.Api.Core.Results/1.1.5": {
+      "Dietcode.Api.Core.Results/1.1.6": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
@@ -1083,13 +1083,13 @@
     }
   },
   "libraries": {
-    "Dietcode.Api.Core.Results/1.1.5": {
-      "sha512": "c4W9+taZUBpOJO032Wy3QZ8+FEK1+Rgdv/+8k+mA/2e78cGSQTl7beFMOxKKCjaLAozZDQv1eEtMWcYWqsyWKA==",
+    "Dietcode.Api.Core.Results/1.1.6": {
+      "sha512": "sXSmBVEQNiPfv0ZGeOFHT9SWk5wMjKOC3dmzMr/YE9b/wKyMy5m3BrOmOcoGNv8qtT5n5n4StjTT1b0J2HPCUA==",
       "type": "package",
-      "path": "dietcode.api.core.results/1.1.5",
+      "path": "dietcode.api.core.results/1.1.6",
       "files": [
         ".nupkg.metadata",
-        "dietcode.api.core.results.1.1.5.nupkg.sha512",
+        "dietcode.api.core.results.1.1.6.nupkg.sha512",
         "dietcode.api.core.results.nuspec",
         "lib/net7.0/Dietcode.Api.Core.Results.dll"
       ]
@@ -3479,7 +3479,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Dietcode.Api.Core.Results >= 1.1.5",
+      "Dietcode.Api.Core.Results >= 1.1.6",
       "Dietcode.Core.DomainValidator >= 1.1.0",
       "Dietcode.Core.Lib >= 1.7.0"
     ]
@@ -3533,7 +3533,7 @@
         "dependencies": {
           "Dietcode.Api.Core.Results": {
             "target": "Package",
-            "version": "[1.1.5, )"
+            "version": "[1.1.6, )"
           },
           "Dietcode.Core.DomainValidator": {
             "target": "Package",
