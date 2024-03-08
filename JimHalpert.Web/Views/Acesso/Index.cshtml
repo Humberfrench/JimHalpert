@@ -1,0 +1,67 @@
+﻿@using JimHalpert.Web.Models
+@model ModelLogin
+@{
+    Layout = "~/Views/Shared/_Login.cshtml";
+    ViewData["Title"] = "Erp";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="login-form bg-light mt-3 p-3">
+                <form asp-action="Index" asp-controller="Acesso" class="row g-3">
+                    <div class="card shadow-lg">
+                        <div class="card-header bg-gradient bg-primary">
+                            <h4>Olá! Faça seu login</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-12 m-1">
+                                <label class="fw-bold">E-mail</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-user"></i></span>
+                                    <input type="text" id="Login" name="Login" class="form-control" placeholder="Username" required="required">
+                                    <input type="hidden" id="Caminho" name="Caminho" value="@Model.Caminho">
+                                    <input type="hidden" id="ReturnUrl" name="ReturnUrl" value="@Model.ReturnUrl">
+                                </div>
+                            </div>
+                            <div class="col-12 m-1">
+                                <label class="fw-bold">Senha</label>
+                                <input type="password" id="Senha" name="Senha" class="form-control" placeholder="************" required="required">
+                            </div>
+                            <div class="col-12 m-1 d-none">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberMe" disabled="disabled">
+                                    <label class="form-check-label" for="rememberMe"> Lembre-me</label>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-12 m-1">
+                                <button type="submit" class="btn btn-dark float-end btn-lg">Login</button>
+                            </div>
+                            <div class="text-center m-1">
+                                <img src="~/img/logo.png" class="img-fluid" alt="Logo">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="col-12 d-none">
+                    <p class="text-center mb-0">Não tem cadastro? <a asp-controller="Acesso" asp-action="Cadastrar">Cadastre-se</a></p>
+                </div>
+                <div class="col-12 d-none">
+                    <p class="text-center mb-0">Esqueceu a Senha?? <a asp-controller="Acesso" asp-action="EsqueciSenha">Clique aqui para recuperar</a></p>
+                </div>
+                @if (@Model.HasErro)
+                {
+                    <div class="alert alert-danger">
+                        @Html.Raw(Model.Erro)
+                    </div>
+                }
+                @if (@Model.HasMensagem)
+                {
+                    <div class="alert alert-info">
+                        @Html.Raw(Model.Mensagem)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

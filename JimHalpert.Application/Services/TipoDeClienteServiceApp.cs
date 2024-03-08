@@ -57,25 +57,25 @@ namespace JimHalpert.App.Services
 
         }
 
-        public async Task<MethodResult> ObterPorId(int id)
+        public async Task<MethodResult<TipoDeClienteViewModel>> ObterPorId(int id)
         {
             var tipoDeCliente = await service.ObterPorId(id);
             var retorno = tipoDeCliente.ConvertObjects<TipoDeClienteViewModel>(); //Mapper.Map<TipoDeClienteViewModel>(tipoDeClientes);
             if (retorno == null)
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new TipoDeClienteViewModel());
             }
 
             return Ok(retorno);
         }
 
-        public async Task<MethodResult> ObterTodos()
+        public async Task<MethodResult<List<TipoDeClienteViewModel>>> ObterTodos()
         {
             var tipoDeClientes = await service.ObterTodos();
             var retorno = tipoDeClientes.ConvertObjects<List<TipoDeClienteViewModel>>();//Mapper.Map<IEnumerable<TipoDeClienteViewModel>>(tipoDeClientes);
             if (!retorno.Any())
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new List<TipoDeClienteViewModel>());
             }
 
             return Ok(retorno);
@@ -83,13 +83,13 @@ namespace JimHalpert.App.Services
 
         }
 
-        public async Task<MethodResult> Filtrar(string query)
+        public async Task<MethodResult<List<TipoDeClienteViewModel>>> Filtrar(string query)
         {
             var tipoDeClientes = await service.Filtrar(query);
             var retorno = tipoDeClientes.ConvertObjects<List<TipoDeClienteViewModel>>();
             if (!retorno.Any())
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new List<TipoDeClienteViewModel>());
             }
 
             return Ok(retorno);

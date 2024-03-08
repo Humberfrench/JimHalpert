@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JimHalpert.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5303733e8e6b653a0436c9d17deb2f9e355c192")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9fd2ca5bfbb9e27cb2372fb586d75bdd6d10c1eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("JimHalpert.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JimHalpert.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -58,45 +58,50 @@ namespace JimHalpert.Application.Services
 
         }
 
-        public async Task<MethodResult> ObterPorId(int id)
+        public async Task<MethodResult<CidadeViewModel>> ObterPorId(int id)
         {
             var cidades = await service.ObterPorId(id);
             var retorno = cidades.ConvertObjects<CidadeViewModel>();
+            if (retorno == null)
+            {
+                return Ok(new CidadeViewModel());
+            }
+
             return Ok(retorno);
         }
 
-        public async Task<MethodResult> ObterTodos()
+        public async Task<MethodResult<List<CidadeViewModel>>> ObterTodos()
         {
             var cidades = await service.ObterTodos();
             var retorno = cidades.ConvertObjects<List<CidadeViewModel>>();
             if (retorno == null)
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new List<CidadeViewModel>());
             }
 
             return Ok(retorno);
 
         }
 
-        public async Task<MethodResult> Filtrar(string query)
+        public async Task<MethodResult<List<CidadeViewModel>>> Filtrar(string query)
         {
             var cidades = await service.Filtrar(query);
             var retorno = cidades.ConvertObjects<List<CidadeViewModel>>();
             if (!retorno.Any())
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new List<CidadeViewModel>());
             }
 
             return Ok(retorno);
 
         }
-        public async Task<MethodResult> ObterCidades(int ufId)
+        public async Task<MethodResult<List<CidadeViewModel>>> ObterCidades(int ufId)
         {
             var cidades = await service.ObterCidades(ufId);
             var retorno = cidades.ConvertObjects<List<CidadeViewModel>>();
             if (!retorno.Any())
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new List<CidadeViewModel>());
             }
 
             return Ok(retorno);

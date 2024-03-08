@@ -9,11 +9,11 @@ namespace JimHalpert.App.ViewModel.Interface
 {
     public interface IBaseService <T>
     {
-        Task<MethodResult> ObterTodos();
-        Task<MethodResult> Filtrar(string query);
+        Task<MethodResult<List<T>>> ObterTodos();
+        Task<MethodResult<List<T>>> Filtrar(string query);
         Task<MethodResult> Gravar(T dado);
         Task<MethodResult> Excluir(int id);
-        Task<MethodResult> ObterPorId(int id);
+        Task<MethodResult<T>> ObterPorId(int id);
 
     }
 }

@@ -556,8 +556,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.Application\\JimHalpert.App.csproj": {
-                "projectPath": "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.Application\\JimHalpert.App.csproj"
+              "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.App.ViewModel\\JimHalpert.App.ViewModel.csproj": {
+                "projectPath": "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.App.ViewModel\\JimHalpert.App.ViewModel.csproj"
               },
               "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.Ioc\\JimHalpert.Ioc.csproj": {
                 "projectPath": "D:\\Desenvolvimento\\Sistemas\\JimHalpert\\JimHalpert.Ioc\\JimHalpert.Ioc.csproj"
@@ -581,7 +581,7 @@
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
-              "version": "[1.19.5, )"
+              "version": "[1.19.6, )"
             }
           },
           "imports": [

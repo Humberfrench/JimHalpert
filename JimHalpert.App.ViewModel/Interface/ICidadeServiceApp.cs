@@ -5,6 +5,6 @@ namespace JimHalpert.App.ViewModel.Interface
 {
     public interface ICidadeServiceApp : IBaseService<CidadeViewModel>
     {
-        Task<MethodResult> ObterCidades(int ufId);
+        Task<MethodResult<List<CidadeViewModel>>> ObterCidades(int ufId);
     }
 }

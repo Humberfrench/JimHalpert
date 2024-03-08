@@ -58,38 +58,38 @@ namespace JimHalpert.App.Services
 
         }
 
-        public async Task<MethodResult> ObterPorId(int id)
+        public async Task<MethodResult<EstadoViewModel>> ObterPorId(int id)
         {
             var estados = await service.ObterPorId(id);
             var retorno = estados.ConvertObjects<EstadoViewModel>();
             if (retorno == null)
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new EstadoViewModel());
             }
 
             return Ok(retorno);
         }
 
-        public async Task<MethodResult> ObterTodos()
+        public async Task<MethodResult<List<EstadoViewModel>>> ObterTodos()
         {
             var estados = await service.ObterTodos();
             var retorno = estados.ConvertObjects<List<EstadoViewModel>>();
             if (!retorno.Any())
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new List<EstadoViewModel>());
             }
 
             return Ok(retorno);
 
         }
 
-        public async Task<MethodResult> Filtrar(string query)
+        public async Task<MethodResult<List<EstadoViewModel>>> Filtrar(string query)
         {
             var estados = await service.Filtrar(query);
             var retorno = estados.ConvertObjects<List<EstadoViewModel>>();
             if (!retorno.Any())
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new List<EstadoViewModel>());
             }
 
             return Ok(retorno);

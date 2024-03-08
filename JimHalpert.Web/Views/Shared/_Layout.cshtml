@@ -23,7 +23,30 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Clientes</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Faturamento
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Nota Fiscal</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Serviços</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Tarefas</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Cadastros
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Tipo de Pessoa</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Tipo de Cliente</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Usuários</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Privacy</a>
                         </li>
                     </ul>
                 </div>

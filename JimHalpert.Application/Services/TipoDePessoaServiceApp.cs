@@ -21,10 +21,10 @@ namespace JimHalpert.App.Services
             this.service = service;
         }
 
-        public async Task<MethodResult> Gravar(TipoDePessoaViewModel tipoDePessoa)
+        public async Task<MethodResult> Gravar(TipoDePessoaViewModel TipoDePessoa)
         {
             BeginTransaction();
-            var dadoIncluir = tipoDePessoa.ConvertObjects<TipoDePessoa>(); //Mapper.Map<TipoDePessoa>(tipoDePessoa);
+            var dadoIncluir = TipoDePessoa.ConvertObjects<TipoDePessoa>(); //Mapper.Map<TipoDePessoa>(TipoDePessoa);
             var retorno = await service.Gravar(dadoIncluir);
             if (retorno.Valid)
             {
@@ -37,6 +37,7 @@ namespace JimHalpert.App.Services
                 }
             }
             return Ok(retorno);
+
         }
 
         public async Task<MethodResult> Excluir(int id)
@@ -45,46 +46,56 @@ namespace JimHalpert.App.Services
             var retorno = await service.Excluir(id);
             if (retorno.Valid)
             {
+                //commit transaction
                 Commit();
+                //commit error
                 if (!ValidationResults.Valid)
                 {
                     return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
                 }
             }
             return Ok(retorno);
+
         }
 
-        public async Task<MethodResult> ObterPorId(int id)
+        public async Task<MethodResult<TipoDePessoaViewModel>> ObterPorId(int id)
         {
-            var tipoDePessoas = await service.ObterPorId(id);
-            var retorno = tipoDePessoas.ConvertObjects<TipoDePessoaViewModel>();
+            var TipoDePessoa = await service.ObterPorId(id);
+            var retorno = TipoDePessoa.ConvertObjects<TipoDePessoaViewModel>(); //Mapper.Map<TipoDePessoaViewModel>(TipoDePessoas);
             if (retorno == null)
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new TipoDePessoaViewModel());
             }
+
             return Ok(retorno);
         }
 
-        public async Task<MethodResult> ObterTodos()
+        public async Task<MethodResult<List<TipoDePessoaViewModel>>> ObterTodos()
         {
-            var tipoDePessoas = await service.ObterTodos();
-            var retorno = tipoDePessoas.ConvertObjects<List<TipoDePessoaViewModel>>();
+            var TipoDePessoas = await service.ObterTodos();
+            var retorno = TipoDePessoas.ConvertObjects<List<TipoDePessoaViewModel>>();//Mapper.Map<IEnumerable<TipoDePessoaViewModel>>(TipoDePessoas);
             if (!retorno.Any())
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new List<TipoDePessoaViewModel>());
             }
+
             return Ok(retorno);
+
+
         }
 
-        public async Task<MethodResult> Filtrar(string query)
+        public async Task<MethodResult<List<TipoDePessoaViewModel>>> Filtrar(string query)
         {
-            var tipoDePessoas = await service.Filtrar(query);
-            var retorno = tipoDePessoas.ConvertObjects<List<TipoDePessoaViewModel>>();
+            var TipoDePessoas = await service.Filtrar(query);
+            var retorno = TipoDePessoas.ConvertObjects<List<TipoDePessoaViewModel>>();
             if (!retorno.Any())
             {
-                return NotFound("Não foi encontrado registros");
+                return Ok(new List<TipoDePessoaViewModel>());
             }
+
             return Ok(retorno);
+
+
         }
     }
 }
