@@ -3,7 +3,10 @@ using JimHalpert.App.ViewModel.Interface;
 using JimHalpert.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Collections;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace JimHalpert.Web.Controllers
 {
@@ -36,9 +39,10 @@ namespace JimHalpert.Web.Controllers
         }
 
         [HttpGet("Tipo/Pessoa/New"),AllowAnonymous]
-        public async Task<IActionResult> IndexTipoPessoaNew()
+        public async Task<IActionResult> NewTipoPessoa()
         {
             var model = new ModelViewItem<TipoDePessoaViewModel>();
+
 
             model.Item = new TipoDePessoaViewModel();
 
@@ -46,7 +50,7 @@ namespace JimHalpert.Web.Controllers
         }
 
         [HttpGet("Tipo/Pessoa/Edit/{id}"),AllowAnonymous]
-        public async Task<IActionResult> IndexTipoPessoaEdit(int id)
+        public async Task<IActionResult> EditTipoPessoa(int id)
         {
             var model = new ModelViewItem<TipoDePessoaViewModel>();
 
@@ -54,9 +58,31 @@ namespace JimHalpert.Web.Controllers
 
             return View("TipoPessoaEdit", model);
         }
+
+        [HttpPost("Tipo/Pessoa/Save"), AllowAnonymous]
+        public async Task<IActionResult> SaveTipoPessoa(TipoDePessoaViewModel tipoDePessoa)
+        {
+            var model = new ModelViewItem<TipoDePessoaViewModel>();
+
+            model.Item = tipoDePessoa;
+
+            var retorno = (await tipoDePessoaServiceApp.Gravar(tipoDePessoa)).Content;
+
+            if (retorno.Invalid)
+            {
+                model.Erro = string.Join('-', retorno.Erros);
+            }
+            else
+            {
+                model.Mensagem = "Registro salvo com sucesso!";
+            }
+
+            return View("TipoPessoaeEdit", model);
+        }
+
         #endregion
 
-        #region Tipo de Pessoas
+        #region Tipo de Cliente
 
         [HttpGet("Tipo/Cliente"),AllowAnonymous]
         public async Task<IActionResult> IndexTipoCliente()
@@ -69,7 +95,7 @@ namespace JimHalpert.Web.Controllers
         }
 
         [HttpGet("Tipo/Cliente/New"),AllowAnonymous]
-        public async Task<IActionResult> IndexTipoClienteNew()
+        public async Task<IActionResult> NewTipoCliente()
         {
             var model = new ModelViewItem<TipoDeClienteViewModel>();
 
@@ -79,7 +105,7 @@ namespace JimHalpert.Web.Controllers
         }
 
         [HttpGet("Tipo/Cliente/Edit/{id}"),AllowAnonymous]
-        public async Task<IActionResult> IndexTipoClienteEdit(int id)
+        public async Task<IActionResult> EditTipoCliente(int id)
         {
             var model = new ModelViewItem<TipoDeClienteViewModel>();
 
@@ -87,7 +113,32 @@ namespace JimHalpert.Web.Controllers
 
             return View("TipoClienteEdit", model);
         }
+
+        [HttpPost("Tipo/Cliente/Save"), AllowAnonymous]
+        public async Task<IActionResult> SaveTipoCliente(TipoDeClienteViewModel tipoDeCliente)
+        {
+            var model = new ModelViewItem<TipoDeClienteViewModel>();
+
+            model.Item = tipoDeCliente;
+
+            var retorno = (await tipoDeClienteServiceApp.Gravar(tipoDeCliente)).Content;
+
+            if(retorno.Invalid)
+            {
+                model.Erro = string.Join('-', retorno.Erros);
+            }
+            else
+            {
+                model.Mensagem = "Registro salvo com sucesso!";
+            }
+
+            return View("TipoClienteEdit", model);
+        }
+
+
         #endregion
 
     }
+
+
 }

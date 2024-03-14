@@ -20,7 +20,7 @@ namespace JimHalpert.App.Services
             this.service = service;
         }
 
-        public async Task<MethodResult> Gravar(ServicoViewModel servico)
+        public async Task<MethodResult<ValidationResult>> Gravar(ServicoViewModel servico)
         {
             BeginTransaction();
             var dadoIncluir = servico.ConvertObjects<Servico>();
@@ -32,7 +32,7 @@ namespace JimHalpert.App.Services
                 //commit error
                 if (!ValidationResults.Valid)
                 {
-                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
+                    return Ok(retorno);
                 }
             }
             return Ok(retorno);

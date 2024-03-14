@@ -17,8 +17,8 @@ namespace JimHalpert.Domain.Entity
         public string Nome { get; set; }
         public string RazaoSocial { get; set; }
         public string Documento { get; set; }
-        public byte TipoDeClienteId { get; set; }
-        public byte TipoDePessoaId { get; set; }
+        public int TipoDeClienteId { get; set; }
+        public int TipoDePessoaId { get; set; }
         public string Telefone { get; set; }
         public string Contato { get; set; }
         public string Email { get; set; }
@@ -29,6 +29,7 @@ namespace JimHalpert.Domain.Entity
         public string Complemento { get; set; }
         public string Bairro { get; set; }
         public string Cep { get; set; }
+        public int? EstadoId { get; set; }
         public int? CidadeId { get; set; }
         public DateTime? DataCriacao { get; set; }
         public DateTime? DataAlteracao { get; set; }

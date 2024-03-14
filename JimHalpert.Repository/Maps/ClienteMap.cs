@@ -75,6 +75,11 @@ namespace JimHalpert.Repository.Maps
                     .HasForeignKey(d => d.CidadeId)
                     .HasConstraintName("FK_Cliente_Cidade");
 
+                 entity.Property(e => e.EstadoId).HasColumnType("EstadoId");
+               //entity.HasOne(d => d.EstadoId)
+                //    .WithMany(p => p.Cliente)
+                //    .HasForeignKey(d => d.CidadeId)
+
                 entity.HasOne(d => d.TipoDeCliente)
                     .WithMany(p => p.Cliente)
                     .HasForeignKey(d => d.TipoDeClienteId)

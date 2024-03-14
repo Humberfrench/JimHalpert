@@ -21,7 +21,7 @@ namespace JimHalpert.App.Services
             this.service = service;
         }
 
-        public async Task<MethodResult> Gravar(TipoDePessoaViewModel TipoDePessoa)
+        public async Task<MethodResult<ValidationResult>> Gravar(TipoDePessoaViewModel TipoDePessoa)
         {
             BeginTransaction();
             var dadoIncluir = TipoDePessoa.ConvertObjects<TipoDePessoa>(); //Mapper.Map<TipoDePessoa>(TipoDePessoa);
@@ -33,7 +33,7 @@ namespace JimHalpert.App.Services
                 //commit error
                 if (!ValidationResults.Valid)
                 {
-                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
+                    return Ok(retorno);
                 }
             }
             return Ok(retorno);

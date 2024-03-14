@@ -21,7 +21,7 @@ namespace JimHalpert.Application.Services
             this.service = service;
         }
 
-        public async Task<MethodResult> Gravar(CidadeViewModel cidade)
+        public async Task<MethodResult<ValidationResult>> Gravar(CidadeViewModel cidade)
         {
             BeginTransaction();
             var dadoIncluir = cidade.ConvertObjects<Cidade>();
@@ -33,7 +33,7 @@ namespace JimHalpert.Application.Services
                 //commit error
                 if (!ValidationResults.Valid)
                 {
-                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
+                    return Ok(retorno);
                 }
             }
             return Ok(retorno);

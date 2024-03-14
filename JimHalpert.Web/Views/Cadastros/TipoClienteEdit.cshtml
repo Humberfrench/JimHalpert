@@ -11,63 +11,85 @@
     </div>
     <br /><br />
     <div class="d-none d-sm-block">
-        <div class="row">
-            <div class="col-1">&nbsp;</div>
-            <div class="col-2">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" asp-for="Item.TipoDeClienteId" placeholder="" readonly="readonly">
-                    <label for="floatingInput">Id</label>
+        <form asp-action="SaveTipoCliente" asp-controller="Cadastros" name="formPost">
+            <div class="row">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-2">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" asp-for="Item.TipoDeClienteId" placeholder="" readonly="readonly">
+                        <label for="floatingInput">Id</label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-4">&nbsp;</div>
-            <div class="col-2">
-                <button type="button" class="btn btn-success d-block" onclick="TipoDePessoa.Novo();"><i class="fa fa-file"></i>&nbsp;Gravar</button>
-            </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-primary d-block" asp-action="Cadastros" asp-action="TipoCliente"><i class="fa fa-file"></i>&nbsp;Voltar</button>
-            </div>
-            <div class="col-1">&nbsp;</div>
-        </div>
-        <div class="row">
-            <div class="col-1">&nbsp;</div>
-            <div class="col-10">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" asp-for="Item.Descricao" placeholder="" readonly="readonly">
-                    <label for="floatingInput">Descrição</label>
+                <div class="col-4">&nbsp;</div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-success d-block" asp-action="Cadastros" asp-action="TipoClienteNew"><i class="fa fa-file"></i>&nbsp;Gravar</button>
                 </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary d-block" asp-action="Cadastros" asp-action="TipoCliente"><i class="fa fa-file"></i>&nbsp;Voltar</button>
+                </div>
+                <div class="col-1">&nbsp;</div>
             </div>
-            <div class="col-1">&nbsp;</div>
-        </div>
+            <div class="row">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-10">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" asp-for="Item.Descricao" placeholder="" readonly="readonly">
+                        <label for="floatingInput">Descrição</label>
+                    </div>
+                </div>
+                <div class="col-1">&nbsp;</div>
+            </div>
+        </form>
     </div>
     <div class="d-block d-sm-none">
-        <div class="row">
-            <div class="col-1">&nbsp;</div>
-            <div class="col-4 text-center"><button type="button" class="btn btn-success d-block" onclick="TipoDePessoa.Novo();"><i class="fa fa-file"></i>&nbsp;Gravar</button></div>
-            <div class="col-2">&nbsp;</div>
-            <div class="col-4 text-center"><button type="button" class="btn btn-primary d-block" asp-action="Cadastros" asp-action="TipoCliente"><i class="fa fa-file"></i>&nbsp;Voltar</button></div>
-            <div class="col-1">&nbsp;</div>
-        </div>
-        <div class="row"><div class="col-12">&nbsp;</div></div>
-        <div class="row">
-            <div class="col-1">&nbsp;</div>
-            <div class="col-10">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" asp-for="Item.TipoDeClienteId" placeholder="" readonly="readonly">
-                    <label for="floatingInput">Id</label>
-                </div>
+        <form asp-action="SaveTipoCliente" asp-controller="Cadastros" name="formPost">
+            <div class="row">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-4 text-center"><button type="button" class="btn btn-success d-block" onclick="TipoDePessoa.Novo();"><i class="fa fa-file"></i>&nbsp;Gravar</button></div>
+                <div class="col-2">&nbsp;</div>
+                <div class="col-4 text-center"><button type="button" class="btn btn-primary d-block" asp-action="Cadastros" asp-action="TipoCliente"><i class="fa fa-file"></i>&nbsp;Voltar</button></div>
+                <div class="col-1">&nbsp;</div>
             </div>
-            <div class="col-1">&nbsp;</div>
-        </div>
-        <div class="row">
-            <div class="col-1">&nbsp;</div>
-            <div class="col-10">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" asp-for="Item.Descricao" placeholder="" readonly="readonly">
-                    <label for="floatingInput">Descrição</label>
+            <div class="row"><div class="col-12">&nbsp;</div></div>
+            <div class="row">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-10">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" asp-for="Item.TipoDeClienteId" placeholder="" readonly="readonly">
+                        <label for="floatingInput">Id</label>
+                    </div>
                 </div>
+                <div class="col-1">&nbsp;</div>
             </div>
-            <div class="col-1">&nbsp;</div>
-        </div>
-
+            <div class="row">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-10">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" asp-for="Item.Descricao" placeholder="" readonly="readonly">
+                        <label for="floatingInput">Descrição</label>
+                    </div>
+                </div>
+                <div class="col-1">&nbsp;</div>
+            </div>
+        </form>
     </div>
+    <br />
+    @if (Model.HasErro)
+    {
+        <div class="row">
+            <div class="alert alert-danger">
+                <strong>Erro!</strong> Ocorreu um erro ao tentar salvar o registro.<br />
+                - @Model.Erro
+            </div>
+        </div>
+    }
+    @if (Model.HasMensagem)
+    {
+    <div class="row">
+        <div class="alert alert-danger">
+            <strong>Erro!</strong> Ocorreu um erro ao tentar salvar o registro.<br />
+            - @Model.Mensagem
+        </div>
+    </div>
+    }
 </div>

@@ -11,7 +11,7 @@ namespace JimHalpert.Domain.Entity
             Cliente = new List<Cliente>();
         }
 
-        public byte TipoDePessoaId { get; set; }
+        public int TipoDePessoaId { get; set; }
         public string Descricao { get; set; }
 
         public virtual List<Cliente> Cliente { get; set; }

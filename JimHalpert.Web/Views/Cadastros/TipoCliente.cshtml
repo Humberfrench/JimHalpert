@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-end">
-                <button type="button" class="btn btn-success" onclick="TipoDePessoa.Novo();"><i class="fa fa-file"></i>&nbsp;Novo</button>
+                <button type="button" class="btn btn-success" asp-controller="Cadastros" asp-asp-action="NewTipoCliente"><i class="fa fa-file"></i>&nbsp;Novo</button>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
                             <th scope="row">@item.TipoDeClienteId</th>
                             <td>@item.Descricao</td>
                             <td class="text-right">
-                                <button type="button" class="btn btn-success" onclick="TipoDePessoa.Edit('@item.TipoDeClienteId', '@item.Descricao')"><i class="fa fa-pencil"></i></button>
+                                <button type="button" class="btn btn-success" asp-controller="Cadastros" asp-asp-action="EditTipoCliente" asp-route-id="@item.TipoDeClienteId"><i class="fa fa-pencil"></i></button>
                                 <button type="button" class="btn btn-danger" onclick="TipoDePessoa.Excluir('@item.TipoDeClienteId')"><i class="fa fa-trash-o"></i></button>
                             </td>
                         </tr>

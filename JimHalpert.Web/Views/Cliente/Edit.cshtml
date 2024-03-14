@@ -1,0 +1,198 @@
+﻿@using JimHalpert.App.ViewModel
+@model ModelViewItem<ClienteViewModel>
+
+@{
+    ViewData["Title"] = "Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var cidades = (List<CidadeViewModel>)ViewBag.Cidades ?? new List<CidadeViewModel>();
+    var estados = (List<EstadoViewModel>)ViewBag.Estados ?? new List<EstadoViewModel>();
+    var tipoDePessoas = (List<TipoDePessoaViewModel>)ViewBag.TiposDePessoa ?? new List<TipoDePessoaViewModel>();
+    var tipoDeClientes = (List<TipoDeClienteViewModel>)ViewBag.TiposDeCliente ?? new List<TipoDeClienteViewModel>();
+}
+<div class="text-center">
+    <h3 class="display-4">Clientes</h3>
+</div>
+<div class="card border-1">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-1">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.ClienteId" placeholder="" readonly="readonly">
+                    <label for="floatingInput">CId</label>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.Nome" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Nome</label>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.RazaoSocial" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Razão Social</label>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.Contato" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Contato</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.Documento" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Documento</label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.Telefone" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Telefone</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.Email" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Email</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="form-floating">
+                    <select class="form-select" id="TipoDePessoa" aria-label="Tipo de Pessoa">
+                        <option value="0">Escolha</option>
+                        @foreach (var tipoPessoa in tipoDePessoas)
+                        {
+                            if(tipoPessoa.TipoDePessoaId == Model.Item.TipoDePessoaId)
+                            {
+                                <option value="@tipoPessoa.TipoDePessoaId" selected="selected">@tipoPessoa.Descricao</option>
+                            }
+                            else
+                            {
+                                <option value="@tipoPessoa.TipoDePessoaId">@tipoPessoa.Descricao</option>
+                            }
+                        }
+                    </select>
+                    <label for="TipoDePessoa">Tipo de Pessoa</label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-floating">
+                    <select class="form-select" id="TipoDeCliente" aria-label="Floating label select example">
+                        <option value="0">Escolha</option>
+                        @foreach (var tipoCliente in tipoDeClientes)
+                        {
+                            if (tipoCliente.TipoDeClienteId == Model.Item.TipoDeClienteId)
+                            {
+                                <option value="@tipoCliente.TipoDeClienteId" selected="selected">@tipoCliente.Descricao</option>
+                            }
+                            else
+                            {
+                                <option value="@tipoCliente.TipoDeClienteId">@tipoCliente.Descricao</option>
+                            }
+                        }
+                    </select>
+                    <label for="TipoDeCliente">Tipo de Cliente</label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.InscricaoEstadual" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Inscricao Estadual</label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.CadastroMunicipal" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Cadastro Municipal</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.Endereco" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Endereço</label>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.Numero" placeholder="" readonly="readonly">
+                    <label for="floatingInput">No.</label>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.Complemento" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Complemento</label>
+                </div>
+            </div>            
+            <div class="col-2">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.Bairro" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Bairro</label>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" asp-for="Item.Cep" placeholder="" readonly="readonly">
+                    <label for="floatingInput">Cep</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="form-floating">
+                    <select class="form-select" id="TipoDePessoa" aria-label="Tipo de Pessoa">
+                        <option value="0">Escolha</option>
+                        @foreach (var estado in estados)
+                        {
+                            if (estado.EstadoId == Model.Item.EstadoId)
+                            {
+                                <option value="@estado.EstadoId" selected="selected">@estado.NomeUf</option>
+                            }
+                            else
+                            {
+                                <option value="@estado.EstadoId">@estado.NomeUf</option>
+                            }
+                        }
+                    </select>
+                    <label for="TipoDePessoa">Tipo de Pessoa</label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-floating">
+                    <select class="form-select" id="Cidade" aria-label="Floating label select example">
+                        <option value="0">Escolha</option>
+                        @foreach (var cidade in cidades)
+                        {
+                            if (cidade.CidadeId == Model.Item.CidadeId)
+                            {
+                                <option value="@cidade.CidadeId" selected="selected">@cidade.Nome</option>
+                            }
+                            else
+                            {
+                                <option value="@cidade.CidadeId">@cidade.Nome</option>
+                            }
+                        }
+                    </select>
+                    <label for="TipoDeCliente">Tipo de Cliente</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <button type="button" class="btn btn-success" asp-controller="Cliente" asp-action="Edit" asp-route-id="Item.ClienteId">Gravar <i class="fa fa-floppy-disk"></i></button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-primary" asp-controller="Cliente" asp-action="Index">Voltar <i class="fa fa-arrow-left"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

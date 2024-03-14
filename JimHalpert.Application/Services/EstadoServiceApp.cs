@@ -21,7 +21,7 @@ namespace JimHalpert.App.Services
             this.service = service;
         }
 
-        public async Task<MethodResult> Gravar(EstadoViewModel estado)
+        public async Task<MethodResult<ValidationResult>> Gravar(EstadoViewModel estado)
         {
             BeginTransaction();
             var dadoIncluir = estado.ConvertObjects<Estado>();
@@ -33,7 +33,7 @@ namespace JimHalpert.App.Services
                 //commit error
                 if (!ValidationResults.Valid)
                 {
-                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
+                    return Ok(retorno);
                 }
             }
             return Ok(retorno);

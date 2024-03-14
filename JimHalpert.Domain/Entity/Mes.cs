@@ -6,7 +6,7 @@ namespace JimHalpert.Domain.Entity
 {
     public partial class Mes
     {
-        public byte MesId { get; set; }
+        public int MesId { get; set; }
         public string Nome { get; set; }
     }
 }

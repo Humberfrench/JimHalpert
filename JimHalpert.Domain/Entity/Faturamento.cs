@@ -8,8 +8,8 @@ namespace JimHalpert.Domain.Entity
     {
         public int FaturamentoId { get; set; }
         public int ClienteId { get; set; }
-        public short Ano { get; set; }
-        public byte Mes { get; set; }
+        public int Ano { get; set; }
+        public int Mes { get; set; }
         public decimal Valor { get; set; }
 
         public virtual Cliente Cliente { get; set; }

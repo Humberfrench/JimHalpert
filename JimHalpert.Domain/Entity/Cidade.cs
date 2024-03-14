@@ -13,7 +13,7 @@ namespace JimHalpert.Domain.Entity
 
         public int CidadeId { get; set; }
         public string Nome { get; set; }
-        public short EstadoId { get; set; }
+        public int EstadoId { get; set; }
 
         public virtual Estado Estado { get; set; }
         public virtual List<Cliente> Cliente { get; set; }

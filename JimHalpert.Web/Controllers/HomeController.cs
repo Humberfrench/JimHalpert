@@ -5,6 +5,7 @@ using System.Diagnostics;
 
 namespace JimHalpert.Web.Controllers
 {
+    [Route("[controller]")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

@@ -2,6 +2,7 @@
 
 namespace JimHalpert.Web.Controllers
 {
+    [Route("[controller]")]
     public class UsuarioController : Controller
     {
         public IActionResult Index()

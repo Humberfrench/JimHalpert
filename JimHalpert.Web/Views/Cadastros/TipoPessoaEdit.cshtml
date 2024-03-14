@@ -1,5 +1,95 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using JimHalpert.App.ViewModel
+@model ModelViewItem<TipoDePessoaViewModel>
+
 @{
+    ViewData["Title"] = "Tipo de Pessoa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <div class="text-center">
+        <h3 class="display-4">Tipo de Pessoa</h3>
+    </div>
+    <br /><br />
+    <div class="d-none d-sm-block">
+        <form asp-action="SaveTipoPessoa" asp-controller="Cadastros" name="formPost">
+            <div class="row">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-2">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" asp-for="Item.TipoDePessoaId" placeholder="" readonly="readonly">
+                        <label for="floatingInput">Id</label>
+                    </div>
+                </div>
+                <div class="col-4">&nbsp;</div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-success d-block" onclick="TipoDePessoa.Novo();"><i class="fa fa-file"></i>&nbsp;Gravar</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary d-block" asp-action="Cadastros" asp-action="TipoPessoa"><i class="fa fa-file"></i>&nbsp;Voltar</button>
+                </div>
+                <div class="col-1">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-10">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" asp-for="Item.Descricao" placeholder="" readonly="readonly">
+                        <label for="floatingInput">Descrição</label>
+                    </div>
+                </div>
+                <div class="col-1">&nbsp;</div>
+            </div>
+        </form>
+    </div>
+    <div class="d-block d-sm-none">
+        <form asp-action="SaveTipoPessoa" asp-controller="Cadastros" name="formPost">
+            <div class="row">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-4 text-center"><button type="button" class="btn btn-success d-block" onclick="TipoDePessoa.Novo();"><i class="fa fa-file"></i>&nbsp;Gravar</button></div>
+                <div class="col-2">&nbsp;</div>
+                <div class="col-4 text-center"><button type="button" class="btn btn-primary d-block" asp-action="Cadastros" asp-action="TipoPessoa"><i class="fa fa-file"></i>&nbsp;Voltar</button></div>
+                <div class="col-1">&nbsp;</div>
+            </div>
+            <div class="row"><div class="col-12">&nbsp;</div></div>
+            <div class="row">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-10">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" asp-for="Item.TipoDePessoaId" placeholder="" readonly="readonly">
+                        <label for="floatingInput">Id</label>
+                    </div>
+                </div>
+                <div class="col-1">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-10">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" asp-for="Item.Descricao" placeholder="" readonly="readonly">
+                        <label for="floatingInput">Descrição</label>
+                    </div>
+                </div>
+                <div class="col-1">&nbsp;</div>
+            </div>
+        </form>
+    </div>
+    <br />
+    @if (Model.HasErro)
+    {
+        <div class="row">
+            <div class="alert alert-danger">
+                <strong>Erro!</strong> Ocorreu um erro ao tentar salvar o registro.<br />
+                - @Model.Erro
+            </div>
+        </div>
+    }
+    @if (Model.HasMensagem)
+    {
+        <div class="row">
+            <div class="alert alert-danger">
+                <strong>Erro!</strong> Ocorreu um erro ao tentar salvar o registro.<br />
+                - @Model.Mensagem
+            </div>
+        </div>
+    }
+</div>

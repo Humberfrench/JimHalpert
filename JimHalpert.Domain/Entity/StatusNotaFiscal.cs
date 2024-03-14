@@ -11,7 +11,7 @@ namespace JimHalpert.Domain.Entity
             NotaFiscal = new List<NotaFiscal>();
         }
 
-        public byte StatusNotaFiscalId { get; set; }
+        public int StatusNotaFiscalId { get; set; }
         public string Descricao { get; set; }
 
         public virtual List<NotaFiscal> NotaFiscal { get; set; }

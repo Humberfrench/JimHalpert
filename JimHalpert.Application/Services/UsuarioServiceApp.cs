@@ -24,7 +24,7 @@ namespace JimHalpert.App.Services
             this.service = service;
         }
 
-        public async Task<MethodResult> Gravar(UsuarioDadosViewModel Usuario)
+        public async Task<MethodResult<ValidationResult>> Gravar(UsuarioDadosViewModel Usuario)
         {
             BeginTransaction();
             var dadoIncluir = Usuario.ConvertObjects<UsuarioDados>(); //Mapper.Map<Usuario>(Usuario);
@@ -36,7 +36,7 @@ namespace JimHalpert.App.Services
                 //commit error
                 if (!ValidationResults.Valid)
                 {
-                    return BadRequest(ConvertValidationErrors(ValidationResults.Erros.ToList()));
+                    return Ok(retorno);
                 }
             }
             return Ok(retorno);
@@ -102,7 +102,7 @@ namespace JimHalpert.App.Services
         }
 
         [Obsolete("Método não implementado. Não usar.")]
-        public Task<MethodResult> Gravar(UsuarioViewModel dado)
+        public Task<MethodResult<ValidationResult>> Gravar(UsuarioViewModel dado)
         {
             throw new System.NotImplementedException();
         }

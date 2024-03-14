@@ -11,7 +11,7 @@ namespace JimHalpert.Domain.Entity
             Cidade = new List<Cidade>();
         }
 
-        public short EstadoId { get; set; }
+        public int EstadoId { get; set; }
         public string SiglaUf { get; set; }
         public string NomeUf { get; set; }
 

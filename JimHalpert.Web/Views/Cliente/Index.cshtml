@@ -1,0 +1,84 @@
+﻿@using JimHalpert.App.ViewModel
+@model ModelViewItem<List<ClienteViewModel>>
+
+@{
+    ViewData["Title"] = "Tipo de Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="text-center">
+        <h3 class="display-4">Clientes</h3>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="text-end">
+                <button type="button" class="btn btn-success" asp-controller="Cadastros" asp-asp-action="NewTipoCliente"><i class="fa fa-file"></i>&nbsp;Novo</button>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="d-block">
+        <div class="container">
+            @foreach (var item in Model.Item)
+            {
+                <div class="card border-1 flex-container">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-1">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" value="@item.ClienteId" placeholder="" readonly="readonly">
+                                    <label for="floatingInput">CId</label>
+                                </div>
+                            </div>
+                            <div class="col-4 flex-column">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" value="@item.Nome" placeholder="" readonly="readonly">
+                                    <label for="floatingInput">Nome</label>
+                                </div>
+                            </div>
+                            <div class="col-5 flex-column">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" value="@item.RazaoSocial" placeholder="" readonly="readonly">
+                                    <label for="floatingInput">Razão Social</label>
+                                </div>
+                            </div>
+                            <div class="col-2 flex-column">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" value="@item.Contato" placeholder="" readonly="readonly">
+                                    <label for="floatingInput">Contato</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 flex-column">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" value="@item.Documento" placeholder="" readonly="readonly">
+                                    <label for="floatingInput">Documento</label>
+                                </div>
+                            </div>
+                            <div class="col-2 flex-column">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" value="@item.Telefone" placeholder="" readonly="readonly">
+                                    <label for="floatingInput">Telefone</label>
+                                </div>
+                            </div>
+                            <div class="col-5 flex-column">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" value="@item.Email" placeholder="" readonly="readonly">
+                                    <label for="floatingInput">Email</label>
+                                </div>
+                            </div>
+                            <div class="col-1 flex-column">
+                                <a type="button" class="btn btn-success" asp-controller="Cliente" asp-action="Edit" asp-route-id="@item.ClienteId">Editar <i class="fa fa-pencil"></i></a>
+                            </div>
+                            <div class="col-1 flex-column">
+                                <a type="button" class="btn btn-danger" Cliente" asp-action="New">Excluir <i class="fa fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            }
+        </div>
+    </div>
+</div>

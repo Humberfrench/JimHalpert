@@ -22,7 +22,7 @@ namespace JimHalpert.Domain.Entity
         public decimal ImpostoTotalRetido { get; set; }
         public decimal ValorLiquido { get; set; }
         public string Descricao { get; set; }
-        public byte StatusNotaFiscalId { get; set; }
+        public int StatusNotaFiscalId { get; set; }
 
         public virtual Cliente Cliente { get; set; }
         public virtual StatusNotaFiscal StatusNotaFiscal { get; set; }
